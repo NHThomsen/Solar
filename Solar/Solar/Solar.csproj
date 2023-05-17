@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Assets\Icon\" />
+    <Folder Include="Assets\Background\" />
     <Folder Include="Models\" />
   </ItemGroup>
 
