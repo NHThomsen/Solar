@@ -6,4 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Assets\icon\" />
+    <Folder Include="Assets\background\" />
+  </ItemGroup>
+
 </Project>
