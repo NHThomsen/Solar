@@ -6,8 +6,6 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace Solar;
-
 [Table("Status")]
 public partial class Status
 {

@@ -6,7 +6,6 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace Solar;
 
 [Table("ConsumptionCategory")]
 public partial class ConsumptionCategory

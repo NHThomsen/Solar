@@ -4,8 +4,6 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace Solar;
-
 public partial class SolarContext : DbContext
 {
     public SolarContext()
