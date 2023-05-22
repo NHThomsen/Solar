@@ -10,7 +10,6 @@
     <Folder Include="Assets\Icon\" />
     <Folder Include="Assets\Background\" />
     <Folder Include="Pages\Intern\" />
-    <Folder Include="Pages\Ekstern\" />
   </ItemGroup>
 
   <ItemGroup>
