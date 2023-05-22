@@ -35,7 +35,7 @@ namespace Solar.Pages.Ekstern
                 return Page();
             }
 
-            return RedirectToPage("/Index");
+            return RedirectToPage("/Ekstern/Formular");
         }
     }
 }

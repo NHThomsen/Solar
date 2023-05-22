@@ -30,7 +30,7 @@ namespace Solar.Pages.Ekstern
             }
 
             _service.Create(_User);
-            return RedirectToPage("/Index");
+            return RedirectToPage("/Ekstern/Logind");
         }
     }
 }

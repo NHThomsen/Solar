@@ -1,4 +1,64 @@
 ﻿@page
 @model Solar.Pages.Ekstern.FormularModel
 @{
+    ViewData["Title"] = "Solar formular";
 }
+
+<form method="post">
+    <div class="m-2">
+        <label asp-for="@Model.project.CaseName" class="control-label"></label>
+        <input asp-for="@Model.project.CaseName" class="form-control" />
+    </div>
+
+    <div class="m-2">
+        <label asp-for="@Model.project.Address" class="control-label"></label>
+        <input asp-for="@Model.project.Address" class="form-control" />
+    </div>
+
+    <div class="m-2">
+        <label asp-for="@Model.project.Zip" class="control-label"></label>
+        <input asp-for="@Model.project.Zip" class="form-control" />
+    </div>
+
+    <div class="m-2">
+        <label asp-for="@Model.project.Deadline" class="control-label"></label>
+        <input asp-for="@Model.project.Deadline" class="form-control" />
+    </div>
+
+    <div class="m-2">
+        <label asp-for="@Model.project.Followup" class="control-label"></label>
+        <input asp-for="@Model.project.Followup" class="form-control" />
+    </div>
+
+    <div class="m-2">
+        <label asp-for="@Model.project.Installer" class="control-label"></label>
+        <input asp-for="@Model.project.Installer" class="form-control" />
+    </div>
+
+    <div class="m-2">
+        <label asp-for="@Model.project.Department" class="control-label"></label>
+        <input asp-for="@Model.project.Department" class="form-control" />
+    </div>
+
+    <div class="m-2">
+        <label asp-for="@Model.project.Contact" class="control-label"></label>
+        <input asp-for="@Model.project.Contact" class="form-control" />
+    </div>
+
+    <div class="m-2">
+        <label asp-for="@Model.project.PhoneNumber" class="control-label"></label>
+        <input asp-for="@Model.project.PhoneNumber" class="form-control" />
+    </div>
+
+    <div class="m-2">
+        <label asp-for="@Model.project.Email" class="control-label"></label>
+        <input asp-for="@Model.project.Email" class="form-control" />
+    </div>
+
+    <div class="m-2">
+        <label asp-for="@Model.project.Remarks" class="control-label"></label>
+        <input asp-for="@Model.project.Remarks" class="form-control" />
+    </div>
+
+  
+</form>
