@@ -1,0 +1,27 @@
+﻿@page
+@model Solar.Pages.Ekstern.LogindModel
+@{
+    ViewData["Title"] = "Log ind";
+}
+
+<section class="container-fluid bg-info justify-content-center align-items-center">
+    <div class="container w-75 h-75 p-4 border-1 border-dark bg-light">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="@Model.UserName" class="control-label"></label>
+                <input asp-for="@Model.UserName" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@Model.Password" class="control-label"></label>
+                <input asp-for="@Model.Password" class="form-control" />
+            </div>
+            
+            <div class="">
+                <input type="submit" value="Opret bruger" class="btn btn-primary text-light" />
+            </div>
+        </form>
+    </div>
+
+
+</section>
