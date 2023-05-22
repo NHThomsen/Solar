@@ -14,17 +14,21 @@ namespace Solar.Pages.Ekstern
 
         private IDimensioningDataService _DimensioningDataService;
 
+        private IConsumptionCategoryDataService _ConsCat;
+
         public FormularModel(
             IProjectDataService service,
             IRoofTypeDataService roofservice,
             IRoofMaterialDataService roofMaterial,
-            IDimensioningDataService dimensioningService
+            IDimensioningDataService dimensioningService,
+            IConsumptionCategoryDataService ConsumptionCategory
             ) 
         {
             _service = service;
             _roofTypeDataService = roofservice;
             _roofMaterielService = roofMaterial;
             _DimensioningDataService = dimensioningService;
+            _ConsCat = ConsumptionCategory;
         }
 
         [BindProperty]
@@ -34,12 +38,23 @@ namespace Solar.Pages.Ekstern
         public List<RoofMaterial> RoofMaterials { get; set; }
         public List<Dimensioning> Dimensens { get; set; }
 
+        public List<ConsumptionCategory> ConsCats { get; set; }
 
         public void OnGet()
         {
             Roofs = _roofTypeDataService.GetAll();
             RoofMaterials = _roofMaterielService.GetAll();
             Dimensens = _DimensioningDataService.GetAll();
+            ConsCats = _ConsCat.GetAll();
         }
+
+        public IActionResult OnPost()
+        {
+            project.DimensioningConsumption.HouseSize = null;
+            _service.Create(project);
+
+            return RedirectToPage("/Index");
+        }
+
     }
 }

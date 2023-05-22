@@ -7,6 +7,7 @@ builder.Services.AddSingleton<IProjectDataService, EFCProjectDataService>();
 builder.Services.AddSingleton<IRoofTypeDataService, EFCRoofTypeDataService>();
 builder.Services.AddSingleton<IRoofMaterialDataService, EFCRoofMaterialDataService>();
 builder.Services.AddSingleton<IDimensioningDataService, EFCDimensioningDataService>();
+builder.Services.AddSingleton<IConsumptionCategoryDataService, EFCConsumptionCategoryDataService>();
 
 var app = builder.Build();
 

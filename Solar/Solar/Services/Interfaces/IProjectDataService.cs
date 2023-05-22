@@ -1,4 +1,5 @@
-﻿public interface IProjectDataService
+﻿
+public interface IProjectDataService : IDataService<Project>
 {
 	public List<Project> SortByStatus(int statusId);
 }
