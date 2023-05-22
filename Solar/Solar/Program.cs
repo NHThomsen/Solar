@@ -2,7 +2,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-builder.Services.AddSingleton<IUsersDataService,EFCUserDataService>();
+builder.Services.AddSingleton<IUsersDataService, EFCUserDataService>();
+builder.Services.AddSingleton<IProjectDataService, EFCProjectDataService>();
 
 var app = builder.Build();
 
