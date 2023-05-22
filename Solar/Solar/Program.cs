@@ -4,6 +4,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddSingleton<IUsersDataService, EFCUserDataService>();
 builder.Services.AddSingleton<IProjectDataService, EFCProjectDataService>();
+builder.Services.AddSingleton<IRoofTypeDataService, EFCRoofTypeDataService>();
 
 var app = builder.Build();
 
