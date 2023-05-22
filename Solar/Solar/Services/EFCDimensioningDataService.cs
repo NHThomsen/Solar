@@ -1,3 +1,3 @@
-﻿public class EFCDimensioningDataService : EFCDataServiceAppBase<Dimensioning>
+﻿public class EFCDimensioningDataService : EFCDataServiceAppBase<Dimensioning>,IDimensioningDataService
 {
 }
