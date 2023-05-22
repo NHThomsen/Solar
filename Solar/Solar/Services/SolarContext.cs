@@ -42,7 +42,7 @@ public partial class SolarContext : DbContext
     public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Solar;Integrated Security=True");
+        => optionsBuilder.UseSqlServer("Data Source=mssql3.unoeuro.com;Initial Catalog=philipv_dk_db_solar;User ID=philipv_dk;Password=wa5pyrtbnRmHEh4fAg6k;Integrated Security=False;Encrypt=True;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
