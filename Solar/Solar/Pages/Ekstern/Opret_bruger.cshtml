@@ -3,11 +3,20 @@
 @{
 }
 
-<section class="container-fluid h-100 w-100 bg-primary justify-content-center align-items-center">
-    <div class="container border-1 border-dark p-3 h-50 w-50 justify-content-center align-items-center">
+   <form method="post">
+            <div class="form-group">
+                <label asp-for="@Model._User.Username" class="control-label"></label>
+                <input asp-for="@Model._User.Username" class="form-control"/>
+                
+            </div>
 
+            <div class="form-group">
+                <label asp-for="@Model._User.Password" class="control-label"></label>
+                <input asp-for="@Model._User.Password" class="form-control" />
+                
+            </div>
 
-
-
-    </div>
-</section>
+            <div class="btn btn-primary text-light">
+                <input type="submit" value="Opret bruger" class="" />
+            </div>
+    </form>
