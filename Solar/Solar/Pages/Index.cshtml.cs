@@ -14,10 +14,7 @@ namespace Solar.Pages
 
 		public void OnGet()
 		{
-			Status status = new Status();
-			status.Status1 = "test";
-			EFCStatusDataService statusDataService = new EFCStatusDataService();
-			statusDataService.Create(status);
+
 		}
 	}
 }
