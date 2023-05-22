@@ -5,6 +5,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddSingleton<IUsersDataService, EFCUserDataService>();
 builder.Services.AddSingleton<IProjectDataService, EFCProjectDataService>();
 builder.Services.AddSingleton<IRoofTypeDataService, EFCRoofTypeDataService>();
+builder.Services.AddSingleton<IRoofMaterialDataService, EFCRoofMaterialDataService>();
 
 var app = builder.Build();
 
