@@ -236,6 +236,10 @@ label {
     text-align: center;
 }
 
+.login-user-input {
+    width: 80%
+}
+
 /* Styles for create user section */
 
 .user-container {
