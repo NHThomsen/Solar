@@ -1,6 +1,9 @@
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
+using System.Security.Claims;
 
 namespace Solar.Pages.Ekstern
 {
@@ -13,7 +16,7 @@ namespace Solar.Pages.Ekstern
             _service = userdata;
         }
 
-        public static User LogedinUser { get; set; }
+        public static User LoggedinUser { get; set; }
 
         [BindProperty]
         public string UserName { get; set; }
@@ -26,16 +29,39 @@ namespace Solar.Pages.Ekstern
         {
         }
 
-        public IActionResult OnPost()
+        public async Task<IActionResult> OnPost()
         {
-            LogedinUser = _service.VerifyUser(UserName, Password);
+            LoggedinUser = _service.VerifyUser(UserName, Password);
 
-            if (LogedinUser == null)
+            if (LoggedinUser == null)
             {
                 return Page();
             }
 
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
+                BuildClaimsPrincipal(LoggedinUser));
+
+            if (LoggedinUser.Username == "admin")
+                return RedirectToPage("/Privacy");
+
             return RedirectToPage("/Ekstern/NewProject");
+        }
+
+        private ClaimsPrincipal BuildClaimsPrincipal(User user)
+        {
+            List<Claim> claims = new List<Claim>()
+            {
+                new Claim(ClaimTypes.Name, user.Username),
+                new Claim(ClaimTypes.UserData, user.Id.ToString())
+            };
+            if(user.Username == "admin")
+                claims.Add(new Claim(ClaimTypes.Role, "admin"));
+
+            ClaimsIdentity claimsIdentity= new ClaimsIdentity(
+                claims,
+                CookieAuthenticationDefaults.AuthenticationScheme);
+
+            return new ClaimsPrincipal(claimsIdentity);
         }
     }
 }

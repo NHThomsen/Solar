@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Solar.Pages.Ekstern;
 
 namespace Solar.Pages
 {
@@ -14,7 +17,8 @@ namespace Solar.Pages
 
 		public void OnGet()
 		{
-
+			if (LogindModel.LoggedinUser == null)
+				HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 		}
 	}
 }
