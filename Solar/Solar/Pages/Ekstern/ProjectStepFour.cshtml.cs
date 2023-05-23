@@ -12,6 +12,7 @@ namespace Solar.Pages.Ekstern
         public ProjectStepFourModel()
         {
             ExistingData = GlobalProjectDataService.ProjectDataNewProject;
+            
         }
         public void OnGet()
         {
@@ -21,8 +22,6 @@ namespace Solar.Pages.Ekstern
         {
             
             GlobalProjectDataService.ProjectDataStepFour = ProjectData;
-
-            GlobalProjectDataService.Merge();
             
             return RedirectToPage("/Ekstern/ProjectStepFive");
         }

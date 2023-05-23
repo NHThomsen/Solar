@@ -20,7 +20,7 @@ namespace Solar.Pages.Ekstern
             _roofTypeDataService = roofTypeDataService;
             _roofMaterielService = roofMaterielService;
         }
-
+        
         public List<RoofType> Roofs { get; set; }
         public List<RoofMaterial> RoofMaterials { get; set; }
 
