@@ -18,7 +18,6 @@ namespace Solar.Pages.Ekstern
 
         public IActionResult OnGet()
         {
-            System.Diagnostics.Debug.WriteLine("on get");
             return Page();
         }
 
