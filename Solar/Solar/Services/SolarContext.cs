@@ -42,6 +42,7 @@ public partial class SolarContext : DbContext
     public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Data Source=mssql3.unoeuro.com;Initial Catalog=philipv_dk_db_solar;User ID=philipv_dk;Password=wa5pyrtbnRmHEh4fAg6k;Integrated Security=False;Encrypt=True;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -95,15 +96,15 @@ public partial class SolarContext : DbContext
 
         modelBuilder.Entity<DimensioningConsumption>(entity =>
         {
-            entity.HasKey(e => e.ProjectId).HasName("PK__Dimensio__761ABED02CECD789");
+            entity.HasKey(e => e.ProjectId).HasName("PK__Dimensio__761ABED0CDD1039B");
 
             entity.Property(e => e.ProjectId).ValueGeneratedNever();
 
-            entity.HasOne(d => d.Category).WithMany(p => p.DimensioningConsumptions).HasConstraintName("FK__Dimension__Categ__46E78A0C");
+            entity.HasOne(d => d.Category).WithMany(p => p.DimensioningConsumptions).HasConstraintName("FK__Dimension__Categ__4AB81AF0");
 
             entity.HasOne(d => d.Project).WithOne(p => p.DimensioningConsumption)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Dimension__Proje__45F365D3");
+                .HasConstraintName("FK__Dimension__Proje__49C3F6B7");
         });
 
         modelBuilder.Entity<DimensioningkWp>(entity =>

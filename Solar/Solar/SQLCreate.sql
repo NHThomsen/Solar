@@ -124,11 +124,11 @@ INSERT INTO ConsumptionCategory VALUES ('Privat'),('Erherv'),('Offentlig')
 CREATE TABLE DimensioningConsumption (
 	ProjectID INT PRIMARY KEY FOREIGN KEY REFERENCES Project(ID),
 	CategoryID INT FOREIGN KEY REFERENCES ConsumptionCategory(ID),
-	CurrentConsumption DECIMAL(19,5) NOT NULL,
+	CurrentConsumption INT NULL,
 	HeatPump BIT NOT NULL,
 	HeatPumpIncluded BIT NOT NULL,
-	HouseSize DECIMAL(6,5) NULL,
-	ElectricVehicle BIT NOT NULL,
-	EVIncluded BIT NOT NULL,
-	EvKilometer INT NOT NULL
+	HouseSize INT NULL,
+	ElectricVehicle BIT NULL,
+	EVIncluded BIT NULL,
+	EvKilometer INT NULL
 )

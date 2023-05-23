@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
+
 [Table("DimensioningConsumption")]
 public partial class DimensioningConsumption
 {
@@ -16,22 +17,20 @@ public partial class DimensioningConsumption
     [Column("CategoryID")]
     public int? CategoryId { get; set; }
 
-    [Column(TypeName = "decimal(19, 5)")]
-    public decimal CurrentConsumption { get; set; }
+    public int? CurrentConsumption { get; set; }
 
     public bool HeatPump { get; set; }
 
     public bool HeatPumpIncluded { get; set; }
 
-    [Column(TypeName = "decimal(6, 5)")]
-    public decimal? HouseSize { get; set; }
+    public int? HouseSize { get; set; }
 
-    public bool ElectricVehicle { get; set; }
+    public bool? ElectricVehicle { get; set; }
 
     [Column("EVIncluded")]
-    public bool Evincluded { get; set; }
+    public bool? Evincluded { get; set; }
 
-    public int EvKilometer { get; set; }
+    public int? EvKilometer { get; set; }
 
     [ForeignKey("CategoryId")]
     [InverseProperty("DimensioningConsumptions")]
