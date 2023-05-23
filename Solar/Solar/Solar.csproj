@@ -7,23 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="assets\login.png" />
-    <None Remove="assets\user.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="assets\login.png">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="assets\user.png">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Pages\Intern\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\assets\login.png" />
+    <None Include="wwwroot\assets\user.png" />
   </ItemGroup>
 
   <ItemGroup>
