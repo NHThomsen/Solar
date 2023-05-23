@@ -1,5 +1,5 @@
 ﻿@page
-@model Solar.Pages.Ekstern.ProjectStep3Model
+@model Solar.Pages.Ekstern.ProjectStepThreeModel
 @{
 }
 <main class="main-container">
@@ -15,8 +15,8 @@
                     </g>
                     </svg>
             <div class="user-steps-container">
-                <h2>Projekt : (sagsnavn)</h2>
-                <p>(Anlægsadresse) Step 3/5</p>
+                <h2>Projekt : @Model.ExistingData.CaseName</h2>
+                <p>@Model.ExistingData.Address Step 3/5</p>
             </div>
 
             <div class="loggedin-user-container">
@@ -29,31 +29,21 @@
             <form method="post">
                 <h2>Ønsker til solceller</h2>
                 <div class="form-group-1">
-                    <div class="form-group-dates">
-                        <label>Solcelleanlæg dimensioneres efter forbrug (forbrugeroplysnigner udfyldes)</label>
-                        <label>
-                            <input type="checkbox">
-                            <span>Ja</span>
-                        </label>
-                    </div>
-                    <div class="form-group-dates">
-                        <label>Solcelleanlæg dimensioneres efter størst mulig anlæg/stor produktion</label>
-                        <label>
-                            <input type="checkbox">
-                            <span>Ja</span>
-                        </label>
-                    </div>
-                    <div class="form-group-dates">
-                        <label>Solcelleanlæg dimensioneres efter ønsket kWp (effekt)</label>
-                        <label>
-                            <input type="checkbox">
-                            <span>Ja</span>
-                        </label>
-                    </div>
+                    @foreach (var Dem in Model.Dimensions)
+                    {
+                        <div class="form-group-dates">
+                            <label>@Dem.Description</label>
+                            <label asp-for="@Model.ProjectData.DimensioningId">
+                                <input asp-for="@Model.ProjectData.DimensioningId" value="@Dem.Id" type="radio">
+                                <span>Ja</span>
+                            </label>
+                        </div>
+                    }
+
                     <div class="form-group-dates">
                         <label>Størrelse</label>
-                        <label>
-                            <input type="number">
+                        <label asp-for="@Model.ProjectData.DimensioningkWp.KiloWattPeak">
+                            <input asp-for="@Model.ProjectData.DimensioningkWp.KiloWattPeak" type="number">
                             <span>
                                 kWh
                             </span>

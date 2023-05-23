@@ -1,5 +1,5 @@
 ﻿@page
-@model Solar.Pages.Ekstern.ProjectStep2Model
+@model Solar.Pages.Ekstern.ProjectStepTwoModel
 @{
 }
 <main class="main-container">
@@ -15,8 +15,8 @@
                     </g>
                     </svg>
             <div class="user-steps-container">
-                <h2>Projekt : (sagsnavn)</h2>
-                <p>(Anlægsadresse) Step 2/5</p>
+                <h2>Projekt : @Model.ExistingData.CaseName</h2>
+                <p>@Model.ExistingData.Address Step 2/5</p>
             </div>
 
             <div class="loggedin-user-container">
@@ -31,8 +31,8 @@
                 <div class="form-group-1">
                     <div class="form-group-dates">
                         <label>Forbereds til batteri</label>
-                        <label>
-                            <input type="checkbox">
+                        <label asp-for="@Model.ProjectData.Battery.BatteryPrepare">
+                            <input asp-for="@Model.ProjectData.Battery.BatteryPrepare"  type="checkbox">
                             <span>Ja</span>
                         </label>
                     </div>
@@ -45,8 +45,8 @@
                     </div>
                     <div class="form-group-dates">
                         <label>Størrelse</label>
-                        <label>
-                            <input type="number">
+                        <label asp-for="@Model.ProjectData.BatteryRequest.Capacity">
+                            <input asp-for="@Model.ProjectData.BatteryRequest.Capacity" type="number">
                             <span>
                                 kWh
                             </span>

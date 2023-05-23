@@ -1,17 +1,22 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Solar.Services.StaticServices;
 
 namespace Solar.Pages.Ekstern
 {
-    public class ProjectStep1Model : PageModel
+    public class ProjectStepOneModel : PageModel
     {
         private IRoofTypeDataService _roofTypeDataService;
 
         private IRoofMaterialDataService _roofMaterielService;
+        [BindProperty]
+        public Project? ProjectData { get; set; }
+        public Project ExistingData { get; set; }
 
-        public ProjectStep1Model(IRoofTypeDataService roofTypeDataService, IRoofMaterialDataService roofMaterielService)
+        public ProjectStepOneModel(IRoofTypeDataService roofTypeDataService, IRoofMaterialDataService roofMaterielService)
         {
+            ExistingData = GlobalProjectDataService.ProjectDataNewProject;
             _roofTypeDataService = roofTypeDataService;
             _roofMaterielService = roofMaterielService;
         }
@@ -21,6 +26,7 @@ namespace Solar.Pages.Ekstern
 
         public void OnGet()
         {
+
             Roofs = _roofTypeDataService.GetAll();
             RoofMaterials = _roofMaterielService.GetAll();
 
@@ -28,6 +34,7 @@ namespace Solar.Pages.Ekstern
 
         public IActionResult OnPost()
         {
+            GlobalProjectDataService.ProjectDataStepOne = ProjectData;
             return RedirectToPage("/Ekstern/ProjectStepTwo");
         }
     }
