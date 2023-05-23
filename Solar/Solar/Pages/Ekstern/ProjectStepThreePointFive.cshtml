@@ -1,5 +1,5 @@
 ﻿@page
-@model Solar.Pages.Ekstern.ProjectStep3_5Model
+@model Solar.Pages.Ekstern.ProjectStepThreePointFiveModel
 @{
 }
 <main class="main-container">
@@ -15,8 +15,8 @@
                     </g>
                     </svg>
             <div class="user-steps-container">
-                <h2>Projekt : (sagsnavn)</h2>
-                <p>(Anlægsadresse) Step 3.5/5</p>
+                <h2>Projekt : @Model.ExistingData.CaseName</h2>
+                <p>@Model.ExistingData.Address Step 3.5/5</p>
             </div>
 
             <div class="loggedin-user-container">
@@ -26,22 +26,23 @@
             </div>
         </section>
         <section class="new-project-section ">
-            <form action="">
+            <form method="post">
                 <h2>Forbrugsoplysninger</h2>
                 <div class="form-group-1">
                     <div class="form-group-dates">
                         <label>Anlægskategori</label>
-                        <select name="Anlægskategori" id="">
+                        <select asp-for="@Model.ProjectData.DimensioningConsumption.CategoryId" name="Anlægskategori" id="">
                             <option value="" selected disabled hidden>Vælg</option>
-                            <option value="Eternit">Privat</option>
-                            <option value="Eternit">Erhverv</option>
-                            <option value="Eternit">Offentlig</option>
+                            @foreach(var Cats in Model.ConsCats)
+                            {
+                                <option value="@Cats.Id">@Cats.Category</option>
+                            }
                         </select>
                     </div>
                     <div class="form-group-dates">
                         <label>Nuværende forbrug i kWh</label>
-                        <label>
-                            <input type="number" class="short-input-box">
+                        <label asp-for ="@Model.ProjectData.DimensioningConsumption.CurrentConsumption">
+                            <input asp-for="@Model.ProjectData.DimensioningConsumption.CurrentConsumption" type="number">
                             <span>
                                 kWh
                             </span>
@@ -49,20 +50,20 @@
                     </div>
                     <div class="form-group-dates">
                         <label>Er / kommer der varmepumpe?</label>
-                        <label>
-                            <input type="checkbox">
+                        <label asp-for="@Model.ProjectData.DimensioningConsumption.HeatPump">
+                            <input asp-for="@Model.ProjectData.DimensioningConsumption.HeatPump"  type="checkbox">
                             <span>Ja</span>
                         </label>
                         <label>Er varmepumpe inkluderet i nuværende forbrug?</label>
-                        <label>
-                            <input type="checkbox">
+                        <label asp-for="@Model.ProjectData.DimensioningConsumption.HeatPumpIncluded">
+                            <input asp-for="@Model.ProjectData.DimensioningConsumption.HeatPumpIncluded"  type="checkbox">
                             <span>Ja</span>
                         </label>
                     </div>
                     <div class="form-group-dates">
                         <label>Størrelse på hus</label>
-                        <label>
-                            <input type="number" class="short-input-box">
+                        <label asp-for ="@Model.ProjectData.DimensioningConsumption.HouseSize">
+                            <input asp-for="@Model.ProjectData.DimensioningConsumption.HouseSize" type="number">
                             <span>
                                 m2
                             </span>
@@ -80,28 +81,28 @@
                             <span>Ja</span>
                         </label>
                         <label>Hvor mange km køres pr. år?</label>
-                        <label>
-                            <input type="number" class="short-input-box">
+                        <label asp-for ="@Model.ProjectData.DimensioningConsumption.EvKilometer">
+                            <input asp-for="@Model.ProjectData.DimensioningConsumption.EvKilometer" type="number">
                             <span>
                                 km
                             </span>
                         </label>
                     </div>
                 </div>
+                <section class="schema-footer-container">
+                    <div class="back-btn-container">
+                        <span><--</span>
+                        <button class="login-button">Tilbage</button>
+                    </div>
+                    <div class="slash-middle-container">
+                        <span>/</span>
+                    </div>
+                    <div class="next-btn-container">
+                        <button class="login-button">Næste</button>
+                        <span>--></span>
+                    </div>
+                </section>
             </form>
-        </section>
-        <section class="schema-footer-container">
-            <div class="schema-btn-container">
-                <span><--</span>
-                <button class="form-step-button">Tilbage</button>
-            </div>
-            <div class="slash-middle-container">
-                <span>/</span>
-            </div>
-            <div class="schema-btn-container">
-                <button class="form-step-button">Næste</button>
-                <span>--></span>
-            </div>
         </section>
     </section>
 </main>

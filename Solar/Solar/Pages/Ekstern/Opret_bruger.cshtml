@@ -25,17 +25,18 @@
 
         <section class="user-section">
             <form method="post">
+                <p>@Model.ErrorMessage</p>
                 <label for="">Navn på installatør</label>
                 <input type="text">
 
-                <label asp-for="@Model._User.Username">Email</label>
-                <input asp-for="@Model._User.Username" type="text">
+                <label asp-for="@Model.Username">Email</label>
+                <input asp-for="@Model.Username" type="text">
 
-                <label asp-for="@Model._User.Password">Kode</label>
-                <input asp-for="@Model._User.Password" type="text">
+                <label asp-for="@Model.Password">Kode</label>
+                <input asp-for="@Model.Password">
 
                 <label for="">Gentag Kode</label>
-                <input type="text">
+                <input asp-for="@Model.RepeatedPassword">
 
                 <div class="user-button-section">
                     <a asp-page="/index" class="read-more-button">Tilbage</a>

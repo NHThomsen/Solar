@@ -1,5 +1,5 @@
 ﻿@page
-@model Solar.Pages.Ekstern.ProjectStep4Model
+@model Solar.Pages.Ekstern.ProjectStepFourModel
 @{
 }
 <main class="main-container">
@@ -15,8 +15,8 @@
                     </g>
                     </svg>
             <div class="user-steps-container">
-                <h2>Projekt : (sagsnavn)</h2>
-                <p>(Anlægsadresse) Step 4/5</p>
+                <h2>Projekt : @Model.ExistingData.CaseName</h2>
+                <p>@Model.ExistingData.Address Step 4/5</p>
             </div>
 
             <div class="loggedin-user-container">
