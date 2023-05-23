@@ -15,7 +15,7 @@ namespace Solar.Pages.Ekstern
 
         public IActionResult OnPost() 
         {
-            System.Diagnostics.Debug.WriteLine(ProjectData.Address);
+
             GlobalProjectDataService.ProjectDataNewProject = ProjectData;
             return RedirectToPage("/Ekstern/ProjectStepOne");
 

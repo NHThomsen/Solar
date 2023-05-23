@@ -19,8 +19,12 @@ namespace Solar.Pages.Ekstern
 
         public IActionResult OnPost() 
         {
+            
             GlobalProjectDataService.ProjectDataStepFour = ProjectData;
-            return RedirectToPage("index");
+
+            GlobalProjectDataService.Merge();
+            
+            return RedirectToPage("/Ekstern/ProjectStepFive");
         }
     }
 }

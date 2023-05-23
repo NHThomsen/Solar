@@ -31,7 +31,7 @@
                 <div class="form-group-1">
                     <div class="form-group-dates">
                         <label>Montage type</label>
-                        <select asp-for="@Model.ProjectData.Assembly.RoofTypeId" name="montagetype" id="">
+                        <select asp-for="@Model.ProjectData.Assembly.RoofTypeId" name="montagetype">
                             <option value="" selected disabled hidden>Vælg</option>
                             @foreach (var roof in Model.Roofs)
                             {
@@ -42,7 +42,7 @@
 
                     <div class="form-group-dates">
                         <label>Tag type</label>
-                        <select asp-for="@Model.ProjectData.Assembly.RoofMaterialId" name="Tagtype" id="">
+                        <select asp-for="@Model.ProjectData.Assembly.RoofMaterialId" name="Tagtype">
                             <option value="" selected disabled hidden>Vælg</option>
                             @foreach (var roof in Model.RoofMaterials)
                             {

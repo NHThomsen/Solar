@@ -27,6 +27,12 @@ namespace Solar.Pages.Ekstern
         public IActionResult OnPost()
         {
             GlobalProjectDataService.ProjectDataStepThree = ProjectData;
+
+            if(ProjectData.DimensioningId == 2)
+            {
+                return RedirectToPage("/Ekstern/ProjectStepThreePointFive");
+            }
+
             return RedirectToPage("/Ekstern/ProjectStepFour");
         }
     }
