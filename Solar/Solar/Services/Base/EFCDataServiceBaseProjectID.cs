@@ -1,7 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
+/// <summary>
+/// Base implementation of Entity Framework Core
+/// of all classes with an ProjectId in the model
+/// </summary>
+/// <typeparam name="T">Class</typeparam>
 public abstract class EFCDataServiceBaseProjectID<T> : IDataServiceProjectID<T> where T : class, IHasProjectId
 {
-	public int Create(T entity)
+    /// <summary>
+    /// Base method to insert into the database
+    /// </summary>
+    /// <param name="entity">Entity to be inserted</param>
+    /// <returns>Generated number from database</returns>
+    public int Create(T entity)
 	{
 		using DbContext context = CreateDBContext();
 
@@ -11,28 +21,45 @@ public abstract class EFCDataServiceBaseProjectID<T> : IDataServiceProjectID<T> 
 		return entity.ProjectId;
 	}
 
-	public T? Read(int projectId)
+    /// <summary>
+    /// Base method to read from the database
+    /// </summary>
+    /// <param name="id">ProjctId of the entity</param>
+    /// <returns>Object of the class</returns>
+    public T? Read(int projectId)
 	{
 		using DbContext context = CreateDBContext();
 
 		return GetAllWithIncludes(context).FirstOrDefault(x => x.ProjectId == projectId);
 	}
 
-	public void Update(T entity)
+    /// <summary>
+    /// Base method to update entity in the database
+    /// </summary>
+    /// <param name="entity">Object to be updated</param>
+    public void Update(T entity)
 	{
 		using DbContext context = CreateDBContext();
 
 		context.Update(entity);
 	}
 
-	public void Delete(int projectId)
+    /// <summary>
+    /// Base method to delete entity from the database
+    /// </summary>
+    /// <param name="id">ProjectId of the entity</param>
+    public void Delete(int projectId)
 	{
 		using DbContext context = CreateDBContext();
 
 		context.Set<T>().Remove(context.Set<T>().Find(projectId));
 	}
 
-	public List<T> GetAll()
+    /// <summary>
+    /// Base method to get all objects of class
+    /// </summary>
+    /// <returns>List of objects, of generic</returns>
+    public List<T> GetAll()
 	{
 		using DbContext context = CreateDBContext();
 
