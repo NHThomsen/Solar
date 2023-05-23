@@ -6,7 +6,7 @@ public class EFCUserDataService : EFCDataServiceAppBase<User>, IUsersDataService
 	public bool CheckUsernameExist(string username)
 	{
 		User? user = GetAll().FirstOrDefault(x => x.Username == username);
-		return user == null ? true : false;
+		return user != null ? true : false;
 	}
 
 	public override int Create(User entity)
