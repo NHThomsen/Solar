@@ -1,22 +1,425 @@
-html {
-  font-size: 14px;
+* {
+    box-sizing: border-box;
+    margin: 0;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
+/* Global style settings */
 
 body {
-  margin-bottom: 60px;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url(../assets/background.png);
+}
+
+.main-container {
+    max-width: 1920px;
+    width: 900px;
+    height: 850px;
+    background-color: #ffff;
+}
+
+h2 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 600;
+}
+
+h3 {
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+    font-weight: 600;
+}
+
+p {
+    font-size: 0.875rem;
+    line-height: 1.125rem;
+    color: #000;
+    font-weight: 400;
+}
+
+a {
+    font-size: 0.875rem;
+    line-height: 1.125rem;
+    color: #519ce8;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+    a:hover {
+        font-weight: 400;
+    }
+
+input {
+    height: 40px;
+    background-color: #d7e9f7;
+    border: 1px solid #a3c9ea;
+}
+
+    input[type="checkbox"] {
+        appearance: none;
+        background-color: #d7e9f7;
+        margin: 0;
+        font: inherit;
+        color: currentColor;
+        width: 40px;
+        height: 40px;
+        border: 1px solid #a3c9ea;
+        border-radius: 0.15em;
+        transform: translateY(-0.075em);
+        display: grid;
+        place-content: center;
+    }
+
+        input[type="checkbox"]::before {
+            content: "";
+            width: 30px;
+            height: 30px;
+            transform: scale(0);
+            transition: 120ms transform ease-in-out;
+            box-shadow: inset 1em 1em var(--form-control-color);
+            background-color: black;
+            transform-origin: bottom left;
+            clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+        }
+
+        input[type="checkbox"]:checked::before {
+            transform: scale(1);
+        }
+
+    input::-webkit-inner-spin-button {
+        padding-top: 50px;
+        padding-right: 15px;
+    }
+
+select {
+    height: 40px;
+    background-color: #d7e9f7;
+    border: 1px solid #a3c9ea;
+    margin-bottom: 40px;
+}
+
+textarea {
+    background-color: #d7e9f7;
+    border: 1px solid #a3c9ea;
+    resize: none;
+    height: 350px;
+    width: 700px;
+}
+
+label {
+    display: flex;
+}
+
+    label span {
+        margin-left: 15px;
+        margin-top: 8px;
+    }
+
+/* Button stylings */
+
+.login-button {
+    padding: 12px 8px;
+    background-color: #3cc295;
+    border: none;
+    border-radius: 4px;
+    color: #ffff;
+    cursor: pointer;
+}
+
+    .login-button:hover {
+        background-color: #3EAE80;
+    }
+
+.read-more-button {
+    padding: 8px 6px;
+    border: 4px solid #003970;
+    border-radius: 4px;
+    color: #003970;
+    background-color: #ffff;
+    cursor: pointer;
+}
+
+    .read-more-button:hover {
+        background-color: #003970;
+        color: #ffff;
+    }
+
+/* Styles for login section */
+
+.login-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-login-section {
+    fill: #1C355F;
+    height: 130px;
+    width: 200px;
+}
+
+.login-container h1 {
+    margin-bottom: 25px;
+}
+
+.login-container h2 {
+    margin-bottom: 45px;
+}
+
+.login-section {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.user-forms-login-section {
+    border: 1px solid #e0dfde;
+    height: 500px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+    .user-forms-login-section img {
+        height: 200px;
+        width: 200px;
+    }
+
+    .user-forms-login-section form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 15px;
+    }
+
+        .user-forms-login-section form h3 {
+            margin-bottom: 15px;
+        }
+
+        .user-forms-login-section form button {
+            margin-top: 15px;
+        }
+
+.login-container-footer {
+    width: 100%;
+    padding: 20px;
+    margin-top: 45px;
+    text-align: center;
+}
+
+/* Styles for create user section */
+
+.user-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.user-header-section {
+    display: grid;
+    grid-template-columns: repeat(3, 300px);
+    align-items: center;
+    width: 100%;
+}
+
+.logo-user-section {
+    fill: #1C355F;
+    width: 155px;
+    padding: 15px;
+}
+
+.user-steps-container {
+    justify-self: center;
+    text-align: center;
+}
+
+.user-section {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+    .user-section form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 100px;
+    }
+
+        .user-section form label {
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+
+    .user-section button {
+        width: 78%;
+    }
+
+.user-button-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+    .user-button-section a {
+        width: 40%;
+        text-align: center
+    }
+
+    .user-button-section input {
+        width: 40%;
+        text-align: center;
+    }
+
+/* Styles for new projeckt section */
+
+.new-project-header-section {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.new-project-section {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+    .new-project-section form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+    }
+
+        .new-project-section form h2 {
+            margin-bottom: 75px;
+            color: #133466;
+        }
+
+.form-group-1 {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.form-group-1-special label {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.form-group-2 {
+    margin-top: 55px;
+}
+
+.form-group-dates {
+    display: grid;
+    grid-template-columns: repeat(2, 350px);
+    margin-bottom: 40px;
+}
+
+.new-project-button-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .new-project-button-section button {
+        width: 80%;
+        margin-bottom: 90px;
+    }
+
+/* Styles for Schema section */
+
+.schema-footer-container {
+    width: 100%;
+    height: 75px;
+    display: flex;
+    background-color: #31b388;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/* Pc screens 1366 X 768 */
+@media only screen and (max-height: 880px) {
+    .main-container {
+        height: 740px;
+    }
+
+    .user-forms-login-section img {
+        height: 180px;
+        width: 180px;
+    }
+
+    .user-forms-login-section {
+        width: 325px;
+    }
+
+    .login-container h2 {
+        margin-bottom: 14px;
+        margin-top: 8px;
+    }
+
+    .logo-login-section {
+        height: 45px;
+        width: 121px;
+    }
+
+    .login-container-footer {
+        margin-top: 0px;
+    }
+}
+
+
+/* Mobile screens 360 X 640 */
+
+@media only screen and (max-width: 700px) {
+    .main-container {
+        width: 360px;
+        height: 640px;
+    }
+
+    .logo-login-section {
+        width: 140px;
+    }
+
+    .login-container h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .user-forms-login-section {
+        width: 177px;
+        height: 340px;
+    }
+
+        .user-forms-login-section img {
+            height: 120px;
+            width: 120px;
+        }
+
+    .login-container-footer {
+        margin-top: 0px;
+        text-align: center;
+    }
 }
