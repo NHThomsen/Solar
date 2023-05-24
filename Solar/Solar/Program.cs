@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Solar.Services.Interfaces;
+using Solar.Services.StaticServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +12,7 @@ builder.Services.AddSingleton<IRoofTypeDataService, EFCRoofTypeDataService>();
 builder.Services.AddSingleton<IRoofMaterialDataService, EFCRoofMaterialDataService>();
 builder.Services.AddSingleton<IDimensioningDataService, EFCDimensioningDataService>();
 builder.Services.AddSingleton<IConsumptionCategoryDataService, EFCConsumptionCategoryDataService>();
+builder.Services.AddTransient<IEmailSenderService, EmailSenderService>();
 
 builder.Services.Configure<CookiePolicyOptions>(options =>
 {
