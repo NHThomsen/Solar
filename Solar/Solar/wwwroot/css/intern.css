@@ -1,0 +1,79 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: Segoe UI, Frutiger, Arial;
+}
+
+.main2-container {
+    max-width: 1920px;
+    width: 90vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #0e213d;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.intern-header {
+    height: 80px;
+    width: 100%;
+    background-color: #ffff;
+    flex-direction: column;
+}
+
+.company-name {
+    height: 100%;
+    width: 20%;
+    background-color: #ffff;
+    color: #0e213d;
+}
+
+.intern-tabs {
+    height: 70%;
+    width: 82.7%;
+    float: right;
+    background-color: #a1c7e9;
+    display: flex;
+    align-items: end;
+    justify-content: space-around;
+}
+
+.intern-tab {
+    height: 90%;
+    width: 25%;
+    position: relative;
+    background-color: #d5e6f6;
+    color: #ffff;
+    padding: 8px 16px;
+    font-size: 20px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border-radius: 15px 15px 0px 0px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .intern-tab a:hover {
+        color: #ffff;
+    }
+
+    .intern-tab.selected {
+        background-color: #ffff;
+        color: #0000;
+    }
+
+.intern-container {
+    height: 100%;
+    width: 80%;
+    background-color: #0e213d;
+    
+}
+
+    .intern-container h1 {
+        color: #ffff;
+        float: left;
+    }
