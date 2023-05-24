@@ -13,7 +13,7 @@
 
         public static Project Merge()
         {
-            Project mergedProject = new Project();
+            Project? mergedProject = new Project();
 
             mergedProject.CaseName = ProjectDataNewProject.CaseName;
             mergedProject.Address = ProjectDataNewProject.Address;
@@ -22,8 +22,7 @@
             mergedProject.Followup = ProjectDataNewProject.Followup;
             mergedProject.Deadline = ProjectDataNewProject.Deadline;
             System.Diagnostics.Debug.WriteLine(ProjectDataStepOne.Assembly.RoofTypeId);
-            int? rooofidtest = ProjectDataStepOne.Assembly.RoofTypeId;
-            mergedProject.Assembly.RoofTypeId = rooofidtest;
+            mergedProject.Assembly.RoofTypeId = ProjectDataStepOne.Assembly.RoofTypeId;
             mergedProject.Assembly.RoofMaterialId = ProjectDataStepOne.Assembly.RoofMaterialId;
             mergedProject.Assembly.EastWestDirection = ProjectDataStepOne.Assembly.EastWestDirection;
             mergedProject.Assembly.Slope = ProjectDataStepOne.Assembly.Slope;
