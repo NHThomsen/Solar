@@ -1,5 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
+/// <summary>
+/// Entity Framework Core implementation of the installer datamodel
+/// This implementation does not fall under the Id or ProjectId
+/// therefor it had to have it's own implementation
+/// </summary>
 public class EFCInstallerDataService
 {
 	public void Create(Installer installer)
