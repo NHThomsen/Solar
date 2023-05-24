@@ -6,28 +6,16 @@ namespace Solar.Pages.Ekstern
 {
     public class ProjectStepFiveModel : PageModel
     {
-        public List<Project> DataFromAllProjects { get; set; }
-        public ProjectStepFiveModel()
-        {
-            DataFromAllProjects = new List<Project>
-            {
-                GlobalProjectDataService.ProjectDataNewProject,
-                GlobalProjectDataService.ProjectDataStepOne, 
-                GlobalProjectDataService.ProjectDataStepTwo,
-                GlobalProjectDataService.ProjectDataStepThree,
-                GlobalProjectDataService.ProjectDataStepThreePointFive,
-                GlobalProjectDataService.ProjectDataStepFour
-            };
 
-        }
         public void OnGet()
         {
-
+            System.Diagnostics.Debug.WriteLine(GlobalProjectDataService.ProjectDataStepOne.Assembly.RoofTypeId);
+            Project pro = new Project();
+            Assembly asmb = new Assembly();
+            asmb.RoofTypeId = GlobalProjectDataService.ProjectDataStepOne.Assembly.RoofTypeId;
+            pro.Assembly = asmb;
+            GlobalProjectDataService.Merge();
         }
 
-        public void OnPost()
-        {
-            GlobalProjectDataService.Merge(DataFromAllProjects);
-        }
     }
 }
