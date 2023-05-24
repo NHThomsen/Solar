@@ -33,6 +33,9 @@ namespace Solar.Pages.Ekstern
                 return RedirectToPage("/Ekstern/ProjectStepThreePointFive");
             }
 
+            GlobalProjectDataService.ProjectDataStepThreePointFive = null;
+
+
             return RedirectToPage("/Ekstern/ProjectStepFour");
         }
     }
