@@ -21,25 +21,37 @@
             mergedProject.StartDate = ProjectDataNewProject.StartDate;
             mergedProject.Followup = ProjectDataNewProject.Followup;
             mergedProject.Deadline = ProjectDataNewProject.Deadline;
-            System.Diagnostics.Debug.WriteLine(ProjectDataStepOne.Assembly.RoofTypeId);
+
+            mergedProject.Assembly = new Assembly();
             mergedProject.Assembly.RoofTypeId = ProjectDataStepOne.Assembly.RoofTypeId;
             mergedProject.Assembly.RoofMaterialId = ProjectDataStepOne.Assembly.RoofMaterialId;
             mergedProject.Assembly.EastWestDirection = ProjectDataStepOne.Assembly.EastWestDirection;
             mergedProject.Assembly.Slope = ProjectDataStepOne.Assembly.Slope;
             mergedProject.Assembly.BuildingHeight = ProjectDataStepOne.Assembly.BuildingHeight;
 
+            mergedProject.Battery = new Battery();
             mergedProject.Battery.BatteryPrepare = ProjectDataStepTwo.Battery.BatteryPrepare;
+
+            mergedProject.BatteryRequest = new BatteryRequest();
             mergedProject.BatteryRequest.Capacity = ProjectDataStepTwo.BatteryRequest.Capacity;
 
+            mergedProject.Dimensioning = new Dimensioning();
             mergedProject.DimensioningId = ProjectDataStepThree.DimensioningId;
+
+            mergedProject.DimensioningkWp = new DimensioningkWp();
             mergedProject.DimensioningkWp.KiloWattPeak = ProjectDataStepThree.DimensioningkWp.KiloWattPeak;
 
-            mergedProject.DimensioningConsumption.CategoryId = ProjectDataStepThreePointFive.DimensioningConsumption.CategoryId;
-            mergedProject.DimensioningConsumption.CurrentConsumption = ProjectDataStepThreePointFive.DimensioningConsumption.CurrentConsumption;
-            mergedProject.DimensioningConsumption.HeatPump = ProjectDataStepThreePointFive.DimensioningConsumption.HeatPump;
-            mergedProject.DimensioningConsumption.HeatPumpIncluded = ProjectDataStepThreePointFive.DimensioningConsumption.HeatPumpIncluded;
-            mergedProject.DimensioningConsumption.HouseSize = ProjectDataStepThreePointFive.DimensioningConsumption.HouseSize;
-            mergedProject.DimensioningConsumption.EvKilometer = ProjectDataStepThreePointFive.DimensioningConsumption.EvKilometer;
+            mergedProject.DimensioningConsumption = new DimensioningConsumption();
+
+            if(ProjectDataStepThreePointFive != null)
+            {
+                mergedProject.DimensioningConsumption.CategoryId = ProjectDataStepThreePointFive.DimensioningConsumption.CategoryId;
+                mergedProject.DimensioningConsumption.CurrentConsumption = ProjectDataStepThreePointFive.DimensioningConsumption.CurrentConsumption;
+                mergedProject.DimensioningConsumption.HeatPump = ProjectDataStepThreePointFive.DimensioningConsumption.HeatPump;
+                mergedProject.DimensioningConsumption.HeatPumpIncluded = ProjectDataStepThreePointFive.DimensioningConsumption.HeatPumpIncluded;
+                mergedProject.DimensioningConsumption.HouseSize = ProjectDataStepThreePointFive.DimensioningConsumption.HouseSize;
+                mergedProject.DimensioningConsumption.EvKilometer = ProjectDataStepThreePointFive.DimensioningConsumption.EvKilometer;
+            }
 
             return mergedProject;
 
