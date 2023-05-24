@@ -4,7 +4,7 @@ using Solar.Services.StaticServices;
 
 namespace Solar.Pages.Intern
 {
-    public class Adminoverview : PageModel
+    public class AnmodningerSpefikt : PageModel
     {
         
     }
