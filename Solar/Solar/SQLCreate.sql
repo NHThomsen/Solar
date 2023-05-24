@@ -1,3 +1,4 @@
+-- Self contained script to create database, with the right permissions
 USE master
 
 GO
@@ -35,6 +36,7 @@ CREATE TABLE Dimensioning (
 	Description varchar(255)
 );
 
+-- Values from schema
 INSERT INTO Dimensioning VALUES ('Solcelleanlæg dimensioneres efter forbrug (forbrugsoplysninger udfyldes)'),
 ('Solcelleanlæg dimensioneres efter størst mulig anlæg/stor produktion'),
 ('Solcelleanlæg dimensioneres efter ønsket kWp (effekt)')
@@ -44,6 +46,7 @@ CREATE TABLE Status (
 	Status varchar(255)
 );
 
+-- Values from schema
 INSERT INTO Status VALUES ('Tilbudsanmodning'),('Behandlet'),('Ordre')
 
 CREATE TABLE Project (
@@ -71,6 +74,7 @@ CREATE TABLE RoofType (
 	RoofType varchar(50) NOT NULL
 )
 
+-- Values from schema
 INSERT INTO RoofType VALUES ('Hældningstag'),('Fladt tag'),('Jordstativ')
 
 CREATE TABLE RoofMaterial (
@@ -79,12 +83,14 @@ CREATE TABLE RoofMaterial (
 	RoofTypeID INT REFERENCES RoofType(ID)
 )
 
+-- Get the ID from a sloped roof
 DECLARE @slopedRoofID AS INT
 SELECT @slopedRoofID = ID FROM RoofType WHERE RoofType LIKE 'Hældningstag'
 
 INSERT INTO RoofMaterial VALUES ('Eternit',@slopedRoofID),('Tegl',@slopedRoofID),
 ('Stål',@slopedRoofID),('Tagpap',@slopedRoofID),('Skifer',@slopedRoofID)
 
+-- Get the ID from flat roof
 DECLARE @flatRoofID AS INT
 SELECT @flatRoofID = ID FROM RoofType WHERE RoofType LIKE 'Fladt tag'
 
@@ -119,6 +125,7 @@ CREATE TABLE ConsumptionCategory (
 	Category varchar(50) NOT NULL
 )
 
+-- Values from schema
 INSERT INTO ConsumptionCategory VALUES ('Privat'),('Erherv'),('Offentlig')
 
 CREATE TABLE DimensioningConsumption (

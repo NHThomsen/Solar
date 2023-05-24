@@ -45,7 +45,7 @@
                     <div class="form-group-dates">
                         <label>Størrelse</label>
                         <label asp-for="@Model.ProjectData.DimensioningkWp.KiloWattPeak">
-                            <input asp-for="@Model.ProjectData.DimensioningkWp.KiloWattPeak" type="number">
+                            <input asp-for="@Model.ProjectData.DimensioningkWp.KiloWattPeak" type="number" class="short-input-box">
                             <span>
                                 kWh
                             </span>
@@ -53,15 +53,15 @@
                     </div>
                 </div>
                 <section class="schema-footer-container">
-                    <div class="back-btn-container">
+                    <div class="schema-btn-container">
                         <span><--</span>
-                        <button class="login-button">Tilbage</button>
+                        <button class="form-step-button">Tilbage</button>
                     </div>
                     <div class="slash-middle-container">
                         <span>/</span>
                     </div>
-                    <div class="next-btn-container">
-                        <button class="login-button">Næste</button>
+                    <div class="schema-btn-container">
+                        <button class="form-step-button">Næste</button>
                         <span>--></span>
                     </div>
                 </section>

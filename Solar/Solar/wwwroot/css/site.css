@@ -441,7 +441,7 @@ label {
 /* Pc screens 1366 X 768 */
 @media only screen and (max-height: 880px) {
     .main-container {
-        height: 740px;
+        height: 95vh;
     }
 
     .user-forms-login-section img {
@@ -478,8 +478,9 @@ label {
         width: 100%;
     }
 
+
     .form-group-dates {
-        margin-bottom: 30px;
+        margin-bottom: 20px;
         grid-template-columns: repeat(2, 40%);
         justify-content: center;
     }
@@ -532,7 +533,6 @@ label {
         }
 
     .form-group-dates {
-        margin-bottom: 20px;
         grid-template-columns: repeat(2, 45%);
         justify-content:center;
     }
@@ -558,7 +558,20 @@ label {
 @media only screen and (max-height: 800px) {
     .main-container {
         height: 100vh;
-        overflow:auto;
+        overflow: auto;
+        padding-bottom: 0px;
+    }
+
+    .lead-container {
+        padding: 0px;
+    }
+
+    .form-group-dates {
+        margin-bottom: 20px;
+    }
+
+    textarea{
+        height:80%;
     }
 }
 

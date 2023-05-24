@@ -44,7 +44,7 @@
                     <div class="form-group-dates">
                         <label>Nuværende forbrug i kWh</label>
                         <label asp-for ="@Model.ProjectData.DimensioningConsumption.CurrentConsumption">
-                            <input asp-for="@Model.ProjectData.DimensioningConsumption.CurrentConsumption" type="number">
+                            <input asp-for="@Model.ProjectData.DimensioningConsumption.CurrentConsumption" type="number" class="short-input-box">
                             <span>
                                 kWh
                             </span>
@@ -53,19 +53,19 @@
                     <div class="form-group-dates">
                         <label class="special-label-margin">Er / kommer der varmepumpe?</label>
                         <label asp-for="@Model.ProjectData.DimensioningConsumption.HeatPump">
-                            <input asp-for="@Model.ProjectData.DimensioningConsumption.HeatPump"  type="checkbox">
+                            <input asp-for="@Model.ProjectData.DimensioningConsumption.HeatPump" type="checkbox" class="check-box">
                             <span>Ja</span>
                         </label>
                         <label>Er varmepumpe inkluderet i nuværende forbrug?</label>
                         <label asp-for="@Model.ProjectData.DimensioningConsumption.HeatPumpIncluded">
-                            <input asp-for="@Model.ProjectData.DimensioningConsumption.HeatPumpIncluded"  type="checkbox">
+                            <input asp-for="@Model.ProjectData.DimensioningConsumption.HeatPumpIncluded" type="checkbox" class="check-box">
                             <span>Ja</span>
                         </label>
                     </div>
                     <div class="form-group-dates">
                         <label>Størrelse på hus</label>
                         <label asp-for ="@Model.ProjectData.DimensioningConsumption.HouseSize">
-                            <input asp-for="@Model.ProjectData.DimensioningConsumption.HouseSize" type="number">
+                            <input asp-for="@Model.ProjectData.DimensioningConsumption.HouseSize" type="number" class="short-input-box">
                             <span>
                                 m2
                             </span>
@@ -79,12 +79,12 @@
                         </label>
                         <label class="special-label-margin">Er elbil inkluderet i nuværende forbrug?</label>
                         <label>
-                            <input type="checkbox">
+                            <input type="checkbox" class="check-box">
                             <span>Ja</span>
                         </label>
                         <label>Hvor mange km køres pr. år?</label>
                         <label asp-for ="@Model.ProjectData.DimensioningConsumption.EvKilometer">
-                            <input asp-for="@Model.ProjectData.DimensioningConsumption.EvKilometer" type="number">
+                            <input asp-for="@Model.ProjectData.DimensioningConsumption.EvKilometer" type="number" class="short-input-box">
                             <span>
                                 km
                             </span>
@@ -92,18 +92,19 @@
                     </div>
                 </div>
                 <section class="schema-footer-container">
-                    <div class="back-btn-container">
+                    <div class="schema-btn-container">
                         <span><--</span>
-                        <button class="login-button">Tilbage</button>
+                        <button class="form-step-button">Tilbage</button>
                     </div>
                     <div class="slash-middle-container">
                         <span>/</span>
                     </div>
-                    <div class="next-btn-container">
-                        <button class="login-button">Næste</button>
+                    <div class="schema-btn-container">
+                        <button class="form-step-button">Næste</button>
                         <span>--></span>
                     </div>
                 </section>
+
             </form>
         </section>
     </section>
