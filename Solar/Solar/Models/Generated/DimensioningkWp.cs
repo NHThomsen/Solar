@@ -13,7 +13,7 @@ public partial class DimensioningkWp
     [Column("ProjectID")]
     public int ProjectId { get; set; }
 
-    [Column(TypeName = "decimal(5, 5)")]
+    [Column(TypeName = "decimal(19, 2)")]
     public decimal KiloWattPeak { get; set; }
 
     [ForeignKey("ProjectId")]
