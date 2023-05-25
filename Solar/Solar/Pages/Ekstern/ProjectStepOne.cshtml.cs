@@ -29,7 +29,6 @@ namespace Solar.Pages.Ekstern
 
             Roofs = _roofTypeDataService.GetAll();
             RoofMaterials = _roofMaterielService.GetAll();
-
         }
 
         public IActionResult OnPost()

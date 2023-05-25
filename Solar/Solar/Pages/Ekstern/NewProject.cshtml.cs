@@ -8,15 +8,23 @@ namespace Solar.Pages.Ekstern
     {
         [BindProperty]
         public Project? ProjectData { get; set; }
+        public Project ExistingData { get; set; }
+        public NewProjectModel()
+        {
+            ExistingData = GlobalProjectDataService.ProjectDataNewProject;
+        }
+
         public void OnGet()
         {
+            
             
         }
 
         public IActionResult OnPost() 
         {
-
+            
             GlobalProjectDataService.ProjectDataNewProject = ProjectData;
+            
             return RedirectToPage("/Ekstern/ProjectStepOne");
 
         }

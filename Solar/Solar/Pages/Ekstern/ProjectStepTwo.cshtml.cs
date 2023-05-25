@@ -17,6 +17,7 @@ namespace Solar.Pages.Ekstern
 
         public void OnGet()
         {
+            System.Diagnostics.Debug.WriteLine(GlobalProjectDataService.ProjectDataStepOne);
         }
 
         public IActionResult OnPost()
