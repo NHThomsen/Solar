@@ -3,7 +3,7 @@
 @{
 }
 
-<main class="main-container">
+<main class="main-container no-hidden">
     <section class="user-container">
         <section class="new-project-header-section">
             <svg class="logo-user-section" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Solar_logo" x="0px" y="0px" viewBox="0 0 283.5 92.2" style="enable-background:new 0 0 283.5 92.2;" xml:space="preserve">
@@ -31,7 +31,7 @@
         </section>
 
         @*side uniqe content*@
-        <section class="new-project-section">
+        <section class="new-project-section hidden">
             <form method="post">
                 <section class="scrollable-container">
                     <div class="info-overlook">
@@ -50,19 +50,19 @@
                             <label>Start dato</label>
                             <label>@Model.InfoDump.StartDate</label>
 
-                            <label>Start dato</label>
+                            <label>Followup dato</label>
                             <label>@Model.InfoDump.Followup</label>
 
-                            <label>Start dato</label>
+                            <label>Deadline dato</label>
                             <label>@Model.InfoDump.Deadline</label>
                         </div>
 
                         @*monterering og tagtyper*@
                         <div class="info-section">
                             <label>Monteage type:</label>
-                            <label>@Model.InfoDump.Assembly.RoofType</label>
+                            <label>@Model.RoofType.RoofType1</label>
                             <label>Tag type:</label>
-                            <label>@Model.InfoDump.Assembly.RoofMaterial</label>
+                            <label>@Model.RoofMaterial.Material</label>
                             <label>Ønskes øst/vest placering:</label>
                             <label>@Model.InfoDump.Assembly.EastWestDirection</label>
                             <label>Hældning:</label>
@@ -84,7 +84,7 @@
                             <label>Forberedes til batteri:</label>
                             <label>@Model.InfoDump.Battery.BatteryPrepare</label>
                             <label>Størrelse:</label>
-                            <label>@Model.InfoDump.BatteryRequest.Capacity <p>kWh</p></label>
+                            <label>@Model.InfoDump.BatteryRequest.Capacity <p> kWh</p></label>
                         </div>
 
                         @*Hordan skal solcellerne være*@
@@ -165,7 +165,7 @@
                                 }
 
                                 <label>Størrelse hus</label>
-                                <label>@Model.InfoDump.DimensioningConsumption.HouseSize<p>m2</p></label>
+                                <label>@Model.InfoDump.DimensioningConsumption.HouseSize<p> m2</p></label>
 
                                 <label>Er/kommer der elbil:</label>
                                 @*viser kun info vis der er en EV med i regnsabet*@
@@ -203,10 +203,10 @@
                         @*kontakt info på indstalatør*@
                         <div class="info-section-contact">
                             <h2>Dine Kontakt oplysninger</h2>
-                            <label>@Model.InfoDump.Installer</label>
-                            <label>@Model.InfoDump.Contact</label>
-                            <label>@Model.InfoDump.Email</label>
-                            <label>@Model.InfoDump.PhoneNumber</label>
+                            <label>Navn: @Model.InfoDump.Installer</label>
+                            <label>Kontakt-Person: @Model.InfoDump.Contact</label>
+                            <label>Email: @Model.InfoDump.Email</label>
+                            <label>Tlf-Nummer: @Model.InfoDump.PhoneNumber</label>
                         </div>
                     </div>
                 </section>
