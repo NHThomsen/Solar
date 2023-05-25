@@ -13,10 +13,11 @@ public class EFCProjectDataService : EFCDataServiceAppBase<Project>, IProjectDat
 		return dbContext.Set<Project>()
 			.Include(x => x.Assembly)
 			.Include(x => x.DimensioningConsumption)
-            .Include(x => x.DimensioningkWp)
-            .Include(x => x.Battery)
-            .Include(x => x.BatteryRequest)
-            .Include(x => x.Dimensioning)
-			.Include(x => x.User);
+			.Include(x => x.DimensioningkWp)
+			.Include(x => x.Battery)
+			.Include(x => x.BatteryRequest)
+			.Include(x => x.Dimensioning)
+			.Include(x => x.User)
+			.Include(x => x.Assembly.RoofType);
     }
 }

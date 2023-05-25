@@ -19,7 +19,7 @@ namespace Solar.Pages.Intern
         public RoofType RoofType { get; set; }
         public RoofMaterial RoofMaterial { get; set; }
 
-        public AnmodningerSpefikt(IProjectDataService projectDataService, IRoofTypeDataService roofTypeDataService, IRoofMaterialDataService roofMaterielService)
+        public Orders(IProjectDataService projectDataService, IRoofTypeDataService roofTypeDataService, IRoofMaterialDataService roofMaterielService)
         {
             
 

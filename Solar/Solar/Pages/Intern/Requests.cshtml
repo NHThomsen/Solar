@@ -26,6 +26,19 @@
                 mangler at bliver behanldet
             </h1>        
             <div class="intern-cards">
+                @foreach (Project project in Model.AllProjects)
+                {
+                    <div cite="intern-card">
+                        <div class="intern-card-segments">
+                            <p class="intern-card-header">Sag:</p>
+                            <p class="intern-card-normal">@project.CaseName</p>
+                            <p class="intern-card-normal">@project.Address</p>
+                        </div>
+                        <div class="intern-card-segments">
+                            <a asp-page="RequestsSpecific" class="intern-card-more" asp-route-id="@project.Id">Læs mere</a>
+                        </div>
+                    </div>
+                }
                 <div class="intern-card">
                     <div class="intern-card-segments">
                         <p class="intern-card-header">Sag:</p>
@@ -38,7 +51,7 @@
                         <p class="intern-card-normal">Thomas Hansen</p>
                     </div>
                     <div class="intern-card-segments">
-                        <p class="intern-card-header">Manglende Fælter:</p>
+                        <p class="intern-card-header">Manglende Felter:</p>
                         <p class="intern-card-special">3</p>
                     </div>
                     <div class="intern-card-segments">
