@@ -4,6 +4,8 @@ using Solar.Services.StaticServices;
 
 namespace Solar.Pages.Intern
 {
+
+
     public class RequestSpecific : PageModel
     {
         
