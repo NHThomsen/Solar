@@ -607,6 +607,7 @@ label {
     margin: 1.4rem 0 0 0;
     padding-bottom:1rem;
     border-bottom: 1px solid #888888;
+    overflow-wrap:anywhere;
 }
 
     .info-section label{
@@ -638,4 +639,93 @@ label {
 }
 
 
+}
+
+
+
+
+
+/* ------- ALL THIS HAS TO ME COPIED OVER TO INTERN.CSS ------- */
+
+.project-outer-container{
+    width:100vw;
+    height:95%;
+}
+
+.project-main-container{
+    background-color:white;
+    width:75vw;
+    margin:10px auto;
+    padding:15px;
+}
+
+.full-size{
+    height:100%;
+    width:100%;
+}
+
+.project-header{
+    border-bottom: solid 2px #bcbcbc;
+    padding:1rem 0;
+}
+
+.header-grid {
+    display: grid;
+    flex-direction: row;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 20px 1fr;
+}
+
+.header-grid a{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:1.6rem;
+    font-weight:bold;
+}
+
+.header-grid h2{
+    margin-bottom:5px;
+}
+
+.missing-types {
+    font-size: 5rem;
+    font-weight: bold;
+    margin-top:10px;
+}
+
+.project-case-text {
+    color: #3e3e3e;
+}
+
+.content-grid{
+    display:grid;
+    grid-template-columns:60% 1fr;
+    grid-gap:1.5rem;
+    overflow:scroll;
+    flex-wrap:wrap;
+}
+
+
+.side-container h2 {
+    margin-top:20px;
+}
+
+.maps{
+    width:100%;
+    aspect-ratio:10/8;
+}
+
+
+.project-contact h3{
+    font-size:1.5rem;
+}
+.project-contact label{
+    margin-bottom:5px;
+}
+
+@media only screen and (max-width: 800px) {
+    .content-grid {
+      
+    }
 }

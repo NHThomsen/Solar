@@ -1,5 +1,5 @@
 ﻿@page
-@model Solar.Pages.Intern.Behanlet
+@model Solar.Pages.Intern.Request
 @{
 }
 <main class="main2-container">
@@ -14,29 +14,35 @@
             </g>
             </svg>
         <div class="intern-tabs">
-            <a asp-page="" class="intern-tab" onclick="showPage('anmodninger')">Anmodninger</a>
-            <a asp-page="" class="intern-tab" onclick="showPage('behanlet')">Behanlet</a>
-            <a asp-page="" class="intern-tab" onclick="showPage('ordre')">Ordre</a>
+            <a asp-page="/Intern/Requests" class="intern-tab">Anmodninger</a>
+            <a asp-page="/Intern/Processed" class="intern-tab">Behandlet</a>
+            <a asp-page="/Intern/Orders" class="intern-tab">Ordre</a>
         </div>
     </section>
     <section class="intern-container">
-        <div class="intern-behanlet">
-            <div class="intern-behanlet-cards-venter">
-                <h1 class="intern-behanlet-header">Behandlet og venter på aksept fra kunden</h1>
-                <h2 class="intern-behanlet-subheader">Mail er sendt til machende Elindstalatør om order bekraftigelse</h2>
-                <div class="intern-behanlet-cards">
-                    <div class="intern-behanlet-card">
+        <div class="holder-container">
+            <h1 class="holder-header">
+                Modtaget andmodninger der
+                mangler at bliver behanldet
+            </h1>        
+            <div class="intern-cards">
+                <div class="intern-card">
+                    <div class="intern-card-segments">
+                        <p class="intern-card-header">Sag:</p>
+                        <p class="intern-card-normal">Sag-nr 2993838</p>
+                        <p class="intern-card-normal">Gadevej 2</p>
                     </div>
-                    <div class="intern-behanlet-card">
+                    <div class="intern-card-segments">
+                        <p class="intern-card-header">Firma:</p>
+                        <p class="intern-card-normal">El-manden</p>
+                        <p class="intern-card-normal">Thomas Hansen</p>
                     </div>
-                </div>
-            </div>
-            <div class="intern-behanlet-cards-godkendt">
-                <h1 class="intern-behanlet-header">Kunde godkendt----------------------------------------------------------------------------------------------------------------------------------------------------</h1>
-                <div class="intern-behanlet-cards">
-                    <div class="intern-behanlet-card">
+                    <div class="intern-card-segments">
+                        <p class="intern-card-header">Manglende Fælter:</p>
+                        <p class="intern-card-special">3</p>
                     </div>
-                    <div class="intern-behanlet-card">
+                    <div class="intern-card-segments">
+                        <a asp-page="RequestsSpecific" class="intern-card-more">Læs mere</a>
                     </div>
                 </div>
             </div>

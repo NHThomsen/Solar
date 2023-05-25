@@ -1,5 +1,5 @@
 ﻿@page
-@model Solar.Pages.Intern.AnmodningerSpefikt
+@model Solar.Pages.Intern.Processed
 @{
 }
 <main class="main2-container">
@@ -14,14 +14,42 @@
             </g>
             </svg>
         <div class="intern-tabs">
-            <a asp-page="" class="intern-tab" onclick="showPage('anmodninger')">Anmodninger</a>
-            <a asp-page="" class="intern-tab" onclick="showPage('behanlet')">Behanlet</a>
-            <a asp-page="" class="intern-tab" onclick="showPage('ordre')">Ordre</a>
+            <a asp-page="/Intern/Requests" class="intern-tab">Anmodninger</a>
+            <a asp-page="/Intern/Processed" class="intern-tab">Behandlet</a>
+            <a asp-page="/Intern/Orders" class="intern-tab">Ordre</a>
         </div>
     </section>
     <section class="intern-container">
-        <div class="intern-specifikt">
-            <div class="intern-specifikt-header">
+        <div class="holder-container">
+            <h1 class="holder-header">Behandlet</h1>
+            <div class="intern-cards">
+                <div class="intern-card">
+                    <div class="intern-card-segments">
+                        <p class="intern-card-header">Sag:</p>
+                        <p class="intern-card-normal">Sag-nr 2993838</p>
+                        <p class="intern-card-normal">Gadevej 2</p>
+                    </div>
+                    <div class="intern-card-segments">
+                        <p class="intern-card-header">Firma:</p>
+                        <p class="intern-card-normal">El-manden</p>
+                        <p class="intern-card-normal">Thomas Hansen</p>
+                    </div>
+                    <div class="intern-card-segments">
+                        <p class="intern-card-header">Tider:</p>
+                        <div class="card-grid">
+                            <label class="intern-card-tider">Startdato</label>
+                            <label>1/1/2024</label>
+                            <label class="intern-card-tider">Opfølgningsdato</label>
+                            <label>1/2/2024</label>
+                            <label class="intern-card-tider">Deadline</label>
+                            <label>6/3/2024</label>
+                        </div>
+                    </div>
+                    <div class="intern-card-segments">
+                        <a asp-page="RequestsSpecific" class="intern-card-more">Læs mere</a>
+                        <a asp-page="RequestsSpecific" class="intern-card-godkend">Godkend</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
