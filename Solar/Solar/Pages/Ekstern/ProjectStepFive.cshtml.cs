@@ -16,6 +16,8 @@ namespace Solar.Pages.Ekstern
 
         private IRoofMaterialDataService _roofMaterielService;
 
+        private IProjectDataService _service;
+
 
 
         [BindProperty]
@@ -29,7 +31,7 @@ namespace Solar.Pages.Ekstern
         public RoofMaterial RoofMaterial { get; set; } 
 
 
-        public ProjectStepFiveModel(IEmailSenderService emailSender, IRoofTypeDataService roofTypeDataService, IRoofMaterialDataService roofMaterielService)
+        public ProjectStepFiveModel(IEmailSenderService emailSender, IRoofTypeDataService roofTypeDataService, IRoofMaterialDataService roofMaterielService, IProjectDataService service)
         {
             ExistingData = GlobalProjectDataService.ProjectDataNewProject;
             InfoDump = GlobalProjectDataService.Merge();
@@ -41,6 +43,7 @@ namespace Solar.Pages.Ekstern
             // Static mails for now -- TODO
             Sender = new EmailClient("SolarTestClient@hotmail.com", "Solar123456");
             Reciever = new EmailClient("Robbers1996@hotmail.com");
+            _service = service;
         }
 
         public void OnGet()
@@ -54,7 +57,11 @@ namespace Solar.Pages.Ekstern
         {
             await _emailSender.SendEmailAsync(Sender, Reciever, "Tilbudsanmodning er sendt til Solar", $" Info indtastet på sagen\nSagsinfo: {InfoDump.CaseName}\nAdresse: {InfoDump.Address}\nPostnr: {InfoDump.Zip}");
             await _emailSender.SendEmailAsync(Sender, Sender, $"Ny tilbudsanmodning på adressen {InfoDump.Address}", "Find sagen her: www.solar.dk ");
-            
+
+            System.Diagnostics.Debug.WriteLine(InfoDump.Remarks);
+
+           
+
             return RedirectToPage("/Index");
         }
 

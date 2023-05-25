@@ -22,7 +22,9 @@ namespace Solar.Pages.Ekstern
         {
             
             GlobalProjectDataService.ProjectDataStepFour = ProjectData;
-            
+
+            System.Diagnostics.Debug.WriteLine(ProjectData.Remarks);
+
             return RedirectToPage("/Ekstern/ProjectStepFive");
         }
     }

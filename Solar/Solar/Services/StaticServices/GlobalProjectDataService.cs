@@ -41,6 +41,8 @@
             mergedProject.DimensioningkWp = new DimensioningkWp();
             mergedProject.DimensioningkWp.KiloWattPeak = ProjectDataStepThree.DimensioningkWp.KiloWattPeak;
 
+            mergedProject.Remarks = ProjectDataStepFour.Remarks;
+
             mergedProject.DimensioningConsumption = new DimensioningConsumption();
 
             if(ProjectDataStepThreePointFive != null)
