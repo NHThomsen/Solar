@@ -35,7 +35,7 @@
             mergedProject.BatteryRequest = new BatteryRequest();
             mergedProject.BatteryRequest.Capacity = ProjectDataStepTwo.BatteryRequest.Capacity;
 
-            mergedProject.Dimensioning = new Dimensioning();
+           
             mergedProject.DimensioningId = ProjectDataStepThree.DimensioningId;
 
             mergedProject.DimensioningkWp = new DimensioningkWp();

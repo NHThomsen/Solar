@@ -5,6 +5,7 @@ using Solar.Models.Static;
 using Solar.Services.Interfaces;
 using Solar.Services.StaticServices;
 using System.Diagnostics;
+using System.Security.Claims;
 
 namespace Solar.Pages.Ekstern
 {
@@ -57,6 +58,11 @@ namespace Solar.Pages.Ekstern
         {
             await _emailSender.SendEmailAsync(Sender, Reciever, "Tilbudsanmodning er sendt til Solar", $" Info indtastet på sagen\nSagsinfo: {InfoDump.CaseName}\nAdresse: {InfoDump.Address}\nPostnr: {InfoDump.Zip}");
             await _emailSender.SendEmailAsync(Sender, Sender, $"Ny tilbudsanmodning på adressen {InfoDump.Address}", "Find sagen her: www.solar.dk ");
+
+            InfoDump.StatusId = 1;
+            InfoDump.UserId = int.Parse(HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData).Value);
+
+            _service.Create(InfoDump);
 
             return RedirectToPage("/Index");
         }
