@@ -11,29 +11,29 @@ namespace Solar.Pages.Intern
 
         private IRoofMaterialDataService _roofMaterielService;
 
+        private IProjectDataService _projectDataService;
 
         [BindProperty]
-        public Project ProjectData { get; set; }
-        public Project ExistingData { get; set; }
-        public Project InfoDump { get; set; }
+        public Project DataBaseInfo { get; set; }
        
         public RoofType RoofType { get; set; }
         public RoofMaterial RoofMaterial { get; set; }
 
-        public AnmodningerSpefikt(IRoofTypeDataService roofTypeDataService, IRoofMaterialDataService roofMaterielService)
+        public AnmodningerSpefikt(IProjectDataService projectDataService, IRoofTypeDataService roofTypeDataService, IRoofMaterialDataService roofMaterielService)
         {
-            ExistingData = GlobalProjectDataService.ProjectDataNewProject;
-            //InfoDump = GlobalProjectDataService.Merge();
+            
 
             _roofTypeDataService = roofTypeDataService;
             _roofMaterielService = roofMaterielService;
+            _projectDataService = projectDataService;
         }
 
-        public void OnGet()
+        public void OnGet(int id)
         {
-            //RoofType = _roofTypeDataService.Read((int)InfoDump.Assembly.RoofTypeId);
-            //RoofMaterial = _roofMaterielService.Read((int)InfoDump.Assembly.RoofMaterialId);
+            DataBaseInfo = _projectDataService.Read(id);
 
+            RoofType = _roofTypeDataService.Read((int)DataBaseInfo.Assembly.RoofTypeId);
+            RoofMaterial = _roofMaterielService.Read((int)DataBaseInfo.Assembly.RoofMaterialId);
         }
     }
 }

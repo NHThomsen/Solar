@@ -649,7 +649,7 @@ label {
 
 .project-outer-container{
     width:100vw;
-    height:100%;
+    height:95%;
 }
 
 .project-main-container{
@@ -701,7 +701,9 @@ label {
 .content-grid{
     display:grid;
     grid-template-columns:60% 1fr;
-    grid-gap:1rem;
+    grid-gap:1.5rem;
+    overflow:scroll;
+    flex-wrap:wrap;
 }
 
 
@@ -719,6 +721,11 @@ label {
     font-size:1.5rem;
 }
 .project-contact label{
-    justify-content:flex-end;
     margin-bottom:5px;
+}
+
+@media only screen and (max-width: 800px) {
+    .content-grid {
+      
+    }
 }

@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{id:int}"
 @model Solar.Pages.Intern.AnmodningerSpefikt
 @{
 }
@@ -51,74 +51,183 @@
 
                     <div class="side-container left-side">
                         <h2>Sags info</h2>
-                        <div class="scrollable-container">
+                        <div class="">
 
-                                @*sags onfo tille denne sag*@
+                            @*sags onfo tille denne sag*@
+                            <div class="info-section">
+                                <label>Sags Navn:</label>
+                                <label>@Model.DataBaseInfo.CaseName</label>
+
+                                <label>Adresse:</label>
+                                <label>@Model.DataBaseInfo.Address</label>
+                            </div>
+
+                            @*tid og deadline*@
+                            <div class="info-section">
+                                <label>Start dato</label>
+                                <label>@Model.DataBaseInfo.StartDate</label>
+
+                                <label>Followup dato</label>
+                                <label>@Model.DataBaseInfo.Followup</label>
+
+                                <label>Deadline dato</label>
+                                <label>@Model.DataBaseInfo.Deadline</label>
+                            </div>
+
+                            @*monterering og tagtyper*@
+                            <div class="info-section">
+                                <label>Monteage type:</label>
+                                <label>@Model.RoofType.RoofType1</label>
+                                <label>Tag type:</label>
+                                <label>@Model.RoofMaterial.Material</label>
+                                <label>Ønskes øst/vest placering:</label>
+                                <label>@Model.DataBaseInfo.Assembly.EastWestDirection</label>
+                                <label>Hældning:</label>
+                                <label>@Model.DataBaseInfo.Assembly.Slope</label>
+                                <label>Højde på bygning:</label>
+                                <label>@Model.DataBaseInfo.Assembly.BuildingHeight</label>
+                            </div>
+
+                            @*Battari*@
+                            <div class="info-section">
+                                <label>Forberedes til batteri:</label>
+                                <label>@Model.DataBaseInfo.Battery.BatteryPrepare</label>
+                                <label>Størrelse:</label>
+                                <label>@Model.DataBaseInfo.BatteryRequest.Capacity</label>
+                            </div>
+
+                            @*Barttari klargøring*@
+                            <div class="info-section">
+                                <label>Forberedes til batteri:</label>
+                                <label>@Model.DataBaseInfo.Battery.BatteryPrepare</label>
+                                <label>Størrelse:</label>
+                                <label>@Model.DataBaseInfo.BatteryRequest.Capacity <p> kWh</p></label>
+                            </div>
+
+                            @*Hordan skal solcellerne være*@
+                            <div class="info-section">
+                                <label>Solecelle ønske:</label>
+                                @*dropdown menu udskrivning*@
+                                @if (Model.DataBaseInfo.DimensioningId == 1)
+                                {
+                                    <label>Solcelleanlæg dimensioneres efter forbrug</label>
+                                }
+                                else if (Model.DataBaseInfo.DimensioningId == 2)
+                                {
+                                    <label>
+                                        Solcelleanlæg dimensioneres efter størst
+                                        mulig anlæg/stor produktion
+                                    </label>
+                                }
+                                else if (Model.DataBaseInfo.DimensioningId == 3)
+                                {
+                                    <label>
+                                        Solcelleanlæg dimensioneres efter ønsket
+                                    </label>
+                                    <label>@Model.DataBaseInfo.DimensioningConsumption</label>
+                                }
+                                @*burde ikke kunne ske*@
+                                else
+                                {
+                                    <label>
+                                        intet valgt
+                                    </label>
+                                }
+                            </div>
+
+                            @*Side 3.5 kommer kun vis man vælger 1 på side 3*@
+                            @if (Model.DataBaseInfo.DimensioningId == 1)
+                            {
+                                @*dropdown menu udskrivning*@
                                 <div class="info-section">
-                                    <label>Sags Navn:</label>
-                                    <label>Model.InfoDump.CaseName</label>
+                                    <label>Anlægskategori:</label>
+                                    @if (Model.DataBaseInfo.DimensioningConsumption.CategoryId == 1)
+                                    {
+                                        <label>Privat</label>
+                                    }
+                                    else if (Model.DataBaseInfo.DimensioningConsumption.CategoryId == 2)
+                                    {
+                                        <label>Erhverv</label>
+                                    }
+                                    else if (Model.DataBaseInfo.DimensioningConsumption.CategoryId == 3)
+                                    {
+                                        <label>Offentlig</label>
+                                    }
+                                    else
+                                    {
+                                        <label>ikke noteret</label>
+                                    }
 
-                                    <label>Adresse:</label>
-                                    <label>Model.InfoDump.Address</label>
+                                    <label>Nuværende forbrug i kWh:</label>
+                                    <label>@Model.DataBaseInfo.DimensioningConsumption.CurrentConsumption</label>
+
+                                    <label>Er/kommer der varmepumpe:</label>
+                                    @if (Model.DataBaseInfo.DimensioningConsumption.HeatPump == true)
+                                    @*boolien til teskt udskrevning*@
+                                    {
+                                        <label>Ja</label>
+                                        <label>
+                                            Er varmepumpe inkluderet i
+                                            nuværende forbrug:
+                                        </label>
+                                        if (Model.DataBaseInfo.DimensioningConsumption.HeatPumpIncluded == true)
+                                        {
+                                            <label>Ja</label>
+                                        }
+                                        else
+                                        {
+                                            <label>Nej</label>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <label>Nej</label>
+                                    }
+
+                                    <label>Størrelse hus</label>
+                                    <label>@Model.DataBaseInfo.DimensioningConsumption.HouseSize<p> m2</p></label>
+
+                                    <label>Er/kommer der elbil:</label>
+                                    @*viser kun info vis der er en EV med i regnsabet*@
+                                    @if (Model.DataBaseInfo.DimensioningConsumption.ElectricVehicle == true)
+                                    {
+                                        <label>Ja</label>
+
+                                        <label>Er elbil inkluderet i nuværende forbrug:</label>
+                                        @if (Model.DataBaseInfo.DimensioningConsumption.Evincluded == true)
+                                        {
+                                            <label>Ja</label>
+                                        }
+                                        else
+                                        {
+                                            <label>Nej</label>
+                                        }
+                                        <label>
+                                            EHvor mange km køres pr. år:
+                                        </label>
+                                        <label>@Model.DataBaseInfo.DimensioningConsumption.EvKilometer</label>
+                                    }
+                                    else
+                                    {
+                                        <label>Nej</label>
+                                    }
                                 </div>
+                            }
 
-                                @*tid og deadline*@
-                                <div class="info-section">
-                                    <label>Start dato</label>
-                                    <label>Model.InfoDump.StartDate</label>
+                            @*side 4 info flere bemærkninger fra indstallator*@
+                            <div class="info-section">
+                                <label>Bemærkninger:</label>
+                                <p class="info-text">@Model.DataBaseInfo.Remarks</p>
+                            </div>
 
-                                    <label>Followup dato</label>
-                                    <label>Model.InfoDump.Followup</label>
-
-                                    <label>Deadline dato</label>
-                                    <label>Model.InfoDump.Deadline</label>
-                                </div>
-
-                                @*monterering og tagtyper*@
-                                <div class="info-section">
-                                    <label>Monteage type:</label>
-                                    <label>Model.RoofType.RoofType1</label>
-                                    <label>Tag type:</label>
-                                    <label>Model.RoofMaterial.Material</label>
-                                    <label>Ønskes øst/vest placering:</label>
-                                    <label>Model.InfoDump.Assembly.EastWestDirection</label>
-                                    <label>Hældning:</label>
-                                    <label>Model.InfoDump.Assembly.Slope</label>
-                                    <label>Højde på bygning:</label>
-                                    <label>Model.InfoDump.Assembly.BuildingHeight</label>
-                                </div>
-
-                                @*Battari*@
-                                <div class="info-section">
-                                    <label>Forberedes til batteri:</label>
-                                    <label>Model.InfoDump.Battery.BatteryPrepare</label>
-                                    <label>Størrelse:</label>
-                                    <label>Model.InfoDump.BatteryRequest.Capacity</label>
-                                </div>
-
-                                @*Barttari klargøring*@
-                                <div class="info-section">
-                                    <label>Forberedes til batteri:</label>
-                                    <label>Model.InfoDump.Battery.BatteryPrepare</label>
-                                    <label>Størrelse:</label>
-                                    <label>Model.InfoDump.BatteryRequest.Capacity <p> kWh</p></label>
-                                </div>
-
-                               
-                                @*side 4 info flere bemærkninger fra indstallator*@
-                                <div class="info-section">
-                                    <label>Bemærkninger:</label>
-                                    <p class="info-text">Model.InfoDump.Remarks</p>
-                                </div>
-
-                                @*kontakt info på indstalatør*@
-                                <div class="info-section-contact">
-                                    <h2>Dine Kontakt oplysninger</h2>
-                                    <label>Navn: Model.InfoDump.Installer</label>
-                                    <label>Kontakt-Person: Model.InfoDump.Contact</label>
-                                    <label>Email: Model.InfoDump.Email</label>
-                                    <label>Tlf-Nummer: Model.InfoDump.PhoneNumber</label>
-                                </div>
+                            @*kontakt info på indstalatør*@
+                            <div class="info-section-contact">
+                                <h2>Dine Kontakt oplysninger</h2>
+                                <label>Navn: @Model.DataBaseInfo.Installer</label>
+                                <label>Kontakt-Person: @Model.DataBaseInfo.Contact</label>
+                                <label>Email: @Model.DataBaseInfo.Email</label>
+                                <label>Tlf-Nummer: @Model.DataBaseInfo.PhoneNumber</label>
+                            </div>
                         </div>
                     </div>
                     <div class="side-container right-side">
@@ -126,14 +235,11 @@
                             <iframe class="maps" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1598.3435076176263!2d12.076713834901978!3d55.631510429104985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46525fdb75e12093%3A0xba91a34039629adf!2sErhvervsforum%20Roskilde!5e0!3m2!1sda!2sdk!4v1685011731622!5m2!1sda!2sdk" style="border:0;" allowfullscreen="no" loading="lazy" referrerpolicy="no-referrer"></iframe>
                         </div>
                         <div class="full-size project-contact">
-                            <h3>Fima:</h3>
-                            <label>jljjkkl</label>
-                            <label>jljjkkl</label>
-                            <label>jljjkkl</label>
                             <h3>Indstalatør:</h3>
-                            <label>jljjkkl</label>
-                            <label>jljjkkl</label>
-                            <label>jljjkkl</label>
+                            <label>Kontakt Person: @Model.DataBaseInfo.Contact</label>
+                            <label>Indstalatør: @Model.DataBaseInfo.User.Installer</label>
+                            <label>Nummer: @Model.DataBaseInfo.PhoneNumber</label>
+                            <label>Mail: @Model.DataBaseInfo.Email</label>
                         </div>
                     </div>
 
