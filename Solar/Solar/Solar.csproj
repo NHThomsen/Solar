@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\Intern\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="wwwroot\assets\login.png" />
     <None Include="wwwroot\assets\user.png" />
   </ItemGroup>

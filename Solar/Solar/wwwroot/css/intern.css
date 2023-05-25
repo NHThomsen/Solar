@@ -1,0 +1,226 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: Segoe UI, Frutiger, Arial;
+}
+
+.main2-container {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-image: url(../assets/background.png);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.intern-header {
+    height: 100px;
+    width: 100%;
+    background-color: #ffff;
+    flex-direction: row;
+    display: flex;
+}
+
+.company-name {
+    height: 80%;
+    width: 10%;
+    margin-left: 4%;
+    margin-right: 4%;
+    background-color: #ffff;
+    fill: #133466;
+}
+
+.intern-tabs {
+    height: 70%;
+    width: 100%;
+    background-color: #a1c7e9;
+    display: flex;
+    align-items: end;
+}
+
+.intern-tab {
+    height: 90%;
+    width: 25%;
+    position: relative;
+    background-color: #d5e6f6;
+    color: #ffff;
+    padding: 8px 16px;
+    font-size: 20px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border-radius: 15px 15px 0px 0px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 15px;
+}
+
+    .intern-tab a:hover {
+        color: #ffff;
+    }
+
+    .intern-tab.selected {
+        background-color: #ffff;
+        color: #0000;
+    }
+
+.intern-container {
+    max-width: 70%;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.holder-container {
+    max-width: 90%;
+    height: 100%;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+    .holder-container h1 {
+        font-size: 25px;
+        width: 70%;
+        color: #ffff;
+        margin: 2rem 0;
+    }
+
+.intern-cards {
+    max-width: 100%;
+    height: 100%;
+    width: 100%; 
+}
+
+.intern-card {
+    height: 15%;
+    width: 100%;
+    background: #ffff;
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: row;
+}
+
+.intern-card-segments {
+    height: 100%;
+    width: 30%;
+    display: flex;
+    margin-left: 15px;
+    flex-direction: column;
+}
+
+.intern-card-header {
+    height: 30%;
+    width: 100%;
+    color: #645f5a;
+    background-color: #ffff;
+}
+
+.intern-card-normal {
+    height: 30%;
+    width: 100%;
+    font-size: 20px;
+    color: #000f;
+    background-color: #ffff;
+}
+
+.intern-card-special {
+    height: 70%;
+    width: 100%;
+    color: #ff6a00;
+    background-color: #ffff;
+    font-size: 50px; 
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.intern-card-more {
+    height: 30%;
+    width: 90%;
+    border: solid 2px #133466;
+    color: #133466;
+    background-color: #ffff;
+    font-size: 25px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+    .intern-card-more a:hover {
+        color: #ffff;
+    }
+
+.intern-specifikt {
+    height: 90%;
+    width: 100%;
+    background-color: #ffff;
+    margin: 2rem 0;
+}
+
+.intern-specifikt-header {
+    height: 10%;
+    width: 100%;
+}
+
+.intern-behanlet {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.intern-behanlet-header {
+
+    width: 100%;
+    color: #ffff;
+    margin-top: 3%;
+    font-size: 20px;
+}
+
+.intern-behanlet-subheader {
+    max-height: 10%;
+    height: 100%;
+    width: 100%;
+    color: #ffff;
+    font-size: 15px;
+}
+
+.intern-behanlet-cards-venter {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.intern-behanlet-cards-godkendt {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.intern-behanlet-cards {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.intern-behanlet-card {
+    height: 75px;
+    width: 100%;
+    background: #ffff;
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: row;
+}
+
+.intern-ordre {
+}
