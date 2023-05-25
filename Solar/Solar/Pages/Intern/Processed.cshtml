@@ -23,33 +23,36 @@
         <div class="holder-container">
             <h1 class="holder-header">Behandlet</h1>
             <div class="intern-cards">
-                <div class="intern-card">
-                    <div class="intern-card-segments">
-                        <p class="intern-card-header">Sag:</p>
-                        <p class="intern-card-normal">Sag-nr 2993838</p>
-                        <p class="intern-card-normal">Gadevej 2</p>
-                    </div>
-                    <div class="intern-card-segments">
-                        <p class="intern-card-header">Firma:</p>
-                        <p class="intern-card-normal">El-manden</p>
-                        <p class="intern-card-normal">Thomas Hansen</p>
-                    </div>
-                    <div class="intern-card-segments">
-                        <p class="intern-card-header">Tider:</p>
-                        <div class="card-grid">
-                            <label class="intern-card-tider">Startdato</label>
-                            <label>1/1/2024</label>
-                            <label class="intern-card-tider">Opfølgningsdato</label>
-                            <label>1/2/2024</label>
-                            <label class="intern-card-tider">Deadline</label>
-                            <label>6/3/2024</label>
+                @foreach (Project project in Model.AllProjects)
+                {
+                    <div class="intern-card">
+                        <div class="intern-card-segments">
+                            <p class="intern-card-header">Sag:</p>
+                            <p class="intern-card-normal">Sag-nr @project.CaseName</p>
+                            <p class="intern-card-normal">@project.Address</p>
+                        </div>
+                        <div class="intern-card-segments">
+                            <p class="intern-card-header">Firma:</p>
+                            <p class="intern-card-normal">El-manden</p>
+                            <p class="intern-card-normal">Thomas Hansen</p>
+                        </div>
+                        <div class="intern-card-segments">
+                            <p class="intern-card-header">Tider:</p>
+                            <div class="card-grid">
+                                <label class="intern-card-tider">Startdato</label>
+                                <label>@project.StartDate</label>
+                                <label class="intern-card-tider">Opfølgningsdato</label>
+                                <label>@project.Followup</label>
+                                <label class="intern-card-tider">Deadline</label>
+                                <label>@project.Deadline</label>
+                            </div>
+                        </div>
+                        <div class="intern-card-segments">
+                            <a asp-page="RequestsSpecific" class="intern-card-more" asp-route-id="@project.Id">Læs mere</a>
+                            <a asp-page="RequestsSpecific" class="intern-card-godkend">Godkend</a>
                         </div>
                     </div>
-                    <div class="intern-card-segments">
-                        <a asp-page="RequestsSpecific" class="intern-card-more">Læs mere</a>
-                        <a asp-page="RequestsSpecific" class="intern-card-godkend">Godkend</a>
-                    </div>
-                </div>
+                }
             </div>
         </div>
     </section>

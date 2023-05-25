@@ -7,33 +7,15 @@ namespace Solar.Pages.Intern
 {
     public class Orders : PageModel
     {
-        private IRoofTypeDataService _roofTypeDataService;
-
-        private IRoofMaterialDataService _roofMaterielService;
-
-        private IProjectDataService _projectDataService;
-
-        [BindProperty]
-        public Project DataBaseInfo { get; set; }
-       
-        public RoofType RoofType { get; set; }
-        public RoofMaterial RoofMaterial { get; set; }
-
-        public Orders(IProjectDataService projectDataService, IRoofTypeDataService roofTypeDataService, IRoofMaterialDataService roofMaterielService)
+                private IProjectDataService ProjectDataService;
+        public List<Project> AllProjects { get; set; }
+        public Orders(IProjectDataService projectDataService)
         {
-            
-
-            _roofTypeDataService = roofTypeDataService;
-            _roofMaterielService = roofMaterielService;
-            _projectDataService = projectDataService;
+            ProjectDataService = projectDataService;
         }
-
-        public void OnGet(int id)
+        public void OnGet()
         {
-            DataBaseInfo = _projectDataService.Read(id);
-
-            RoofType = _roofTypeDataService.Read((int)DataBaseInfo.Assembly.RoofTypeId);
-            RoofMaterial = _roofMaterielService.Read((int)DataBaseInfo.Assembly.RoofMaterialId);
+            AllProjects = ProjectDataService.GetAll();
         }
     }
 }
