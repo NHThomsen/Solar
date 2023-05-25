@@ -5,9 +5,8 @@
         public string Email { get; set; }
         public string Password { get; set; }
 
-        public EmailClient(string email, string password)
+        public EmailClient(string email, string password) : this(email)
         {
-            Email = email;
             Password = password;
         }
 
