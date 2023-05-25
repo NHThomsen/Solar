@@ -117,7 +117,7 @@ CREATE TABLE BatteryRequest (
 
 CREATE TABLE DimensioningkWp (
 	ProjectID INT PRIMARY KEY FOREIGN KEY REFERENCES Project(ID),	
-	KiloWattPeak DECIMAL(5,5) NOT NULL
+	KiloWattPeak DECIMAL(19,2) NOT NULL
 )
 
 CREATE TABLE ConsumptionCategory (

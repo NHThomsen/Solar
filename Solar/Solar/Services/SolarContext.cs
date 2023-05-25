@@ -109,13 +109,13 @@ public partial class SolarContext : DbContext
 
         modelBuilder.Entity<DimensioningkWp>(entity =>
         {
-            entity.HasKey(e => e.ProjectId).HasName("PK__Dimensio__761ABED02D79C273");
+            entity.HasKey(e => e.ProjectId).HasName("PK__Dimensio__761ABED011C560B2");
 
             entity.Property(e => e.ProjectId).ValueGeneratedNever();
 
             entity.HasOne(d => d.Project).WithOne(p => p.DimensioningkWp)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Dimension__Proje__412EB0B6");
+                .HasConstraintName("FK__Dimension__Proje__5CD6CB2B");
         });
 
         modelBuilder.Entity<Installer>(entity =>

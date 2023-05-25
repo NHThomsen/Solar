@@ -1,5 +1,5 @@
 ﻿@page
-@model Solar.Pages.Intern.Anmodninger
+@model Solar.Pages.Intern.Request
 @{
 }
 <main class="main2-container">
@@ -14,14 +14,14 @@
             </g>
             </svg>
         <div class="intern-tabs">
-            <a asp-page="" class="intern-tab" onclick="showPage('anmodninger')">Anmodninger</a>
-            <a asp-page="" class="intern-tab" onclick="showPage('behanlet')">Behanlet</a>
-            <a asp-page="" class="intern-tab" onclick="showPage('ordre')">Ordre</a>
+            <a asp-page="/Intern/Requests" class="intern-tab">Anmodninger</a>
+            <a asp-page="/Intern/Processed" class="intern-tab">Behandlet</a>
+            <a asp-page="/Intern/Orders" class="intern-tab">Ordre</a>
         </div>
     </section>
     <section class="intern-container">
         <div class="holder-container">
-            <h1>
+            <h1 class="holder-header">
                 Modtaget andmodninger der
                 mangler at bliver behanldet
             </h1>        
@@ -42,80 +42,7 @@
                         <p class="intern-card-special">3</p>
                     </div>
                     <div class="intern-card-segments">
-                        <a class="intern-card-more">Læs mere</a>
-                    </div>
-                </div>
-                <div class="intern-card">
-                    <div class="intern-card-segments">
-                        <p class="intern-card-header">Sag:</p>
-                        <p class="intern-card-normal">Sag-nr 2993838</p>
-                        <p class="intern-card-normal">Gadevej 2</p>
-                    </div>
-                    <div class="intern-card-segments">
-                        <p class="intern-card-header">Firma:</p>
-                        <p class="intern-card-normal">El-manden</p>
-                        <p class="intern-card-normal">Thomas Hansen</p>
-                    </div>
-                    <div class="intern-card-segments">
-                        <p class="intern-card-header">Manglende Fælter:</p>
-                        <p class="intern-card-special">3</p>
-                    </div>
-                    <div class="intern-card-segments">
-                        <a class="intern-card-more">Læs mere</a>
-                    </div>
-                </div>                <div class="intern-card">
-                    <div class="intern-card-segments">
-                        <p class="intern-card-header">Sag:</p>
-                        <p class="intern-card-normal">Sag-nr 2993838</p>
-                        <p class="intern-card-normal">Gadevej 2</p>
-                    </div>
-                    <div class="intern-card-segments">
-                        <p class="intern-card-header">Firma:</p>
-                        <p class="intern-card-normal">El-manden</p>
-                        <p class="intern-card-normal">Thomas Hansen</p>
-                    </div>
-                    <div class="intern-card-segments">
-                        <p class="intern-card-header">Manglende Fælter:</p>
-                        <p class="intern-card-special">3</p>
-                    </div>
-                    <div class="intern-card-segments">
-                        <a class="intern-card-more">Læs mere</a>
-                    </div>
-                </div>                <div class="intern-card">
-                    <div class="intern-card-segments">
-                        <p class="intern-card-header">Sag:</p>
-                        <p class="intern-card-normal">Sag-nr 2993838</p>
-                        <p class="intern-card-normal">Gadevej 2</p>
-                    </div>
-                    <div class="intern-card-segments">
-                        <p class="intern-card-header">Firma:</p>
-                        <p class="intern-card-normal">El-manden</p>
-                        <p class="intern-card-normal">Thomas Hansen</p>
-                    </div>
-                    <div class="intern-card-segments">
-                        <p class="intern-card-header">Manglende Fælter:</p>
-                        <p class="intern-card-special">3</p>
-                    </div>
-                    <div class="intern-card-segments">
-                        <a class="intern-card-more">Læs mere</a>
-                    </div>
-                </div>                <div class="intern-card">
-                    <div class="intern-card-segments">
-                        <p class="intern-card-header">Sag:</p>
-                        <p class="intern-card-normal">Sag-nr 2993838</p>
-                        <p class="intern-card-normal">Gadevej 2</p>
-                    </div>
-                    <div class="intern-card-segments">
-                        <p class="intern-card-header">Firma:</p>
-                        <p class="intern-card-normal">El-manden</p>
-                        <p class="intern-card-normal">Thomas Hansen</p>
-                    </div>
-                    <div class="intern-card-segments">
-                        <p class="intern-card-header">Manglende Fælter:</p>
-                        <p class="intern-card-special">3</p>
-                    </div>
-                    <div class="intern-card-segments">
-                        <a class="intern-card-more">Læs mere</a>
+                        <a asp-page="RequestsSpecific" class="intern-card-more">Læs mere</a>
                     </div>
                 </div>
             </div>

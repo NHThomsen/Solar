@@ -5,7 +5,7 @@ using Solar.Services.StaticServices;
 
 namespace Solar.Pages.Intern
 {
-    public class AnmodningerSpefikt : PageModel
+    public class Orders : PageModel
     {
         private IRoofTypeDataService _roofTypeDataService;
 
