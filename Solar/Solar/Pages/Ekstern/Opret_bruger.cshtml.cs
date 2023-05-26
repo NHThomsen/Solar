@@ -33,7 +33,14 @@ namespace Solar.Pages.Ekstern
 
         public IActionResult OnPost() 
         {
-            if(_service.CheckUsernameExist(Username)) 
+
+            if (Username == null || Password == null)
+            {
+                ErrorMessage = "Udfyldt venligst felterne";
+                return Page();
+            }
+
+            if (_service.CheckUsernameExist(Username)) 
             {
                 ErrorMessage = "Brugernavn er allerede i brug";
                 return Page();
