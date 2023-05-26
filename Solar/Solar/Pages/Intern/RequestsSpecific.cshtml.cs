@@ -24,25 +24,29 @@ namespace Solar.Pages.Intern
             ProjectDataService = projectDataService;
             RoofTypeDataService = roofTypeDataService;
             _emailSender = emailSender;
+
+            Sender = new EmailClient("SolarTestClient@hotmail.com", "Solar123456");
+            Reciever = new EmailClient("Robbers1996@hotmail.com");
+
         }
         public void OnGet(int id)
         {
+
             DataBaseInfo = ProjectDataService.Read(id);
             RoofType = RoofTypeDataService.Read((int)DataBaseInfo.Assembly.RoofTypeId);
 
             Id = id;
-
-            Sender = new EmailClient("SolarTestClient@hotmail.com", "Solar123456");
-            Reciever = new EmailClient("Robbers1996@hotmail.com");
         }
 
         public async Task<IActionResult> OnPost(int id)
         {
+            
+
             Project ProjectDataChange = ProjectDataService.Read(id);
             ProjectDataChange.StatusId = ProjectDataChange.StatusId + 1;
             ProjectDataService.Update(ProjectDataChange);
 
-            await _emailSender.SendEmailAsync(Sender, Reciever, $"Tilbud på solceller på adressen: {DataBaseInfo.Address}", "Tilbud");
+            await _emailSender.SendEmailAsync(Sender, Reciever, $"Tilbud på solceller på adressen: {ProjectDataChange.Address}", "Tilbud");
 
             return RedirectToPage("Requests");
         }
