@@ -5,7 +5,7 @@ public class EFCProjectDataService : EFCDataServiceAppBase<Project>, IProjectDat
 	/// <inheritdoc />
 	public List<Project> SortByStatus(int statusId)
 	{
-		throw new NotImplementedException();
+		return base.GetAll().Where(p => p.StatusId == statusId).ToList();
 	}
 
     protected override IQueryable<Project> GetAllWithIncludes(DbContext dbContext)
