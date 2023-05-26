@@ -26,14 +26,14 @@
             <form method="post">
                 <p class="alert-danger">@Model.ErrorMessage</p>
 
-                <label>Virksomheds navn</label>
-                <input type="text">
+                <label asp-for="@Model.Department">Virksomheds navn</label>
+                <input asp-for="@Model.Department" type="text">
 
-                <label>CVR</label>
-                <input type="text">
+                <label asp-for="@Model.CVR">CVR</label>
+                <input asp-for="@Model.CVR" type="text">
 
-                <label>Navn på installatør</label>
-                <input type="text">
+                <label asp-for="@Model.Installer">Navn på installatør</label>
+                <input asp-for="@Model.Installer" type="text">
 
                 <label asp-for="@Model.Username">Email</label>
                 <input asp-for="@Model.Username" type="text">

@@ -25,8 +25,11 @@ namespace Solar.Pages.Ekstern
 
         [BindProperty, DataType(DataType.Password)]
         public string RepeatedPassword { get; set; }
+        [BindProperty]
         public string Department { get; set; }
+        [BindProperty]
         public string CVR { get; set; }
+        [BindProperty]
         public string Installer { get; set; }
 
         public IActionResult OnGet()
@@ -60,6 +63,7 @@ namespace Solar.Pages.Ekstern
                 Username = Username,
                 Password = Password
             };
+            user.Installer = new Installer();
             user.Installer.Installer1 = Installer;
             user.Installer.Department = Department;
             user.Installer.AccountNumber = CVR;

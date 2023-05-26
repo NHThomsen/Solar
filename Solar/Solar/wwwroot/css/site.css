@@ -724,9 +724,13 @@ label {
     aspect-ratio:10/8;
 }
 
+.project-contact{
+    margin: 2rem 0.5rem;
+}
 
-.project-contact h3{
-    font-size:1.5rem;
+
+.project-contact h3 {
+    font-size: 1.5rem;
 }
 .project-contact label{
     margin-bottom:5px;
