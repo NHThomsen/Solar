@@ -21,6 +21,7 @@
             <form method="post">
                 <div class="login-container form-group-1-special">
                     <h2>Login</h2>
+                    <p class="alert-danger">@Model.ErrorMessage</p>
                     <label asp-for="@Model.UserName">Email</label>
                     <input class="login-user-input" asp-for="@Model.UserName" type="text">
                     <label asp-for="@Model.Password">Password</label>
