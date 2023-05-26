@@ -25,34 +25,36 @@
             <div class="intern-cards">
                 @foreach (Project project in Model.AllProjects)
                 {
-                    <div class="intern-card">
-                        <div class="intern-card-segments">
-                            <p class="intern-card-header">Sag:</p>
-                            <p class="intern-card-normal">Sag-nr @project.CaseName</p>
-                            <p class="intern-card-normal">@project.Address</p>
+                    <form method="post">
+                        <div class="intern-card">
+                            <div class="intern-card-segments">
+                                <p class="intern-card-header">Sag:</p>
+                                <p class="intern-card-normal">Sag-nr @project.CaseName</p>
+                                <p class="intern-card-normal">@project.Address</p>
+                            </div>
+                            <div class="intern-card-segments">
+                                <p class="intern-card-header">Firma:</p>
+                                <p class="intern-card-normal">El-manden</p>
+                                <p class="intern-card-normal">Thomas Hansen</p>
+                            </div>
+                            <div class="intern-card-segments">
+                                <p class="intern-card-header">Tider:</p>
+                                <label class="intern-card-tider">Startdato</label>
+                                <label class="intern-card-tider">Opfølgningsdato</label>
+                                <label class="intern-card-tider">Deadline</label>
+                            </div>
+                            <div class="intern-card-segments">
+                                <p class="intern-card-header"></p>
+                                <label>@project.StartDate</label>
+                                <label>@project.Followup</label>
+                                <label>@project.Deadline</label>
+                            </div>
+                            <div class="intern-card-segments">
+                                <a asp-page="RequestsSpecific" class="read-more-button" asp-route-id="@project.Id">Læs mere</a>
+                                <a asp-page="ConfirmProcessed" class="login-button" asp-route-id="@project.Id">Godkend</a>
+                            </div>
                         </div>
-                        <div class="intern-card-segments">
-                            <p class="intern-card-header">Firma:</p>
-                            <p class="intern-card-normal">El-manden</p>
-                            <p class="intern-card-normal">Thomas Hansen</p>
-                        </div>
-                        <div class="intern-card-segments">
-                            <p class="intern-card-header">Tider:</p>
-                            <label class="intern-card-tider">Startdato</label>
-                            <label class="intern-card-tider">Opfølgningsdato</label>
-                            <label class="intern-card-tider">Deadline</label>
-                        </div>
-                        <div class="intern-card-segments">
-                            <p class="intern-card-header"></p>
-                            <label>@project.StartDate</label>
-                            <label>@project.Followup</label>
-                            <label>@project.Deadline</label>
-                        </div>
-                        <div class="intern-card-segments">
-                            <a asp-page="RequestsSpecific" class="read-more-button" asp-route-id="@project.Id">Læs mere</a>
-                                <a asp-page="RequestsSpecific" class="login-button">Godkend</a>
-                        </div>
-                    </div>
+                    </form>
                 }
             </div>
         </div>

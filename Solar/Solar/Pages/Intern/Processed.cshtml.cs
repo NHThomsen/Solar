@@ -14,7 +14,16 @@ namespace Solar.Pages.Intern
         }
         public void OnGet()
         {
-            AllProjects = ProjectDataService.GetAll();
+            AllProjects = ProjectDataService.SortByStatus(2);
+        }
+
+        public IActionResult OnPost(int id)
+        {
+            Project ProjectDataChange = ProjectDataService.Read(id);
+            ProjectDataChange.StatusId = 3;
+            ProjectDataService.Update(ProjectDataChange);
+
+            return RedirectToPage("Processed");
         }
     }
 }
