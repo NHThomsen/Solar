@@ -64,7 +64,7 @@ namespace Solar.Pages.Ekstern
 
             _service.Create(InfoDump);
 
-            return RedirectToPage("/Index");
+            return RedirectToPage("/Ekstern/SuccesRequest");
         }
 
     }
