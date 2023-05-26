@@ -14,7 +14,7 @@
             </g>
             </svg>
         <div class="intern-tabs">
-            <a asp-page="/Intern/Requests" class="intern-tab active-nav-tab">Anmodninger</a>
+            <a asp-page="/Intern/Requests" class="intern-tab" id="active-nav-tab">Anmodninger</a>
             <a asp-page="/Intern/Processed" class="intern-tab">Behandlet</a>
             <a asp-page="/Intern/Orders" class="intern-tab">Ordre</a>
         </div>
@@ -44,7 +44,7 @@
                             <p class="intern-card-special">3</p>
                         </div>
                         <div class="intern-card-segments">
-                            <a asp-page="RequestsSpecific" class="intern-card-more" asp-route-id="@project.Id">Læs mere</a>
+                            <a asp-page="RequestsSpecific" class="read-more-button" asp-route-id="@project.Id">Læs mere</a>
                         </div>
                     </div>
                 }

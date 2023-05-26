@@ -152,6 +152,8 @@ label {
 
     .login-button:hover {
         background-color: #3EAE80;
+        color: #ffff;
+        font-weight:600;
     }
 
 .read-more-button {
@@ -652,7 +654,7 @@ label {
     height:95%;
 }
 
-.active-nav-tab{
+#active-nav-tab{
     background-color:#fff;
     color:black;
 }
