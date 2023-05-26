@@ -42,32 +42,26 @@
 .intern-tab {
     height: 90%;
     width: 25%;
-    position: relative;
     background-color: #d5e6f6;
-    color: #ffff;
+    color: #133466;
     padding: 8px 16px;
     font-size: 20px;
     overflow: hidden;
     transition: all 0.3s ease;
     border-radius: 15px 15px 0px 0px;
-    text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-left: 15px;
 }
 
-    .intern-tab a:hover {
-        color: #ffff;
-    }
-
-    .intern-tab.selected {
-        background-color: #ffff;
-        color: #0000;
+    .intern-tab:hover {
+        color: #fff;
+        font-weight: 600;
+        background-color: #83b3df;
     }
 
 .intern-container {
-
     height: 100%;
     width: 100%;
     display: flex;
@@ -78,9 +72,8 @@
 }
 
 .holder-container {
-    max-width: 67%;
     height: 100%;
-    width: 90%;
+    width: 80%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -107,6 +100,11 @@
     display: flex;
     padding:10px;
     flex-direction: row;
+}
+
+.intern-card a{
+    display:flex;
+    justify-content:center;
 }
 
 .intern-card-segments {
@@ -176,6 +174,17 @@
     }
 
 .intern-card-godkend {
+    height: 30%;
+    width: 90%;
+    color: #ffff;
+    background-color: #3cc295;
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.intern-card-godkend:hover{
     height: 30%;
     width: 90%;
     color: #ffff;

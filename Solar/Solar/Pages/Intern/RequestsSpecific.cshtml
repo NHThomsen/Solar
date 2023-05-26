@@ -14,7 +14,7 @@
             </g>
             </svg>
         <div class="intern-tabs">
-            <a asp-page="/Intern/Requests" class="intern-tab active-nav-tab">Anmodninger</a>
+            <a asp-page="/Intern/Requests" class="intern-tab" id="active-nav-tab">Anmodninger</a>
             <a asp-page="/Intern/Processed" class="intern-tab">Behandlet</a>
             <a asp-page="/Intern/Orders" class="intern-tab">Ordre</a>
         </div>
@@ -32,12 +32,12 @@
                     <span></span>
 
                     <div>
-                        <h2 class="project-case-text">Sag-nr 2993838</h2>
-                        <h2 class="">Gadevej 2</h2>
+                        <h2 class="project-case-text">Sag-nr @Model.DataBaseInfo.CaseName</h2>
+                        <h2 class="">@Model.DataBaseInfo.Address</h2>
                     </div>
                     <div>
                         <h2 class="">El-manden</h2>
-                        <h2 class="">Thomas Hansen</h2>
+                        <h2 class="">@Model.DataBaseInfo.Installer</h2>
                     </div>
                     <div>
                         <h2 class="missing-types">3</h2>

@@ -15,7 +15,7 @@
             </svg>
         <div class="intern-tabs">
             <a asp-page="/Intern/Requests" class="intern-tab ">Anmodninger</a>
-            <a asp-page="/Intern/Processed" class="intern-tab active-nav-tab">Behandlet</a>
+            <a asp-page="/Intern/Processed" class="intern-tab" id="active-nav-tab">Behandlet</a>
             <a asp-page="/Intern/Orders" class="intern-tab">Ordre</a>
         </div>
     </section>
@@ -38,18 +38,19 @@
                         </div>
                         <div class="intern-card-segments">
                             <p class="intern-card-header">Tider:</p>
-                            <div class="card-grid">
-                                <label class="intern-card-tider">Startdato</label>
-                                <label>@project.StartDate</label>
-                                <label class="intern-card-tider">Opfølgningsdato</label>
-                                <label>@project.Followup</label>
-                                <label class="intern-card-tider">Deadline</label>
-                                <label>@project.Deadline</label>
-                            </div>
+                            <label class="intern-card-tider">Startdato</label>
+                            <label class="intern-card-tider">Opfølgningsdato</label>
+                            <label class="intern-card-tider">Deadline</label>
                         </div>
                         <div class="intern-card-segments">
-                            <a asp-page="RequestsSpecific" class="intern-card-more" asp-route-id="@project.Id">Læs mere</a>
-                            <a asp-page="RequestsSpecific" class="intern-card-godkend">Godkend</a>
+                            <p class="intern-card-header"></p>
+                            <label>@project.StartDate</label>
+                            <label>@project.Followup</label>
+                            <label>@project.Deadline</label>
+                        </div>
+                        <div class="intern-card-segments">
+                            <a asp-page="RequestsSpecific" class="read-more-button" asp-route-id="@project.Id">Læs mere</a>
+                                <a asp-page="RequestsSpecific" class="login-button">Godkend</a>
                         </div>
                     </div>
                 }
