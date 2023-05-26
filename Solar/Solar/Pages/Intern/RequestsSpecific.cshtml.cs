@@ -26,9 +26,6 @@ namespace Solar.Pages.Intern
             RoofTypeDataService = roofTypeDataService;
             _emailSender = emailSender;
 
-            Sender = new EmailClient("SolarTestClient@hotmail.com", "Solar123456");
-            Reciever = new EmailClient("Robbers1996@hotmail.com");
-
         }
         public void OnGet(int id)
         {
@@ -39,16 +36,19 @@ namespace Solar.Pages.Intern
             GoogleMapsData = $"{DataBaseInfo.Address}+{DataBaseInfo.Zip}";
             GoogleMapsData.Replace(" ", "+");
             Id = id;
+
+            Sender = new EmailClient("SolarTestClient@hotmail.com", "Solar123456");
+            Reciever = new EmailClient(DataBaseInfo.User.Username);
         }
 
         public async Task<IActionResult> OnPost(int id)
         {
-            
 
             Project ProjectDataChange = ProjectDataService.Read(id);
             ProjectDataChange.StatusId = ProjectDataChange.StatusId + 1;
             ProjectDataService.Update(ProjectDataChange);
 
+            OnGet(id);
             await _emailSender.SendEmailAsync(Sender, Reciever, $"Tilbud på solceller på adressen: {ProjectDataChange.Address}", "Tilbud");
 
             return RedirectToPage("Requests");

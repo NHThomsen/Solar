@@ -14,4 +14,5 @@
 	/// <param name="username">Request username</param>
 	/// <returns>True or false</returns>
 	bool CheckUsernameExist(string username);
+
 }

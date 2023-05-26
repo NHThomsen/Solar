@@ -19,7 +19,7 @@ namespace Solar.Pages.Ekstern
 
         private IProjectDataService _service;
 
-
+        private EFCInstallerDataService _installerDataService;
 
         [BindProperty]
         public Project ProjectData { get; set; }
@@ -27,9 +27,10 @@ namespace Solar.Pages.Ekstern
         public Project InfoDump { get; set; }
         private EmailClient Sender { get; set; }
         private EmailClient Reciever { get; set; }
-        
         public RoofType RoofType { get; set; }
-        public RoofMaterial RoofMaterial { get; set; } 
+        public RoofMaterial RoofMaterial { get; set; }
+        public string InstallerDepartment { get; set; }
+        public string InstallerName { get; set; }
 
 
         public ProjectStepFiveModel(IEmailSenderService emailSender, IRoofTypeDataService roofTypeDataService, IRoofMaterialDataService roofMaterielService, IProjectDataService service)
@@ -41,21 +42,27 @@ namespace Solar.Pages.Ekstern
             _roofTypeDataService = roofTypeDataService;
             _roofMaterielService = roofMaterielService;
 
-            // Static mails for now -- TODO
-            Sender = new EmailClient("SolarTestClient@hotmail.com", "Solar123456");
-            Reciever = new EmailClient("Robbers1996@hotmail.com");
+            _installerDataService = new EFCInstallerDataService();
+
             _service = service;
         }
 
         public void OnGet()
         {
+
             RoofType = _roofTypeDataService.Read((int)InfoDump.Assembly.RoofTypeId);
             RoofMaterial = _roofMaterielService.Read((int)InfoDump.Assembly.RoofMaterialId);
+
+            InstallerDepartment = _installerDataService.Read(int.Parse(HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData).Value)).Department;
+            InstallerName = _installerDataService.Read(int.Parse(HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData).Value)).Installer1;
 
         }
 
         public async Task<IActionResult> OnPost() 
         {
+            Sender = new EmailClient("SolarTestClient@hotmail.com", "Solar123456");
+            Reciever = new EmailClient(User.Identity.Name);
+
             await _emailSender.SendEmailAsync(Sender, Reciever, "Tilbudsanmodning er sendt til Solar", $" Info indtastet på sagen\nSagsinfo: {InfoDump.CaseName}\nAdresse: {InfoDump.Address}\nPostnr: {InfoDump.Zip}");
             await _emailSender.SendEmailAsync(Sender, Sender, $"Ny tilbudsanmodning på adressen {InfoDump.Address}", "Find sagen her: www.solar.dk ");
 
