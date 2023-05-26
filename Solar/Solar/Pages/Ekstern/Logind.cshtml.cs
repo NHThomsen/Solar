@@ -17,6 +17,8 @@ namespace Solar.Pages.Ekstern
         }
 
         public static User LoggedinUser { get; set; }
+        [BindProperty]
+        public string ErrorMessage { get; set; }
 
         [BindProperty]
         public string UserName { get; set; }
@@ -35,6 +37,7 @@ namespace Solar.Pages.Ekstern
 
             if (LoggedinUser == null)
             {
+                ErrorMessage = "Forkert Brugernavn eller Password";
                 return Page();
             }
 
@@ -42,7 +45,7 @@ namespace Solar.Pages.Ekstern
                 BuildClaimsPrincipal(LoggedinUser));
 
             if (LoggedinUser.Username == "admin")
-                return RedirectToPage("/Privacy");
+                return RedirectToPage("/Intern/Requests");
 
             return RedirectToPage("/Ekstern/NewProject");
         }

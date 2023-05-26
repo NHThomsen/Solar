@@ -78,7 +78,6 @@
 }
 
 .holder-container {
-    max-width: 67%;
     height: 100%;
     width: 90%;
     display: flex;
@@ -107,6 +106,11 @@
     display: flex;
     padding:10px;
     flex-direction: row;
+}
+
+.intern-card a{
+    display:flex;
+    justify-content:center;
 }
 
 .intern-card-segments {
@@ -176,6 +180,17 @@
     }
 
 .intern-card-godkend {
+    height: 30%;
+    width: 90%;
+    color: #ffff;
+    background-color: #3cc295;
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.intern-card-godkend:hover{
     height: 30%;
     width: 90%;
     color: #ffff;
