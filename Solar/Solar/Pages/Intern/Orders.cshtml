@@ -23,6 +23,10 @@
         <div class="holder-container">
             <h1 class="holder-header">Ordre</h1>
             <div class="intern-cards">
+                @if (Model.AllProjects.Count() == 0)
+                {
+                    <h2 class="holder-header">Der ikke nogen Ordrer</h2>
+                }
                 @foreach (Project project in Model.AllProjects)
                 {
                     <div class="intern-card">
@@ -34,7 +38,7 @@
                         <div class="intern-card-segments">
                             <p class="intern-card-header">Firma:</p>
                             <p class="intern-card-normal">El-manden</p>
-                            <p class="intern-card-normal">Thomas Hansen</p>
+                            <p class="intern-card-normal">@project.Installer</p>
                         </div>
                         <div class="intern-card-segments">
                             <p class="intern-card-header">Tider:</p>

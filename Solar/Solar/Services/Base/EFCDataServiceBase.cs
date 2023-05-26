@@ -42,6 +42,8 @@ public abstract class EFCDataServiceBase<T> : IDataService<T> where T : class, I
 		using DbContext context = CreateDBContext();
 
 		context.Update(entity);
+
+		context.SaveChanges();
 	}
 
 	/// <summary>
@@ -53,6 +55,8 @@ public abstract class EFCDataServiceBase<T> : IDataService<T> where T : class, I
 		using DbContext context = CreateDBContext();
 
 		context.Set<T>().Remove(context.Set<T>().Find(id));
+
+		context.SaveChanges();
 	}
 
 	/// <summary>

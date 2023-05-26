@@ -14,7 +14,7 @@ namespace Solar.Pages.Intern
         }
         public void OnGet()
         {
-            AllProjects = ProjectDataService.GetAll();
+            AllProjects = ProjectDataService.SortByStatus(1);
         }
     }
 }
