@@ -36,8 +36,8 @@
                         <h2 class="">@Model.DataBaseInfo.Address</h2>
                     </div>
                     <div>
-                        <h2 class="">@Model.DataBaseInfo.Department</h2>
-                        <h2 class="">@Model.DataBaseInfo.Installer</h2>
+                        <h2 class="">@Model.DataBaseInfo.User.Installer.Department</h2>
+                        <h2 class="">@Model.DataBaseInfo.User.Installer.Installer1</h2>
                     </div>
                     <div>
                         <h2 class="missing-types">3</h2>
@@ -79,8 +79,8 @@
                             @*monterering og tagtyper*@
                             <div class="info-section">
                                 <label>Monteage type:</label>
-                                <label>@Model.RoofType.RoofType1</label>
-                                <label>Tag type:</label>
+                                <label>@Model.DataBaseInfo.Assembly.RoofTypeId</label>
+                                <label>Tag type: @Model.DataBaseInfo.Assembly.RoofMaterialId</label>
                                 <label></label>
                                 <label>Ønskes øst/vest placering:</label>
                                 <label>@Model.DataBaseInfo.Assembly.EastWestDirection</label>
