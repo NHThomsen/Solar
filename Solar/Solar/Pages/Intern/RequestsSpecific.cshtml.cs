@@ -9,6 +9,7 @@ namespace Solar.Pages.Intern
     {
         private IProjectDataService ProjectDataService;
         private IRoofTypeDataService RoofTypeDataService;
+
         public Project DataBaseInfo { get; set; }
         public RoofType RoofType { get; set; }
         public RequestSpecific(IProjectDataService projectDataService, IRoofTypeDataService roofTypeDataService) 
