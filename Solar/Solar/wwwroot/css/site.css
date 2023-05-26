@@ -652,11 +652,16 @@ label {
     height:95%;
 }
 
-.project-main-container{
-    background-color:white;
-    width:75vw;
-    margin:10px auto;
-    padding:15px;
+.active-nav-tab{
+    background-color:#fff;
+    color:black;
+}
+
+.project-main-container {
+    background-color: white;
+    width: 75vw;
+    margin: 10px auto;
+    padding: 15px;
 }
 
 .full-size{
