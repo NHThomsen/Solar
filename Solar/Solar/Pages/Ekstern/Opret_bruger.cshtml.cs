@@ -25,6 +25,9 @@ namespace Solar.Pages.Ekstern
 
         [BindProperty, DataType(DataType.Password)]
         public string RepeatedPassword { get; set; }
+        public string Department { get; set; }
+        public string CVR { get; set; }
+        public string Installer { get; set; }
 
         public IActionResult OnGet()
         {
@@ -57,6 +60,9 @@ namespace Solar.Pages.Ekstern
                 Username = Username,
                 Password = Password
             };
+            user.Installer.Installer1 = Installer;
+            user.Installer.Department = Department;
+            user.Installer.AccountNumber = CVR;
 
             _service.Create(user);
             return RedirectToPage("/Ekstern/Logind");
