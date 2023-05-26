@@ -31,6 +31,7 @@ namespace Solar.Pages.Ekstern
         public RoofMaterial RoofMaterial { get; set; }
         public string InstallerDepartment { get; set; }
         public string InstallerName { get; set; }
+        public string InstallerPhone { get; set; }
 
 
         public ProjectStepFiveModel(IEmailSenderService emailSender, IRoofTypeDataService roofTypeDataService, IRoofMaterialDataService roofMaterielService, IProjectDataService service)
@@ -55,6 +56,7 @@ namespace Solar.Pages.Ekstern
 
             InstallerDepartment = _installerDataService.Read(int.Parse(HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData).Value)).Department;
             InstallerName = _installerDataService.Read(int.Parse(HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData).Value)).Installer1;
+            InstallerPhone = _installerDataService.Read(int.Parse(HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData).Value)).PhoneNumber;
 
         }
 

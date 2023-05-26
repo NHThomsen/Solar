@@ -31,6 +31,8 @@ namespace Solar.Pages.Ekstern
         public string CVR { get; set; }
         [BindProperty]
         public string Installer { get; set; }
+        [BindProperty]
+        public string PhoneNumber { get; set; }
 
         public IActionResult OnGet()
         {
@@ -67,6 +69,7 @@ namespace Solar.Pages.Ekstern
             user.Installer.Installer1 = Installer;
             user.Installer.Department = Department;
             user.Installer.AccountNumber = CVR;
+            user.Installer.PhoneNumber = PhoneNumber;
 
             _service.Create(user);
             return RedirectToPage("/Ekstern/Logind");
