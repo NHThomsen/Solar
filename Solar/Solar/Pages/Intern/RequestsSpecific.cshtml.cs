@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore.Storage;
+using Solar.Models.Static;
+using Solar.Services.Interfaces;
 using Solar.Services.StaticServices;
 
 namespace Solar.Pages.Intern
@@ -9,15 +11,19 @@ namespace Solar.Pages.Intern
     {
         private IProjectDataService ProjectDataService;
         private IRoofTypeDataService RoofTypeDataService;
+        private IEmailSenderService _emailSender;
 
         private int Id { get; set; }
 
         public Project DataBaseInfo { get; set; }
         public RoofType RoofType { get; set; }
-        public RequestSpecific(IProjectDataService projectDataService, IRoofTypeDataService roofTypeDataService) 
+        public EmailClient Sender { get; set; }
+        public EmailClient Reciever { get; set; }
+        public RequestSpecific(IProjectDataService projectDataService, IRoofTypeDataService roofTypeDataService, IEmailSenderService emailSender) 
         {
             ProjectDataService = projectDataService;
             RoofTypeDataService = roofTypeDataService;
+            _emailSender = emailSender;
         }
         public void OnGet(int id)
         {
@@ -25,13 +31,18 @@ namespace Solar.Pages.Intern
             RoofType = RoofTypeDataService.Read((int)DataBaseInfo.Assembly.RoofTypeId);
 
             Id = id;
+
+            Sender = new EmailClient("SolarTestClient@hotmail.com", "Solar123456");
+            Reciever = new EmailClient("Robbers1996@hotmail.com");
         }
 
-        public IActionResult OnPost(int id)
+        public async Task<IActionResult> OnPost(int id)
         {
             Project ProjectDataChange = ProjectDataService.Read(id);
             ProjectDataChange.StatusId = ProjectDataChange.StatusId + 1;
             ProjectDataService.Update(ProjectDataChange);
+
+            await _emailSender.SendEmailAsync(Sender, Reciever, $"Tilbud på solceller på adressen: {DataBaseInfo.Address}", "Tilbud");
 
             return RedirectToPage("Requests");
         }
