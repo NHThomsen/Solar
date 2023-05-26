@@ -26,6 +26,10 @@
                 mangler at bliver behanldet
             </h1>        
             <div class="intern-cards">
+                @if (Model.AllProjects.Count() == 0)
+                {
+                    <h2 class="holder-header">Der ikke nogen Anmodninger</h2>
+                }
                 @foreach (Project project in Model.AllProjects)
                 {
                     <div class="intern-card">

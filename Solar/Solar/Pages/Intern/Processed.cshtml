@@ -23,6 +23,10 @@
         <div class="holder-container">
             <h1 class="holder-header">Behandlet</h1>
             <div class="intern-cards">
+                @if (Model.AllProjects.Count() == 0)
+                {
+                    <h2 class="holder-header">Der ikke nogen Behandlede projekter</h2>
+                }
                 @foreach (Project project in Model.AllProjects)
                 {
                     <form method="post">

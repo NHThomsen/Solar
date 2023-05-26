@@ -683,7 +683,8 @@ label {
     grid-template-rows: 20px 1fr;
 }
 
-.header-grid a{
+.header-grid button{
+    width:100%;
     display:flex;
     justify-content:center;
     align-items:center;
