@@ -1,22 +1,23 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Solar.Services.StaticServices;
+using System.Security.Claims;
 
 namespace Solar.Pages.Ekstern
 {
     public class ProjectStepFourModel : PageModel
     {
-        private EFCInstallerDataService _installerDataService;
+        private IUsersDataService _usersDataService;
 
         [BindProperty]
         public Project? ProjectData { get; set; }
         public Project ExistingData { get; set; }
+        public User LoggedinUser { get; set; }
         public string StepData { get; set; }
-        public string InstallerDepartment { get; set; }
-        public string InstallerName { get; set; }
-        public ProjectStepFourModel()
+        public ProjectStepFourModel(IUsersDataService usersDataService)
         {
             ExistingData = GlobalProjectDataService.ProjectDataNewProject;
+            _usersDataService = usersDataService;
 
             if (GlobalProjectDataService.ProjectDataStepThreePointFive == null)
             {
@@ -26,14 +27,13 @@ namespace Solar.Pages.Ekstern
                 StepData = "/Ekstern/ProjectStepThreePointFive";
             }
 
-            _installerDataService = new EFCInstallerDataService();
+            
 
     }
         public void OnGet()
         {
 
-            InstallerDepartment = _installerDataService.Read(int.Parse(User.Claims.ElementAt(1).Value)).Department;
-            InstallerName = _installerDataService.Read(int.Parse(User.Claims.ElementAt(1).Value)).Installer1;
+            LoggedinUser = _usersDataService.Read(int.Parse(HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData).Value));
 
         }
 

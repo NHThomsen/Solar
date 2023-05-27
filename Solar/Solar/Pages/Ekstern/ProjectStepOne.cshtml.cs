@@ -12,23 +12,23 @@ namespace Solar.Pages.Ekstern
 
         private IRoofMaterialDataService _roofMaterielService;
 
-        private EFCInstallerDataService _installerDataService;
+        private IUsersDataService _usersDataService;
 
         [BindProperty]
         public Project? ProjectData { get; set; }
         public Project ExistingData { get; set; }
-        public string InstallerDepartment { get; set; }
-        public string InstallerName { get; set; }
-        public string ErrorMessage { get; set; }
+        public User LoggedinUser { get; set; }
         public List<RoofType> Roofs { get; set; }
         public List<RoofMaterial> RoofMaterials { get; set; }
+        public string ErrorMessage { get; set; }
 
-        public ProjectStepOneModel(IRoofTypeDataService roofTypeDataService, IRoofMaterialDataService roofMaterielService)
+        public ProjectStepOneModel(IRoofTypeDataService roofTypeDataService, IRoofMaterialDataService roofMaterielService, IUsersDataService usersDataService)
         {
             ExistingData = GlobalProjectDataService.ProjectDataNewProject;
             _roofTypeDataService = roofTypeDataService;
             _roofMaterielService = roofMaterielService;
-            _installerDataService = new EFCInstallerDataService();
+            _usersDataService = usersDataService;
+            
 
         }
 
@@ -37,8 +37,7 @@ namespace Solar.Pages.Ekstern
             Roofs = _roofTypeDataService.GetAll();
             RoofMaterials = _roofMaterielService.GetAll();
 
-            InstallerDepartment = _installerDataService.Read(int.Parse(HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData).Value)).Department;
-            InstallerName = _installerDataService.Read(int.Parse(HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData).Value)).Installer1;
+            LoggedinUser = _usersDataService.Read(int.Parse(HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData).Value));
         }
 
         public IActionResult OnPost()

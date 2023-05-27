@@ -7,25 +7,22 @@ namespace Solar.Pages.Ekstern
 {
     public class ProjectStepTwoModel : PageModel
     {
-        private EFCInstallerDataService _installerDataService;
+        private IUsersDataService _usersDataService;
 
         [BindProperty]
         public Project ProjectData { get; set; }
         public Project ExistingData { get; set; }
-        public string InstallerDepartment { get; set; }
-        public string InstallerName { get; set; }
+        public User LoggedinUser { get; set; }
 
-        public ProjectStepTwoModel()
+        public ProjectStepTwoModel(IUsersDataService usersDataService)
         {
             ExistingData = GlobalProjectDataService.ProjectDataNewProject;
-            _installerDataService = new EFCInstallerDataService();
+            _usersDataService = usersDataService;
         }
 
         public void OnGet()
         {
-
-            InstallerDepartment = _installerDataService.Read(int.Parse(HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData).Value)).Department;
-            InstallerName = _installerDataService.Read(int.Parse(HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData).Value)).Installer1;
+            LoggedinUser = _usersDataService.Read(int.Parse(HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData).Value));
         }
 
         public IActionResult OnPost()

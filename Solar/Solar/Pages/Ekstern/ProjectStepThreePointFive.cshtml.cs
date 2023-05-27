@@ -8,25 +8,25 @@ namespace Solar.Pages.Ekstern
     public class ProjectStepThreePointFiveModel : PageModel
     {
         private IConsumptionCategoryDataService _ConsCat;
-        private EFCInstallerDataService _installerDataService;
+        private IUsersDataService _usersDataService;
+
         [BindProperty]
         public Project ProjectData { get; set; }
         public Project ExistingData { get; set; }
         public List<ConsumptionCategory> ConsCats { get; set; }
-        public string InstallerDepartment { get; set; }
-        public string InstallerName { get; set; }
-        public ProjectStepThreePointFiveModel(IConsumptionCategoryDataService consCat)
+        public User LoggedinUser { get; set; }
+        public ProjectStepThreePointFiveModel(IConsumptionCategoryDataService consCat, IUsersDataService usersDataService)
         {
             ExistingData = GlobalProjectDataService.ProjectDataNewProject;
             _ConsCat = consCat;
-            _installerDataService = new EFCInstallerDataService();
+            _usersDataService = usersDataService;
+            
         }
         public void OnGet()
         {
             ConsCats = _ConsCat.GetAll();
 
-            InstallerDepartment = _installerDataService.Read(int.Parse(HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData).Value)).Department;
-            InstallerName = _installerDataService.Read(int.Parse(HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData).Value)).Installer1;
+            LoggedinUser = _usersDataService.Read(int.Parse(HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData).Value));
         }
 
         public IActionResult OnPost() 

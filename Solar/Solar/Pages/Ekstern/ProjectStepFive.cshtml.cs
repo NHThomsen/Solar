@@ -19,7 +19,7 @@ namespace Solar.Pages.Ekstern
 
         private IProjectDataService _service;
 
-        private EFCInstallerDataService _installerDataService;
+        private IUsersDataService _usersDataService;
 
         [BindProperty]
         public Project ProjectData { get; set; }
@@ -29,23 +29,19 @@ namespace Solar.Pages.Ekstern
         private EmailClient Reciever { get; set; }
         public RoofType RoofType { get; set; }
         public RoofMaterial RoofMaterial { get; set; }
-        public string InstallerDepartment { get; set; }
-        public string InstallerName { get; set; }
-        public string InstallerPhone { get; set; }
+        public User LoggedinUser { get; set; }
 
 
-        public ProjectStepFiveModel(IEmailSenderService emailSender, IRoofTypeDataService roofTypeDataService, IRoofMaterialDataService roofMaterielService, IProjectDataService service)
+        public ProjectStepFiveModel(IEmailSenderService emailSender, IRoofTypeDataService roofTypeDataService, IRoofMaterialDataService roofMaterielService, IProjectDataService service, IUsersDataService usersDataService)
         {
             ExistingData = GlobalProjectDataService.ProjectDataNewProject;
             InfoDump = GlobalProjectDataService.Merge();
             _emailSender = emailSender;
-
+            _usersDataService = usersDataService;
+            _service = service;
             _roofTypeDataService = roofTypeDataService;
             _roofMaterielService = roofMaterielService;
 
-            _installerDataService = new EFCInstallerDataService();
-
-            _service = service;
         }
 
         public void OnGet()
@@ -54,9 +50,7 @@ namespace Solar.Pages.Ekstern
             RoofType = _roofTypeDataService.Read((int)InfoDump.Assembly.RoofTypeId);
             RoofMaterial = _roofMaterielService.Read((int)InfoDump.Assembly.RoofMaterialId);
 
-            InstallerDepartment = _installerDataService.Read(int.Parse(HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData).Value)).Department;
-            InstallerName = _installerDataService.Read(int.Parse(HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData).Value)).Installer1;
-            InstallerPhone = _installerDataService.Read(int.Parse(HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData).Value)).PhoneNumber;
+            LoggedinUser = _usersDataService.Read(int.Parse(HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData).Value));
 
         }
 

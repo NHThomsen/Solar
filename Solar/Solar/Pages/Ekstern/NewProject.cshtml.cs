@@ -7,25 +7,25 @@ namespace Solar.Pages.Ekstern
 {
     public class NewProjectModel : PageModel
     {
-        private IUsersDataService UsersDataService;
+        private IUsersDataService _usersDataService;
 
         [BindProperty]
         public Project? ProjectData { get; set; }
         public Project ExistingData { get; set; }
+        public User LoggedinUser { get; set; }
         public string InstallerDepartment { get; set; }
         public string InstallerName { get; set; }
         public string ErrorMessage { get; set; }
-        public User LoggedinUser { get; set; }
 
         public NewProjectModel(IUsersDataService usersDataService)
         {
             ExistingData = GlobalProjectDataService.ProjectDataNewProject;
-            UsersDataService = usersDataService;
+            _usersDataService = usersDataService;
         }
 
         public void OnGet()
         {
-            LoggedinUser = UsersDataService.Read(int.Parse(HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData).Value));
+            LoggedinUser = _usersDataService.Read(int.Parse(HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData).Value));
 
         }
 
