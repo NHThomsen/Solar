@@ -7,7 +7,7 @@ namespace Solar.Pages.Ekstern
 {
     public class NewProjectModel : PageModel
     {
-        private EFCInstallerDataService _installerDataService;
+        private IUsersDataService UsersDataService;
 
         [BindProperty]
         public Project? ProjectData { get; set; }
@@ -15,17 +15,17 @@ namespace Solar.Pages.Ekstern
         public string InstallerDepartment { get; set; }
         public string InstallerName { get; set; }
         public string ErrorMessage { get; set; }
+        public User LoggedinUser { get; set; }
 
-        public NewProjectModel()
+        public NewProjectModel(IUsersDataService usersDataService)
         {
             ExistingData = GlobalProjectDataService.ProjectDataNewProject;
-            _installerDataService = new EFCInstallerDataService();
+            UsersDataService = usersDataService;
         }
 
         public void OnGet()
         {
-            InstallerDepartment = _installerDataService.Read(int.Parse(HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData).Value)).Department;
-            InstallerName = _installerDataService.Read(int.Parse(HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData).Value)).Installer1;
+            LoggedinUser = UsersDataService.Read(int.Parse(HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData).Value));
 
         }
 

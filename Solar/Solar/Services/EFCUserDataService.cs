@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 public class EFCUserDataService : EFCDataServiceAppBase<User>, IUsersDataService
 {
@@ -29,4 +30,10 @@ public class EFCUserDataService : EFCDataServiceAppBase<User>, IUsersDataService
 
 		return user;
 	}
+
+    protected override IQueryable<User> GetAllWithIncludes(DbContext dbContext)
+    {
+		return dbContext.Set<User>()
+			.Include(u => u.Installer);
+    }
 }
