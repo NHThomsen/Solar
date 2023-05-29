@@ -34,7 +34,7 @@
                     <input asp-for="@Model.ProjectData.CaseName" type="text" value="@(Model.ExistingData?.CaseName != null ?  Model.ExistingData.CaseName : "" )">
                     <label asp-for="@Model.ProjectData.Address">Anlægs adresse </label>
                     <input asp-for="@Model.ProjectData.Address" type="text" value="@(Model.ExistingData?.Address != null ?  Model.ExistingData.Address : "" )">
-                    <label asp-for="@Model.ProjectData.Zip">By & postnr</label>
+                    <label asp-for="@Model.ProjectData.Zip">Postnr</label>
                     <input asp-for="@Model.ProjectData.Zip" type="number" value="@(Model.ExistingData?.Zip != null ?  Model.ExistingData.Zip : "" )" >
                 </div>
                 <div class="form-group-2">
