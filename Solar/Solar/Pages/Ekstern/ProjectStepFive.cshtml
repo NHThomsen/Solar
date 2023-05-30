@@ -29,14 +29,10 @@
                 <svg class="user-avatar" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:serif="http://www.serif.com/" width="100%" height="100%" viewBox="0 0 57 57" version="1.1" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><rect id="Artboard1" x="0" y="-0" width="57" height="57" style="fill:none;" /><g><circle cx="28.681" cy="28.681" r="26.681" style="fill:#a2cdec;" /><path d="M28.681,1.293c-15.116,0 -27.388,12.272 -27.388,27.388c0,15.115 12.272,27.387 27.388,27.387c15.115,0 27.387,-12.272 27.387,-27.387c0,-15.116 -12.272,-27.388 -27.387,-27.388Zm-0,0.707c14.725,0 26.681,11.955 26.681,26.681c-0,14.725 -11.956,26.681 -26.681,26.681c-14.726,-0 -26.681,-11.956 -26.681,-26.681c-0,-14.726 11.955,-26.681 26.681,-26.681Z" style="fill:#003970;" /><g><ellipse cx="28.681" cy="22.337" rx="11.334" ry="11.445" style="fill:#fff;" /><path d="M13.734,49.125c-1.153,-0.745 -1.035,-3.706 -1.035,-4.242c-0,-5.31 2.544,-10.024 6.469,-12.966c2.433,2.464 5.798,3.99 9.513,3.99c3.715,-0 7.079,-1.526 9.513,-3.99c3.924,2.942 6.469,7.656 6.469,12.966c-0,0.536 0.181,3.753 -0.972,4.498c-2.663,1.721 -7.087,4.742 -15.01,4.742c-7.348,-0 -12.283,-3.277 -14.947,-4.998Z" style="fill:#fff;" /></g></g></svg>
             </div>
         </section>
-
-        @*side uniqe content*@
         <section class="new-project-section hidden">
             <form method="post">
                 <section class="scrollable-container">
                     <div class="info-overlook">
-                        
-                        @*sags onfo tille denne sag*@
                         <div class="info-section">
                             <label>Sags Navn:</label>
                             <label>@Model.InfoDump.CaseName</label>
@@ -44,8 +40,6 @@
                             <label>Adresse:</label>
                             <label>@Model.InfoDump.Address</label>
                         </div> 
-                        
-                        @*tid og deadline*@
                         <div class="info-section">
                             <label>Start dato</label>
                             <label>@Model.InfoDump.StartDate</label>
@@ -56,8 +50,6 @@
                             <label>Deadline dato</label>
                             <label>@Model.InfoDump.Deadline</label>
                         </div>
-
-                        @*monterering og tagtyper*@
                         <div class="info-section">
                             <label>Monteage type:</label>
                             <label>@Model.RoofType.RoofType1</label>
@@ -70,27 +62,20 @@
                             <label>Højde på bygning:</label>
                             <label>@Model.InfoDump.Assembly.BuildingHeight</label>
                         </div>
-
-                        @*Battari*@
                         <div class="info-section">
                             <label>Forberedes til batteri:</label>
                             <label>@Model.InfoDump.Battery.BatteryPrepare</label>
                             <label>Størrelse:</label>
                             <label>@Model.InfoDump.BatteryRequest.Capacity</label>
                         </div>
-                           
-                        @*Barttari klargøring*@
                         <div class="info-section">
                             <label>Forberedes til batteri:</label>
                             <label>@Model.InfoDump.Battery.BatteryPrepare</label>
                             <label>Størrelse:</label>
                             <label>@Model.InfoDump.BatteryRequest.Capacity <p> kWh</p></label>
                         </div>
-
-                        @*Hordan skal solcellerne være*@
                         <div class="info-section">
                             <label>Solecelle ønske:</label>
-                            @*dropdown menu udskrivning*@
                             @if(Model.InfoDump.DimensioningId == 1){
                                 <label>Solcelleanlæg dimensioneres efter forbrug</label>
                             }
@@ -108,18 +93,14 @@
                                 </label>
                                 <label>@Model.InfoDump.DimensioningConsumption</label>
                             }
-                            @*burde ikke kunne ske*@
                             else{ 
                                 <label>
                                     intet valgt
                                 </label>
                             }
                         </div>
-
-                        @*Side 3.5 kommer kun vis man vælger 1 på side 3*@
                         @if (Model.InfoDump.DimensioningId == 1)
                         {
-                            @*dropdown menu udskrivning*@
                             <div class="info-section">
                                 <label>Anlægskategori:</label>
                                 @if(Model.InfoDump.DimensioningConsumption.CategoryId == 1 ){
@@ -143,7 +124,6 @@
 
                                 <label>Er/kommer der varmepumpe:</label>
                                 @if (Model.InfoDump.DimensioningConsumption.HeatPump == true)
-                                @*boolien til teskt udskrevning*@
                                 {
                                     <label>Ja</label>
                                     <label>
@@ -168,7 +148,6 @@
                                 <label>@Model.InfoDump.DimensioningConsumption.HouseSize<p> m2</p></label>
 
                                 <label>Er/kommer der elbil:</label>
-                                @*viser kun info vis der er en EV med i regnsabet*@
                                 @if (Model.InfoDump.DimensioningConsumption.ElectricVehicle == true)
                                 {
                                     <label>Ja</label>
@@ -193,14 +172,10 @@
                                 }
                             </div>
                         }
-
-                        @*side 4 info flere bemærkninger fra indstallator*@
                         <div class="info-section">
                             <label>Bemærkninger:</label>
                             <p class="info-text">@Model.InfoDump.Remarks</p>
                         </div>
-
-                        @*kontakt info på indstalatør*@
                         <div class="info-section-contact">
                             <h2>Dine Kontakt oplysninger</h2>
                             <label>Firma: @Model.LoggedinUser.Installer.Department</label>
@@ -210,9 +185,6 @@
                         </div>
                     </div>
                 </section>
-
-                @*end of side uniqe content*@
-                @*dette er footeren*@
 
                 <section class="schema-footer-container">
                     <div class="schema-btn-container">

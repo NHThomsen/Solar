@@ -54,8 +54,6 @@
                     <div class="side-container left-side">
                         <h2>Sags info</h2>
                         <div class="">
-
-                            @*sags onfo tille denne sag*@
                             <div class="info-section">
                                 <label>Sags Navn:</label>
                                 <label>@Model.DataBaseInfo.CaseName</label>
@@ -63,8 +61,6 @@
                                 <label>Adresse:</label>
                                 <label>@Model.DataBaseInfo.Address</label>
                             </div>
-
-                            @*tid og deadline*@
                             <div class="info-section">
                                 <label>Start dato</label>
                                 <label>@Model.DataBaseInfo.StartDate</label>
@@ -75,8 +71,6 @@
                                 <label>Deadline dato</label>
                                 <label>@Model.DataBaseInfo.Deadline</label>
                             </div>
-
-                            @*monterering og tagtyper*@
                             <div class="info-section">
                                 <label>Monteage type:</label>
                                 <label>@Model.DataBaseInfo.Assembly.RoofTypeId</label>
@@ -89,27 +83,20 @@
                                 <label>Højde på bygning:</label>
                                 <label>@Model.DataBaseInfo.Assembly.BuildingHeight</label>
                             </div>
-
-                            @*Battari*@
                             <div class="info-section">
                                 <label>Forberedes til batteri:</label>
                                 <label>@Model.DataBaseInfo.Battery.BatteryPrepare</label>
                                 <label>Størrelse:</label>
                                 <label>@Model.DataBaseInfo.BatteryRequest.Capacity</label>
                             </div>
-
-                            @*Barttari klargøring*@
                             <div class="info-section">
                                 <label>Forberedes til batteri:</label>
                                 <label>@Model.DataBaseInfo.Battery.BatteryPrepare</label>
                                 <label>Størrelse:</label>
                                 <label>@Model.DataBaseInfo.BatteryRequest.Capacity <p> kWh</p></label>
                             </div>
-
-                            @*Hordan skal solcellerne være*@
                             <div class="info-section">
                                 <label>Solecelle ønske:</label>
-                                @*dropdown menu udskrivning*@
                                 @if (Model.DataBaseInfo.DimensioningId == 1)
                                 {
                                     <label>Solcelleanlæg dimensioneres efter forbrug</label>
@@ -128,7 +115,6 @@
                                     </label>
                                     <label>@Model.DataBaseInfo.DimensioningConsumption</label>
                                 }
-                                @*burde ikke kunne ske*@
                                 else
                                 {
                                     <label>
@@ -136,11 +122,8 @@
                                     </label>
                                 }
                             </div>
-
-                            @*Side 3.5 kommer kun vis man vælger 1 på side 3*@
                             @if (Model.DataBaseInfo.DimensioningId == 1)
                             {
-                                @*dropdown menu udskrivning*@
                                 <div class="info-section">
                                     <label>Anlægskategori:</label>
                                     @if (Model.DataBaseInfo.DimensioningConsumption.CategoryId == 1)
@@ -165,7 +148,6 @@
 
                                     <label>Er/kommer der varmepumpe:</label>
                                     @if (Model.DataBaseInfo.DimensioningConsumption.HeatPump == true)
-                                    @*boolien til teskt udskrevning*@
                                     {
                                         <label>Ja</label>
                                         <label>
@@ -190,7 +172,6 @@
                                     <label>@Model.DataBaseInfo.DimensioningConsumption.HouseSize<p> m2</p></label>
 
                                     <label>Er/kommer der elbil:</label>
-                                    @*viser kun info vis der er en EV med i regnsabet*@
                                     @if (Model.DataBaseInfo.DimensioningConsumption.ElectricVehicle == true)
                                     {
                                         <label>Ja</label>
@@ -215,14 +196,10 @@
                                     }
                                 </div>
                             }
-
-                            @*side 4 info flere bemærkninger fra indstallator*@
                             <div class="info-section">
                                 <label>Bemærkninger:</label>
                                 <p class="info-text">@Model.DataBaseInfo.Remarks</p>
                             </div>
-
-                            @*kontakt info på indstalatør*@
                             <div class="info-section-contact">
                                 <h2>Dine Kontakt oplysninger</h2>
                                 <label>Firma: @Model.DataBaseInfo.User.Installer.Department</label>
