@@ -225,27 +225,23 @@
 .gui-container{
     max-width:250px;
     display:flex;
-    justify-content:space-around;
-    margin:0;
-}
-
-.gui-button {
-    border: none;
-    color: none;
-    background-color: transparent;
-    padding: 0;
+    justify-content:center;
     margin:0;
 }
 
 .gui-icon{
     height:100%;
     background-color:transparent;
+    margin:0 auto;
 }
 
 .icon-warning {
     display:flex; 
     justify-content:center;
 }
+
+
+/*ikke i brug lige nu */
 
 .gui-label{
     border-bottom:none;
