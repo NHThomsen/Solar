@@ -5,7 +5,13 @@ using Solar.Services.StaticServices;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddRazorPages();
+builder.Services.AddRazorPages(options =>
+{
+	options.Conventions.AuthorizeFolder("/Ekstern");
+	options.Conventions.AuthorizeFolder("/Intern");
+});
+
+// Add data services
 builder.Services.AddSingleton<IUsersDataService, EFCUserDataService>();
 builder.Services.AddSingleton<IProjectDataService, EFCProjectDataService>();
 builder.Services.AddSingleton<IRoofTypeDataService, EFCRoofTypeDataService>();
@@ -22,7 +28,13 @@ builder.Services.Configure<CookiePolicyOptions>(options =>
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
 .AddCookie(options =>
 {
-	options.LoginPath = "/Ekstern/Logind";
+	options.LoginPath = "/Logind";
+	options.AccessDeniedPath = "/Logind";
+});
+
+builder.Services.AddAuthorization(options =>
+{
+	options.AddPolicy("admin", policy => policy.RequireRole("admin"));
 });
 
 var app = builder.Build();

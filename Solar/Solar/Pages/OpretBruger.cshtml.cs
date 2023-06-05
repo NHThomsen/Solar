@@ -1,15 +1,14 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
 
-namespace Solar.Pages.Ekstern
+namespace Solar.Pages
 {
-    public class IndexModel : PageModel
+    public class OpretBruger : PageModel
     {
         private IUsersDataService _service;
 
-        public IndexModel(IUsersDataService service)
+        public OpretBruger(IUsersDataService service)
         {
             _service = service;
         }
@@ -39,7 +38,7 @@ namespace Solar.Pages.Ekstern
             return Page();
         }
 
-        public IActionResult OnPost() 
+        public IActionResult OnPost()
         {
 
             if (Username == null || Password == null)
@@ -48,7 +47,7 @@ namespace Solar.Pages.Ekstern
                 return Page();
             }
 
-            if (_service.CheckUsernameExist(Username)) 
+            if (_service.CheckUsernameExist(Username))
             {
                 ErrorMessage = "Brugernavn er allerede i brug";
                 return Page();
@@ -72,7 +71,7 @@ namespace Solar.Pages.Ekstern
             user.Installer.PhoneNumber = PhoneNumber;
 
             _service.Create(user);
-            return RedirectToPage("/Ekstern/Logind");
+            return RedirectToPage("/Logind");
         }
     }
 }

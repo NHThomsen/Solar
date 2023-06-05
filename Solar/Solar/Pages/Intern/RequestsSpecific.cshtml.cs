@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore.Storage;
@@ -7,6 +8,7 @@ using Solar.Services.StaticServices;
 
 namespace Solar.Pages.Intern
 {
+    [Authorize(Policy = "admin")]
     public class RequestSpecific : PageModel
     {
         private IProjectDataService ProjectDataService;
@@ -20,6 +22,7 @@ namespace Solar.Pages.Intern
         public EmailClient Sender { get; set; }
         public EmailClient Reciever { get; set; }
         public string GoogleMapsData { get; set; }
+        public int MissingInformation { get; set; }
         public RequestSpecific(IProjectDataService projectDataService, IRoofTypeDataService roofTypeDataService, IEmailSenderService emailSender) 
         {
             ProjectDataService = projectDataService;
@@ -29,7 +32,7 @@ namespace Solar.Pages.Intern
         }
         public void OnGet(int id)
         {
-
+            MissingInformation = MissingInformationCounterService.CountMissingInformation(id);
             DataBaseInfo = ProjectDataService.Read(id);
             RoofType = RoofTypeDataService.Read((int)DataBaseInfo.Assembly.RoofTypeId);
            

@@ -76,36 +76,67 @@ input {
     justify-content:center;
 }
 
-    input[type="checkbox"] {
-        appearance: none;
-        background-color: #d7e9f7;
-        margin: 0;
-        font: inherit;
-        color: currentColor;
-        width: 40px;
-        height: 40px;
-        border: 1px solid #a3c9ea;
-        border-radius: 0.15em;
-        transform: translateY(-0.075em);
-        display: grid;
-        place-content: center;
+input[type="checkbox"] {
+    appearance: none;
+    background-color: #d7e9f7;
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #a3c9ea;
+    border-radius: 0.15em;
+    transform: translateY(-0.075em);
+    display: grid;
+    place-content: center;
+}
+
+    input[type="checkbox"]::before {
+        content: "";
+        width: 30px;
+        height: 30px;
+        transform: scale(0);
+        transition: 120ms transform ease-in-out;
+        box-shadow: inset 1em 1em var(--form-control-color);
+        background-color: black;
+        transform-origin: bottom left;
+        clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
     }
 
-        input[type="checkbox"]::before {
-            content: "";
-            width: 30px;
-            height: 30px;
-            transform: scale(0);
-            transition: 120ms transform ease-in-out;
-            box-shadow: inset 1em 1em var(--form-control-color);
-            background-color: black;
-            transform-origin: bottom left;
-            clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
-        }
+    input[type="checkbox"]:checked::before {
+        transform: scale(1);
+    }
 
-        input[type="checkbox"]:checked::before {
-            transform: scale(1);
-        }
+input[type="radio"] {
+    appearance: none;
+    background-color: #d7e9f7;
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #a3c9ea;
+    border-radius: 0.15em;
+    transform: translateY(-0.075em);
+    display: grid;
+    place-content: center;
+}
+
+    input[type="radio"]::before {
+        content: "";
+        width: 30px;
+        height: 30px;
+        transform: scale(0);
+        transition: 120ms transform ease-in-out;
+        box-shadow: inset 1em 1em var(--form-control-color);
+        background-color: black;
+        transform-origin: bottom left;
+        clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    }
+
+    input[type="radio"]:checked::before {
+        transform: scale(1);
+    }
 
     input::-webkit-inner-spin-button {
         padding-top: 50px;

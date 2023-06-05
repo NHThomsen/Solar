@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Solar.Models.Static;
@@ -5,6 +6,7 @@ using Solar.Services.StaticServices;
 
 namespace Solar.Pages.Intern
 {
+    [Authorize(Policy = "admin")]
     public class Orders : PageModel
     {
                 private IProjectDataService ProjectDataService;
