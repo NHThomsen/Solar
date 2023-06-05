@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore.Storage;
@@ -7,6 +8,7 @@ using Solar.Services.StaticServices;
 
 namespace Solar.Pages.Intern
 {
+    [Authorize(Policy = "admin")]
     public class RequestSpecific : PageModel
     {
         private IProjectDataService ProjectDataService;

@@ -72,7 +72,7 @@ namespace Solar.Pages.Ekstern
             user.Installer.PhoneNumber = PhoneNumber;
 
             _service.Create(user);
-            return RedirectToPage("/Ekstern/Logind");
+            return RedirectToPage("/Logind");
         }
     }
 }

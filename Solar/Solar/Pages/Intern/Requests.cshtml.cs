@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Solar.Services.StaticServices;
 
 namespace Solar.Pages.Intern
 {
+    [Authorize(Policy = "admin")]
     public class Request : PageModel
     {
         private IProjectDataService ProjectDataService;
