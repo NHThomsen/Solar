@@ -34,7 +34,7 @@
                     <div class="form-group-dates">
                         <label>Anlægskategori</label>
                         <select asp-for="@Model.ProjectData.DimensioningConsumption.CategoryId" name="Anlægskategori" id="">
-                            <option value="" selected disabled hidden>Vælg</option>
+                            <option selected disabled hidden>Vælg</option>
                             @foreach(var Cats in Model.ConsCats)
                             {
                                 <option value="@Cats.Id">@Cats.Category</option>
@@ -73,13 +73,13 @@
                     </div>
                     <div class="form-group-dates">
                         <label class="special-label-margin">Er / kommer der elbil?</label>
-                        <label>
-                            <input type="checkbox">
+                        <label asp-for="@Model.ProjectData.DimensioningConsumption.ElectricVehicle">
+                            <input asp-for="@Model.ProjectData.DimensioningConsumption.ElectricVehicle" type="checkbox" class="check-box">
                             <span>Ja</span>
                         </label>
                         <label class="special-label-margin">Er elbil inkluderet i nuværende forbrug?</label>
-                        <label>
-                            <input type="checkbox" class="check-box">
+                        <label asp-for="@Model.ProjectData.DimensioningConsumption.Evincluded">
+                            <input asp-for="@Model.ProjectData.DimensioningConsumption.Evincluded" type="checkbox" class="check-box">
                             <span>Ja</span>
                         </label>
                         <label>Hvor mange km køres pr. år?</label>

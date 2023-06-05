@@ -24,10 +24,10 @@ public partial class DimensioningConsumption
 
     public int? HouseSize { get; set; }
 
-    public bool? ElectricVehicle { get; set; }
+    public bool ElectricVehicle { get; set; }
 
     [Column("EVIncluded")]
-    public bool? Evincluded { get; set; }
+    public bool Evincluded { get; set; }
 
     public int? EvKilometer { get; set; }
 
