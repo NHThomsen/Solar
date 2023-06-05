@@ -52,6 +52,8 @@
                 mergedProject.DimensioningConsumption.HeatPumpIncluded = ProjectDataStepThreePointFive.DimensioningConsumption.HeatPumpIncluded;
                 mergedProject.DimensioningConsumption.HouseSize = ProjectDataStepThreePointFive.DimensioningConsumption.HouseSize;
                 mergedProject.DimensioningConsumption.EvKilometer = ProjectDataStepThreePointFive.DimensioningConsumption.EvKilometer;
+                mergedProject.DimensioningConsumption.ElectricVehicle = ProjectDataStepThreePointFive.DimensioningConsumption.ElectricVehicle;
+                mergedProject.DimensioningConsumption.Evincluded = ProjectDataStepThreePointFive.DimensioningConsumption.Evincluded;
             }
 
             return mergedProject;
