@@ -45,7 +45,9 @@
                         </div>
                         <div class="intern-card-segments">
                             <p class="intern-card-header">Manglende Felter:</p>
-                            <p class="intern-card-special">3</p>
+                            <p class="intern-card-special">
+                                @Model.ProjectMissingInformation[project.Id]
+                            </p>
                         </div>
                         <div class="intern-card-segments">
                             <a asp-page="RequestsSpecific" class="read-more-button" asp-route-id="@project.Id">Læs mere</a>

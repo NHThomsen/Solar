@@ -221,3 +221,32 @@
     margin-top: 3%;
     font-size: 200%;
 }
+
+.gui-container{
+    max-width:250px;
+    display:flex;
+    justify-content:center;
+    margin:0;
+}
+
+.gui-icon{
+    height:100%;
+    background-color:transparent;
+    margin:0 auto;
+}
+
+.icon-warning {
+    display:flex; 
+    justify-content:center;
+}
+
+
+/*ikke i brug lige nu */
+
+.gui-label{
+    border-bottom:none;
+}
+
+.gui-input{
+    font-size:1rem;
+}
