@@ -15,8 +15,8 @@
                     </g>
                     </svg>
             <div class="user-steps-container">
-                <h2>Projekt : @Model.ExistingData.CaseName</h2>
-                <p>@Model.ExistingData.Address Step 1/5</p>
+                <h2>Projekt : @Model.CaseData.CaseName</h2>
+                <p>@Model.CaseData.Address Step 1/5</p>
             </div>
 
             <div class="loggedin-user-container">
@@ -49,7 +49,7 @@
                             <option selected disabled hidden>Vælg</option>
                             @foreach (var roof in Model.RoofMaterials)
                             {
-                                <option value="@roof.Id">@roof.Material</option>
+                                <option selected="@(Model.ExistingData?.Assembly.RoofMaterialId == roof.Id ? true : false)" value="@roof.Id">@roof.Material</option>
                             }
                         </select>
                     </div>
@@ -57,7 +57,7 @@
                     <div class="form-group-dates">
                         <label >Ønskes øst/vest placering?</label>
                         <label asp-for="@Model.ProjectData.Assembly.EastWestDirection">
-                            <input asp-for="@Model.ProjectData.Assembly.EastWestDirection" type="checkbox" class="check-box">
+                            <input asp-for="@Model.ProjectData.Assembly.EastWestDirection" type="checkbox" checked="@(Model.ExistingData?.Assembly.EastWestDirection == true ? true : false )" class="check-box">
                             <span>Ja</span>
                         </label>
                     </div>
