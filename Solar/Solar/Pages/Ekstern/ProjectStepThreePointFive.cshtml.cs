@@ -31,6 +31,7 @@ namespace Solar.Pages.Ekstern
 
         public IActionResult OnPost() 
         {
+            
             GlobalProjectDataService.ProjectDataStepThreePointFive = ProjectData;
             return RedirectToPage("/Ekstern/ProjectStepFour");
         }
