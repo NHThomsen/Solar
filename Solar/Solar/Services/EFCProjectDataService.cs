@@ -19,6 +19,7 @@ public class EFCProjectDataService : EFCDataServiceAppBase<Project>, IProjectDat
 			.Include(x => x.Dimensioning)
 			.Include(x => x.User)
 			.ThenInclude(x => x.Installer)
-			.Include(x => x.Assembly.RoofType);
+			.Include(x => x.Assembly.RoofType)
+			.ThenInclude(x => x.RoofMaterials);
     }
 }
