@@ -74,21 +74,88 @@
                                 }
                                 @if (Model.DataBaseInfo.Followup == null)
                                 {
-                                    <label asp-for="@Model.DataBaseInfo.Followup">Start Dato:</label>
+                                    <label asp-for="@Model.DataBaseInfo.Followup">Followup Dato:</label>
                                     <input asp-for="@Model.DataBaseInfo.Followup" />
                                 }
                                 @if (Model.DataBaseInfo.Deadline == null)
                                 {
-                                    <label asp-for="@Model.DataBaseInfo.Deadline">Start Dato:</label>
+                                    <label asp-for="@Model.DataBaseInfo.Deadline">Dead line:</label>
                                     <input asp-for="@Model.DataBaseInfo.Deadline" />
                                 }
                             </div>
-                            <div class="info-section">
+                            <div class="info-section">   
+                                @*mangler dropdown menu*@
                                 @if (Model.DataBaseInfo.Assembly.RoofTypeId == null)
                                 {
-                                    
+                                    <label asp-for="@Model.DataBaseInfo.Assembly.RoofTypeId">Monteage type:</label>
+                                    <input asp-for="@Model.DataBaseInfo.Assembly.RoofTypeId" />
+                                    <select>
+                                        
+                                    </select>
+                                }
+                                @if (Model.DataBaseInfo.Assembly.RoofMaterialId == null)
+                                {
+                                    <label asp-for="@Model.DataBaseInfo.Assembly.RoofMaterialId ">Tag type:</label>
+                                    <input asp-for="@Model.DataBaseInfo.Assembly.RoofMaterialId " />
+                                    <select>
+
+                                    </select>
+                                }
+                                @if (Model.DataBaseInfo.Assembly.Slope == null)
+                                {
+                                    <label asp-for="@Model.DataBaseInfo.Assembly.Slope ">Hældning:</label>
+                                    <input asp-for="@Model.DataBaseInfo.Assembly.Slope " />
+                                }
+                                @if (Model.DataBaseInfo.Assembly.BuildingHeight == null)
+                                {
+                                    <label asp-for="@Model.DataBaseInfo.Assembly.BuildingHeight ">Højde på bygning i meter:</label>
+                                    <input asp-for="@Model.DataBaseInfo.Assembly.BuildingHeight " />
                                 }
                             </div>
+                            <div class="info-section">
+                                @if (Model.DataBaseInfo.BatteryRequest.Capacity <= 0)
+                                {
+                                    <label asp-for="@Model.DataBaseInfo.BatteryRequest.Capacity ">Størrelse i kWh:</label>
+                                    <input asp-for="@Model.DataBaseInfo.BatteryRequest.Capacity " />
+                                }
+                            </div>
+                            
+                            @if (Model.DataBaseInfo.DimensioningId == null)
+                            {
+                            <div class="info-section">
+                                @foreach (var option in Model.Dimensions)
+                                {
+                                    <label>@option.Description</label>
+                                    <label asp-for="@Model.DataBaseInfo.DimensioningId">
+                                        <input asp-for="@Model.DataBaseInfo.DimensioningId" value="@option.Id" style="" type="radio">
+                                    </label>
+                                }
+                            </div>
+                            }
+                            @if (Model.DataBaseInfo.DimensioningId == 1)
+                            {
+                                <div class="info-section">
+                                    @if (Model.DataBaseInfo.DimensioningConsumption.CategoryId == null)
+                                    {
+                                        <label asp-for="@Model.DataBaseInfo.BatteryRequest.Capacity ">Anlægskategori:</label>
+                                        <input asp-for="@Model.DataBaseInfo.BatteryRequest.Capacity " />
+
+                                        <select>
+                                            @*her mangler dropdown*@
+                                        </select>
+                                    }
+                                </div>
+                            }
+                            @if (Model.DataBaseInfo.DimensioningId == 3 && Model.DataBaseInfo.DimensioningConsumption == null)
+                            {
+                                <div class="info-section">
+                                    <label asp-for="@Model.DataBaseInfo.DimensioningkWp.KiloWattPeak">
+                                        Ønsket dimensionering i kWp:
+                                    </label>
+                                    <input asp-for="@Model.DataBaseInfo.DimensioningkWp.KiloWattPeak" />
+                                </div>
+                            }
+
                         </form>
                     </div>
                 </div>
