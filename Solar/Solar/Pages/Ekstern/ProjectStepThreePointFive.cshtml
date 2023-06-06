@@ -33,11 +33,11 @@
                 <div class="form-group-1">
                     <div class="form-group-dates">
                         <label>Anlægskategori</label>
-                        <select asp-for="@Model.ProjectData.DimensioningConsumption.CategoryId" name="Anlægskategori" id="">
+                        <select asp-for="@Model.ProjectData.DimensioningConsumption.CategoryId">
                             <option selected disabled hidden>Vælg</option>
-                            @foreach(var Cats in Model.ConsCats)
+                            @foreach(var cats in Model.ConsCats)
                             {
-                                <option value="@Cats.Id">@Cats.Category</option>
+                                <option value="@cats.Id">@cats.Category</option>
                             }
                         </select>
                     </div>
