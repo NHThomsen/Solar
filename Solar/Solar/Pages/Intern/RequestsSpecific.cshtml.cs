@@ -14,20 +14,23 @@ namespace Solar.Pages.Intern
         private IProjectDataService ProjectDataService;
         private IRoofTypeDataService RoofTypeDataService;
         private IEmailSenderService _emailSender;
+        private IRoofMaterialDataService _roofMaterielService;
 
         private int Id { get; set; }
 
         public Project DataBaseInfo { get; set; }
         public RoofType RoofType { get; set; }
+        public RoofMaterial RoofMaterial { get; set; }
         public EmailClient Sender { get; set; }
         public EmailClient Reciever { get; set; }
         public string GoogleMapsData { get; set; }
         public int MissingInformation { get; set; }
-        public RequestSpecific(IProjectDataService projectDataService, IRoofTypeDataService roofTypeDataService, IEmailSenderService emailSender) 
+        public RequestSpecific(IProjectDataService projectDataService, IRoofTypeDataService roofTypeDataService, IEmailSenderService emailSender, IRoofMaterialDataService roofmateriel) 
         {
             ProjectDataService = projectDataService;
             RoofTypeDataService = roofTypeDataService;
             _emailSender = emailSender;
+            _roofMaterielService = roofmateriel;
 
         }
         public void OnGet(int id)
@@ -35,7 +38,8 @@ namespace Solar.Pages.Intern
             MissingInformation = MissingInformationCounterService.CountMissingInformation(id);
             DataBaseInfo = ProjectDataService.Read(id);
             RoofType = RoofTypeDataService.Read((int)DataBaseInfo.Assembly.RoofTypeId);
-           
+            RoofMaterial = _roofMaterielService.Read((int)DataBaseInfo.Assembly.RoofMaterialId);
+
             GoogleMapsData = $"{DataBaseInfo.Address}+{DataBaseInfo.Zip}";
             GoogleMapsData.Replace(" ", "+");
             Id = id;
