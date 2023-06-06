@@ -70,7 +70,8 @@ namespace Solar.Pages.Ekstern
                 $"\nDeadline dato: {InfoDump.Deadline}" +
                 $"\nMonteage type: {RoofType.RoofType1}" +
                 $"\ntag type: {RoofMaterial.Material}" +
-                $"\nØnskes øst/vest placering: {InfoDump.Assembly.EastWestDirection}" +
+                $"\nØnskes øst/vest placering: {(InfoDump.Assembly.EastWestDirection == true ? "Ja"
+                : "Nej")}" +
                 $"\nHældning: {InfoDump.Assembly.Slope}" +
                 $"\nHøjde på bygning: {InfoDump.Assembly.BuildingHeight}" +
                 $"\nForberedes til batteri: {InfoDump.Battery.BatteryPrepare}" +
@@ -84,23 +85,23 @@ namespace Solar.Pages.Ekstern
                 : InfoDump.DimensioningConsumption.CategoryId == 3 ? "Anlægskategori: Offentlig"
                 : "Anlægskategori: Ikke angivet")
                 : "")}" +
-                $"\nNuværende forbrug i kWh: {(InfoDump.DimensioningId == 1 ? InfoDump.DimensioningConsumption.CurrentConsumption
+                $"\n {(InfoDump.DimensioningId == 1 ? "Nuværende forbrug i kWh:" + InfoDump.DimensioningConsumption.CurrentConsumption
                 : "")}" +
                 $"\n{(InfoDump.DimensioningId == 1 ? (InfoDump.DimensioningConsumption.HeatPump == true ? "Er/kommer der varmepumpe: Ja"
                 : "Er/kommer der varmepumpe: Nej")
                 : "")}" +
                 $"\n{(InfoDump.DimensioningConsumption.HeatPump == true ? (InfoDump.DimensioningConsumption.HeatPumpIncluded == true ? "Er varmepumpe inkluderet i nuværende forbrug: Ja"
                 : "Er varmepumpe inkluderet i nuværende forbrug: Nej")
-                : "Er varmepumpe inkluderet i nuværende forbrug: Ikke angivet")}" +
-                $"\nStørrelse hus i m2: {(InfoDump.DimensioningId == 1 ? InfoDump.DimensioningConsumption.HouseSize
+                : "")}" +
+                $"\n {(InfoDump.DimensioningId == 1 ? "Størrelse hus i m2:" + InfoDump.DimensioningConsumption.HouseSize
                 : "")}" +
                 $"\n{(InfoDump.DimensioningId == 1 ? (InfoDump.DimensioningConsumption.ElectricVehicle == true ? "Er/kommer der elbil: Ja"
                 : "Er/kommer der elbil: Nej")
                 : "")}" +
                 $"\n{(InfoDump.DimensioningConsumption.ElectricVehicle == true ? (InfoDump.DimensioningConsumption.Evincluded == true ? "Er elbil inkluderet i nuværende forbrug: Ja"
                 : "Er elbil inkluderet i nuværende forbrug: Nej")
-                : "Er elbil inkluderet i nuværende forbrug: Ikke angivet")}" +
-                $"\nHvor mange km køres pr. år: {(InfoDump.DimensioningConsumption.ElectricVehicle == true ? InfoDump.DimensioningConsumption.EvKilometer
+                : "")}" +
+                $"\n {(InfoDump.DimensioningConsumption.ElectricVehicle == true ? "Hvor mange km køres pr. år:" + InfoDump.DimensioningConsumption.EvKilometer
                 : "")}"
                 );
 
