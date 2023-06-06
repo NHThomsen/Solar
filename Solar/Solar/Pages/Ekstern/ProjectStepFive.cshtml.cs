@@ -59,7 +59,52 @@ namespace Solar.Pages.Ekstern
             Sender = new EmailClient("SolarTestClient@hotmail.com", "Solar123456");
             Reciever = new EmailClient(User.Identity.Name);
 
-            await _emailSender.SendEmailAsync(Sender, Reciever, "Tilbudsanmodning er sendt til Solar", $" Info indtastet på sagen\nSagsinfo: {InfoDump.CaseName}\nAdresse: {InfoDump.Address}\nPostnr: {InfoDump.Zip}");
+            OnGet();
+
+            await _emailSender.SendEmailAsync(Sender, Reciever, "Tilbudsanmodning er sendt til Solar", $"Info indtastet på sagen:" +
+                $"\nSagsinfo: {InfoDump.CaseName}" +
+                $"\nAdresse: {InfoDump.Address}" +
+                $"\nPostnr: {InfoDump.Zip}" +
+                $"\nStart dato: {InfoDump.StartDate}" +
+                $"\nFollowup dato: {InfoDump.Followup}" +
+                $"\nDeadline dato: {InfoDump.Deadline}" +
+                $"\nMonteage type: {RoofType.RoofType1}" +
+                $"\ntag type: {RoofMaterial.Material}" +
+                $"\nØnskes øst/vest placering: {InfoDump.Assembly.EastWestDirection}" +
+                $"\nHældning: {InfoDump.Assembly.Slope}" +
+                $"\nHøjde på bygning: {InfoDump.Assembly.BuildingHeight}" +
+                $"\nForberedes til batteri: {InfoDump.Battery.BatteryPrepare}" +
+                $"\nStørrelse: {InfoDump.BatteryRequest.Capacity}kWh" +
+                $"\n{(InfoDump.DimensioningId == 1 ? "Solecelle ønske: Solcelleanlæg dimensioneres efter forbrug"
+                : InfoDump.DimensioningId == 2 ? "Solecelle ønske: Solcelleanlæg dimensioneres efter størst mulig anlæg/stor produktion"
+                : InfoDump.DimensioningId == 3 ? "Solecelle ønske: Solcelleanlæg dimensioneres efter ønsket" + InfoDump.DimensioningConsumption
+                : "Solecelle ønske: Ikke angivet")}" +
+                $"\n{(InfoDump.DimensioningId == 1 ? (InfoDump.DimensioningConsumption.CategoryId == 1 ? "Anlægskategori: Privat"
+                : InfoDump.DimensioningConsumption.CategoryId == 2 ? "Anlægskategori: Erhverv"
+                : InfoDump.DimensioningConsumption.CategoryId == 3 ? "Anlægskategori: Offentlig"
+                : "Anlægskategori: Ikke angivet")
+                : "")}" +
+                $"\nNuværende forbrug i kWh: {(InfoDump.DimensioningId == 1 ? InfoDump.DimensioningConsumption.CurrentConsumption
+                : "")}" +
+                $"\n{(InfoDump.DimensioningId == 1 ? (InfoDump.DimensioningConsumption.HeatPump == true ? "Er/kommer der varmepumpe: Ja"
+                : "Er/kommer der varmepumpe: Nej")
+                : "")}" +
+                $"\n{(InfoDump.DimensioningConsumption.HeatPump == true ? (InfoDump.DimensioningConsumption.HeatPumpIncluded == true ? "Er varmepumpe inkluderet i nuværende forbrug: Ja"
+                : "Er varmepumpe inkluderet i nuværende forbrug: Nej")
+                : "Er varmepumpe inkluderet i nuværende forbrug: Ikke angivet")}" +
+                $"\nStørrelse hus i m2: {(InfoDump.DimensioningId == 1 ? InfoDump.DimensioningConsumption.HouseSize
+                : "")}" +
+                $"\n{(InfoDump.DimensioningId == 1 ? (InfoDump.DimensioningConsumption.ElectricVehicle == true ? "Er/kommer der elbil: Ja"
+                : "Er/kommer der elbil: Nej")
+                : "")}" +
+                $"\n{(InfoDump.DimensioningConsumption.ElectricVehicle == true ? (InfoDump.DimensioningConsumption.Evincluded == true ? "Er elbil inkluderet i nuværende forbrug: Ja"
+                : "Er elbil inkluderet i nuværende forbrug: Nej")
+                : "Er elbil inkluderet i nuværende forbrug: Ikke angivet")}" +
+                $"\nHvor mange km køres pr. år: {(InfoDump.DimensioningConsumption.ElectricVehicle == true ? InfoDump.DimensioningConsumption.EvKilometer
+                : "")}"
+                );
+
+
             await _emailSender.SendEmailAsync(Sender, Sender, $"Ny tilbudsanmodning på adressen {InfoDump.Address}", "Find sagen her: www.solar.dk ");
 
             InfoDump.StatusId = 1;
