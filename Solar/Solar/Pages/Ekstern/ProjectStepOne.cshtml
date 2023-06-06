@@ -49,7 +49,7 @@
                             <option selected disabled hidden>Vælg</option>
                             @foreach (var roof in Model.RoofMaterials)
                             {
-                                <option selected="@(Model.ExistingData?.Assembly.RoofMaterialId == roof.Id ? true : false)" value="@roof.Id">@roof.Material</option>
+                                <option value="@roof.Id">@roof.Material</option>
                             }
                         </select>
                     </div>
