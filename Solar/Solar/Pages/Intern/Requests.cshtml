@@ -45,7 +45,7 @@
                         </div>
                         <div class="intern-card-segments">
                             <p class="intern-card-header">Manglende Felter:</p>
-                            <p class="intern-card-special">
+                            <p class="intern-card-special @(Model.ProjectMissingInformation[project.Id] == 0 ? "mistake-green" : Model.ProjectMissingInformation[project.Id] >= 5 ? "mistake-red" : "mistake-yellow")">
                                 @Model.ProjectMissingInformation[project.Id]
                             </p>
                         </div>

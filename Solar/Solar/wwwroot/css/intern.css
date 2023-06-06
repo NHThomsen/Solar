@@ -250,3 +250,17 @@
 .gui-input{
     font-size:1rem;
 }
+
+/* Styling til antal fejl */
+
+.mistake-red {
+    color: red
+}
+
+.mistake-yellow {
+    color: orange
+}
+
+.mistake-green {
+    color: green
+}
