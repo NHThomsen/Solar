@@ -34,7 +34,7 @@
                 <div class="form-group-1">
                     <div class="form-group-dates">
                         <label>Montage type</label>
-                        <select asp-for="@Model.ProjectData.Assembly.RoofTypeId">
+                        <select asp-for="@Model.ProjectData.Assembly.RoofTypeId" onchange="ChangedRoof(this)">
                             <option selected disabled hidden>Vælg</option>
                             @foreach (var roof in Model.Roofs)
                             {
@@ -45,12 +45,8 @@
 
                     <div class="form-group-dates">
                         <label>Tag type</label>
-                        <select asp-for="@Model.ProjectData.Assembly.RoofMaterialId">
+                        <select asp-for="@Model.ProjectData.Assembly.RoofMaterialId" id="roofMaterials">
                             <option selected disabled hidden>Vælg</option>
-                            @foreach (var roof in Model.RoofMaterials)
-                            {
-                                <option value="@roof.Id">@roof.Material</option>
-                            }
                         </select>
                     </div>
 
@@ -100,3 +96,59 @@
         </section>
     </section>
 </main>
+<script>
+    function ChangedRoof(input) {
+        const select = document.querySelector('#roofMaterials')
+        select.innerHTML = "";
+
+        let opt = document.createElement('option');
+        opt.selected = true;
+        opt.disabled = true;
+        opt.hidden = true;
+        opt.innerHTML = "Vælg";
+        select.appendChild(opt);
+
+        if(input.value == 1) {
+            opt = document.createElement('option');
+            opt.value = 1;
+            opt.innerHTML = "Eternit";
+            select.appendChild(opt);
+
+            opt = document.createElement('option');
+            opt.value = 2;
+            opt.innerHTML = "Tegl";
+            select.appendChild(opt);
+
+            opt = document.createElement('option');
+            opt.value = 3;
+            opt.innerHTML = "Stål";
+            select.appendChild(opt);
+
+            opt = document.createElement('option');
+            opt.value = 4;
+            opt.innerHTML = "Tagpap";
+            select.appendChild(opt);
+
+            opt = document.createElement('option');
+            opt.value = 5;
+            opt.innerHTML = "Skifer";
+            select.appendChild(opt);
+
+        } else if(input.value == 2) {
+            opt = document.createElement('option');
+            opt.value = 6;
+            opt.innerHTML = "Ballast";
+            select.appendChild(opt);
+
+            opt = document.createElement('option');
+            opt.value = 7;
+            opt.innerHTML = "Forankret";
+            select.appendChild(opt);
+        } else if(input.value == 3) {
+            opt = document.createElement('option');
+            opt.value = 8;
+            opt.innerHTML = "Ingen";
+            select.appendChild(opt);
+        }
+    }
+</script>
