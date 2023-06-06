@@ -12,11 +12,13 @@ namespace Solar.Pages.Ekstern
         [BindProperty]
         public Project ProjectData { get; set; }
         public Project ExistingData { get; set; }
+        public Project CaseData { get; set; }
         public User LoggedinUser { get; set; }
 
         public ProjectStepTwoModel(IUsersDataService usersDataService)
         {
-            ExistingData = GlobalProjectDataService.ProjectDataNewProject;
+            ExistingData = GlobalProjectDataService.ProjectDataStepTwo;
+            CaseData = GlobalProjectDataService.ProjectDataNewProject;
             _usersDataService = usersDataService;
         }
 

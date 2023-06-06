@@ -17,6 +17,7 @@ namespace Solar.Pages.Ekstern
         [BindProperty]
         public Project? ProjectData { get; set; }
         public Project ExistingData { get; set; }
+        public Project CaseData { get; set; }
         public User LoggedinUser { get; set; }
         public List<RoofType> Roofs { get; set; }
         public List<RoofMaterial> RoofMaterials { get; set; }
@@ -24,7 +25,8 @@ namespace Solar.Pages.Ekstern
 
         public ProjectStepOneModel(IRoofTypeDataService roofTypeDataService, IRoofMaterialDataService roofMaterielService, IUsersDataService usersDataService)
         {
-            ExistingData = GlobalProjectDataService.ProjectDataNewProject;
+            ExistingData = GlobalProjectDataService.ProjectDataStepOne;
+            CaseData = GlobalProjectDataService.ProjectDataNewProject;
             _roofTypeDataService = roofTypeDataService;
             _roofMaterielService = roofMaterielService;
             _usersDataService = usersDataService;
