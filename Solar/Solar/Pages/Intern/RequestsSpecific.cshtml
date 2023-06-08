@@ -234,19 +234,18 @@
                                 <label>Solecelle ønske:</label>
                                 @if (Model.DataBaseInfo.DimensioningId == 1)
                                 {
-                                    <label>Solcelleanlæg dimensioneres efter forbrug</label>
+                                    <label>Solcelleanlæg dimensioneres efter forbrug (forbrugsoplysninger udfyldes)</label>
                                 }
                                 else if (Model.DataBaseInfo.DimensioningId == 2)
                                 {
                                     <label>
-                                        Solcelleanlæg dimensioneres efter størst
-                                        mulig anlæg/stor produktion
+                                        Solcelleanlæg dimensioneres efter størst mulig anlæg/stor produktion
                                     </label>
                                 }
                                 else if (Model.DataBaseInfo.DimensioningId == 3)
                                 {
                                     <label>
-                                        Solcelleanlæg dimensioneres efter ønske
+                                        Solcelleanlæg dimensioneres efter ønsket kWp (effekt)
                                     </label>
                                     <label>Ønsket dimensionering:</label>
                                     <label>
@@ -259,7 +258,7 @@
                                         }
                                         else
                                         {
-                                            @Model.DataBaseInfo.DimensioningConsumption
+                                            @Model.DataBaseInfo.DimensioningkWp.KiloWattPeak
                                             <p> kWh</p>
                                         }
                                     </label>

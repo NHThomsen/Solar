@@ -32,16 +32,29 @@
                 if(project.Assembly.BuildingHeight == null)
                     missingInformationCounter++;
 
+                if(project.BatteryRequest.Capacity <= 0 && project.Battery.BatteryPrepare == true)
+                    missingInformationCounter++;
+
+                if(project.DimensioningId == null)
+                    missingInformationCounter++;
+
                 if(project.DimensioningId == 1)
                 {
                     if (project.DimensioningConsumption.CurrentConsumption == null)
                         missingInformationCounter++;
+
 
                     if (project.DimensioningConsumption.HouseSize == null)
                         missingInformationCounter++;
 
                     if (project.DimensioningConsumption.EvKilometer == null)
                         missingInformationCounter++;
+                }
+
+                if(project.DimensioningId == 3)
+                {
+                    project.DimensioningkWp = null;
+                    missingInformationCounter++;
                 }
             }
 

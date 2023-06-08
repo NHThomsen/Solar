@@ -53,90 +53,65 @@
                     <div class="">
                         <form method="post" id="submitUpdateSpecific">
                            
-                            <input type="hidden" asp-for="@Model.DataBaseInfo.Address" />
-                            <input type="hidden" asp-for="@Model.DataBaseInfo.Id" />
-                            <input type="hidden" asp-for="@Model.DataBaseInfo.BatteryRequest.ProjectId" />
-                            <input type="hidden" asp-for="@Model.DataBaseInfo.Assembly.ProjectId" />
-                            <input type="hidden" asp-for="@Model.DataBaseInfo.Assembly.RoofMaterialId" />
-                            <input type="hidden" asp-for="@Model.DataBaseInfo.Assembly.RoofTypeId" />
 
 
                             <div class="info-section">
                                 @if (Model.DataBaseInfo.CaseName == null)
                                 {
                                     <label>Sags navn:</label>
-                                    <input asp-for="@Model.DataBaseInfo.CaseName" />
-                                }
-                                @if (Model.DataBaseInfo.Address == null)
-                                {
-                                    <label asp-for="@Model.DataBaseInfo.Address">Adresse:</label>
-                                    <input asp-for="@Model.DataBaseInfo.Address" />
+                                    <input asp-for="@Model.CaseName" />
                                 }
                             </div>
                             <div class="info-section">
                                 @if (Model.DataBaseInfo.StartDate == null)
                                 {
-                                    <label asp-for="@Model.DataBaseInfo.StartDate">Start Dato:</label>
-                                    <input asp-for="@Model.DataBaseInfo.StartDate" />
+                                    <label>Start Dato:</label>
+                                    <input asp-for="@Model.StartDate" />
                                 }
                                 @if (Model.DataBaseInfo.Followup == null)
                                 {
-                                    <label asp-for="@Model.DataBaseInfo.Followup">Followup Dato:</label>
-                                    <input asp-for="@Model.DataBaseInfo.Followup" />
+                                    <label>Followup Dato:</label>
+                                    <input asp-for="@Model.Followup" />
                                 }
                                 @if (Model.DataBaseInfo.Deadline == null)
                                 {
-                                    <label asp-for="@Model.DataBaseInfo.Deadline">Dead line:</label>
-                                    <input asp-for="@Model.DataBaseInfo.Deadline" />
-                                }
-                            </div>
-                            <div class="info-section">   
-                                @*mangler dropdown menu*@
-                                @if (Model.DataBaseInfo.Assembly.RoofTypeId == null)
-                                {
-                                    <label asp-for="@Model.DataBaseInfo.Assembly.RoofTypeId">Monteage type:</label>
-                                    <input asp-for="@Model.DataBaseInfo.Assembly.RoofTypeId" />
-                                    <select>
-                                        
-                                    </select>
-                                }
-                                @if (Model.DataBaseInfo.Assembly.RoofMaterialId == null)
-                                {
-                                    <label asp-for="@Model.DataBaseInfo.Assembly.RoofMaterialId ">Tag type:</label>
-                                    <input asp-for="@Model.DataBaseInfo.Assembly.RoofMaterialId " />
-                                    <select>
-
-                                    </select>
-                                }
-                                @if (Model.DataBaseInfo.Assembly.Slope == null)
-                                {
-                                    <label asp-for="@Model.DataBaseInfo.Assembly.Slope ">Hældning:</label>
-                                    <input asp-for="@Model.DataBaseInfo.Assembly.Slope " />
-                                }
-                                @if (Model.DataBaseInfo.Assembly.BuildingHeight == null)
-                                {
-                                    <label asp-for="@Model.DataBaseInfo.Assembly.BuildingHeight ">Højde på bygning i meter:</label>
-                                    <input asp-for="@Model.DataBaseInfo.Assembly.BuildingHeight " />
+                                    <label>Dead line:</label>
+                                    <input asp-for="@Model.Deadline" />
                                 }
                             </div>
                             <div class="info-section">
-                                @if (Model.DataBaseInfo.BatteryRequest.Capacity <= 0)
+                                @if (Model.DataBaseInfo.Assembly.Slope == null)
                                 {
-                                    <label asp-for="@Model.DataBaseInfo.BatteryRequest.Capacity ">Størrelse i kWh:</label>
-                                    <input asp-for="@Model.DataBaseInfo.BatteryRequest.Capacity " />
+                                    <label>Hældning:</label>
+                                    <input asp-for="@Model.Slope" />
+                                }
+                                @if (Model.DataBaseInfo.Assembly.BuildingHeight == null)
+                                {
+                                    <label>Højde på bygning i meter:</label>
+                                    <input asp-for="@Model.BuildingHeight" />
+                                }
+                            </div>
+                            <div class="info-section">
+                                @if (Model.DataBaseInfo.BatteryRequest.Capacity <= 0 && Model.DataBaseInfo.Battery.BatteryPrepare == true)
+                                {
+                                    <label>Størrelse i kWh:</label>
+                                    <input asp-for="@Model.BatteryCapacity " />
                                 }
                             </div>
                             
                             @if (Model.DataBaseInfo.DimensioningId == null)
                             {
                             <div class="info-section">
-                                @foreach (var option in Model.Dimensions)
-                                {
-                                    <label>@option.Description</label>
-                                    <label asp-for="@Model.DataBaseInfo.DimensioningId">
-                                        <input asp-for="@Model.DataBaseInfo.DimensioningId" value="@option.Id" style="" type="radio">
-                                    </label>
-                                }
+                                    @foreach (var Dem in Model.Dimensions)
+                                    {
+                                        <div class="form-group-dates">
+                                            <label>@Dem.Description</label>
+                                            <label>
+                                                <input asp-for="@Model.DimensioningId" value="@Dem.Id" style="" type="radio">
+                                                <span>Ja</span>
+                                            </label>
+                                        </div>
+                                    }
                             </div>
                             }
                             @if (Model.DataBaseInfo.DimensioningId == 1)
@@ -144,34 +119,37 @@
                                 <div class="info-section">
                                     @if (Model.DataBaseInfo.DimensioningConsumption.CategoryId == null)
                                     {
-                                        <label asp-for="@Model.DataBaseInfo.DimensioningConsumption.CategoryId">Anlægskategori:</label>
-                                        <input asp-for="@Model.DataBaseInfo.DimensioningConsumption.CategoryId" />
+                                        <label>Anlægskategori:</label>
 
-                                        <select>
-                                            @*her mangler dropdown*@
+                                        <select asp-for="@Model.CategoryId">
+                                            <option selected disabled hidden>Vælg</option>
+                                            @foreach (var cats in Model.ConsCats)
+                                            {
+                                                <option value="@cats.Id">@cats.Category</option>
+                                            }
                                         </select>
                                     }
 
                                     @if (Model.DataBaseInfo.DimensioningConsumption.CurrentConsumption == null)
                                     {
-                                        <label asp-for="@Model.DataBaseInfo.DimensioningConsumption.CurrentConsumption">Nuværende forbrug i kWh:</label>
-                                        <input asp-for="@Model.DataBaseInfo.DimensioningConsumption.CurrentConsumption"/>
+                                        <label>Nuværende forbrug i kWh:</label>
+                                        <input asp-for="@Model.CurrentConsumption"/>
                                     }
                                     @if (Model.DataBaseInfo.DimensioningConsumption.HouseSize == null ||
                                         Model.DataBaseInfo.DimensioningConsumption.HouseSize <= 0)
                                     {
-                                        <label asp-for="@Model.DataBaseInfo.DimensioningConsumption.HouseSize ">Størrelse hus i m2:</label>
-                                        <input asp-for="@Model.DataBaseInfo.DimensioningConsumption.HouseSize " />
+                                        <label>Størrelse hus i m2:</label>
+                                        <input asp-for="@Model.HouseSize " />
                                     }
                                 </div>
                             }
-                            @if (Model.DataBaseInfo.DimensioningId == 3 && Model.DataBaseInfo.DimensioningConsumption == null)
+                            @if (Model.DataBaseInfo.DimensioningId == 3 && Model.DataBaseInfo.DimensioningkWp.KiloWattPeak == null || Model.DataBaseInfo.DimensioningkWp.KiloWattPeak <= 0)
                             {
                                 <div class="info-section">
-                                    <label asp-for="@Model.DataBaseInfo.DimensioningkWp.KiloWattPeak">
+                                    <label>
                                         Ønsket dimensionering i kWp:
                                     </label>
-                                    <input asp-for="@Model.DataBaseInfo.DimensioningkWp.KiloWattPeak" />
+                                    <input asp-for="@Model.KiloWattPeak" />
                                 </div>
                             }
 
