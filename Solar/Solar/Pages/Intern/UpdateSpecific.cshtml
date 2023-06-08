@@ -42,9 +42,7 @@
                     <div>
 
                     </div>
-                    <form method="post">
-                        <button class="read-more-button">Updater</button>
-                    </form>
+                        <button id="submitButton" onclick="submitForm()" class="read-more-button">Opdater Sag</button>
                 </div>
             </div>
         
@@ -53,11 +51,20 @@
                 <h2>Sags info</h2>
                 <div class="content-grid">
                     <div class="">
-                        <form>
+                        <form method="post" id="submitUpdateSpecific">
+                           
+                            <input type="hidden" asp-for="@Model.DataBaseInfo.Address" />
+                            <input type="hidden" asp-for="@Model.DataBaseInfo.Id" />
+                            <input type="hidden" asp-for="@Model.DataBaseInfo.BatteryRequest.ProjectId" />
+                            <input type="hidden" asp-for="@Model.DataBaseInfo.Assembly.ProjectId" />
+                            <input type="hidden" asp-for="@Model.DataBaseInfo.Assembly.RoofMaterialId" />
+                            <input type="hidden" asp-for="@Model.DataBaseInfo.Assembly.RoofTypeId" />
+
+
                             <div class="info-section">
                                 @if (Model.DataBaseInfo.CaseName == null)
                                 {
-                                    <label asp-for="@Model.DataBaseInfo.CaseName">Sags navn:</label>
+                                    <label>Sags navn:</label>
                                     <input asp-for="@Model.DataBaseInfo.CaseName" />
                                 }
                                 @if (Model.DataBaseInfo.Address == null)
@@ -177,3 +184,9 @@
         </div>
     </section>
 </main>
+
+<script>
+    function submitForm() {
+        document.querySelector("#submitUpdateSpecific").submit();
+    }
+</script>
