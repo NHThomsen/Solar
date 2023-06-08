@@ -98,6 +98,7 @@
 </main>
 <script>
     function ChangedRoof(input) {
+
         const select = document.querySelector('#roofMaterials')
         select.innerHTML = "";
 
@@ -108,47 +109,16 @@
         opt.innerHTML = "Vælg";
         select.appendChild(opt);
 
-        if(input.value == 1) {
-            opt = document.createElement('option');
-            opt.value = 1;
-            opt.innerHTML = "Eternit";
-            select.appendChild(opt);
-
-            opt = document.createElement('option');
-            opt.value = 2;
-            opt.innerHTML = "Tegl";
-            select.appendChild(opt);
-
-            opt = document.createElement('option');
-            opt.value = 3;
-            opt.innerHTML = "Stål";
-            select.appendChild(opt);
-
-            opt = document.createElement('option');
-            opt.value = 4;
-            opt.innerHTML = "Tagpap";
-            select.appendChild(opt);
-
-            opt = document.createElement('option');
-            opt.value = 5;
-            opt.innerHTML = "Skifer";
-            select.appendChild(opt);
-
-        } else if(input.value == 2) {
-            opt = document.createElement('option');
-            opt.value = 6;
-            opt.innerHTML = "Ballast";
-            select.appendChild(opt);
-
-            opt = document.createElement('option');
-            opt.value = 7;
-            opt.innerHTML = "Forankret";
-            select.appendChild(opt);
-        } else if(input.value == 3) {
-            opt = document.createElement('option');
-            opt.value = 8;
-            opt.innerHTML = "Ingen";
-            select.appendChild(opt);
-        }
+        fetch("RoofMaterial/" + input.value)
+            .then(response => response.json())
+            .then(response => {
+                let materials = JSON.parse(response);
+                for (var i in materials) {
+                    opt = document.createElement('option');
+                    opt.value = materials[i].Id;
+                    opt.innerHTML = materials[i].Material;
+                    select.appendChild(opt);
+                }
+            });
     }
 </script>
