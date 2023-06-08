@@ -135,7 +135,7 @@ namespace Solar.Pages.Intern
 
             if (DataBaseInfo.DimensioningConsumption.CategoryId == null )
             {
-                DataBaseInfo.DimensioningConsumption.Category.Id = CategoryId;
+                DataBaseInfo.DimensioningConsumption.CategoryId = CategoryId;
                 
             }
 
