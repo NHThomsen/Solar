@@ -106,7 +106,7 @@ namespace Solar.Pages.Ekstern
                 );
 
 
-            await _emailSender.SendEmailAsync(Sender, Sender, $"Ny tilbudsanmodning på adressen {InfoDump.Address}", "Find sagen her: www.solar.dk ");
+            await _emailSender.SendEmailAsync(Sender, Sender, $"Ny tilbudsanmodning på adressen {InfoDump.Address}", "Find sagen her: https://philipv.dk/Intern/Requests");
 
             InfoDump.StatusId = 1;
             InfoDump.UserId = int.Parse(HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.UserData).Value);

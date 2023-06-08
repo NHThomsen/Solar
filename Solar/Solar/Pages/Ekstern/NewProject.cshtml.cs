@@ -34,9 +34,9 @@ namespace Solar.Pages.Ekstern
             
             GlobalProjectDataService.ProjectDataNewProject = ProjectData;
 
-            if(ProjectData.Address == null)
+            if(ProjectData.Address == null && ProjectData.Zip.ToString().Length != 4)
             {
-                ErrorMessage = "Du skal udfylde en adresse";
+                ErrorMessage = "Du skal udfylde en adresse og postNr";
                 OnGet();
                 return Page();
             }
