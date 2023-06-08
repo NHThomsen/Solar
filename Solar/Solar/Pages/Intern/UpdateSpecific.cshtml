@@ -66,36 +66,36 @@
                                 @if (Model.DataBaseInfo.StartDate == null)
                                 {
                                     <label>Start Dato:</label>
-                                    <input asp-for="@Model.StartDate" />
+                                    <input value="none" type="datetime-local" asp-for="@Model.StartDate" />
                                 }
                                 @if (Model.DataBaseInfo.Followup == null)
                                 {
                                     <label>Followup Dato:</label>
-                                    <input asp-for="@Model.Followup" />
+                                    <input value="none" type="datetime-local" asp-for="@Model.Followup" />
                                 }
                                 @if (Model.DataBaseInfo.Deadline == null)
                                 {
                                     <label>Dead line:</label>
-                                    <input asp-for="@Model.Deadline" />
+                                    <input value="none" type="datetime-local" asp-for="@Model.Deadline" />
                                 }
                             </div>
                             <div class="info-section">
                                 @if (Model.DataBaseInfo.Assembly.Slope == null)
                                 {
                                     <label>Hældning:</label>
-                                    <input asp-for="@Model.Slope" />
+                                    <input type="number" value="null" asp-for="@Model.Slope" />
                                 }
                                 @if (Model.DataBaseInfo.Assembly.BuildingHeight == null)
                                 {
                                     <label>Højde på bygning i meter:</label>
-                                    <input asp-for="@Model.BuildingHeight" />
+                                    <input type="number" value="null" asp-for="@Model.BuildingHeight" />
                                 }
                             </div>
                             <div class="info-section">
                                 @if (Model.DataBaseInfo.BatteryRequest.Capacity <= 0 && Model.DataBaseInfo.Battery.BatteryPrepare == true)
                                 {
                                     <label>Størrelse i kWh:</label>
-                                    <input asp-for="@Model.BatteryCapacity " />
+                                    <input type="number" value="null" asp-for="@Model.BatteryCapacity " />
                                 }
                             </div>
                             
@@ -133,23 +133,23 @@
                                     @if (Model.DataBaseInfo.DimensioningConsumption.CurrentConsumption == null)
                                     {
                                         <label>Nuværende forbrug i kWh:</label>
-                                        <input asp-for="@Model.CurrentConsumption"/>
+                                        <input type="number" value="null" asp-for="@Model.CurrentConsumption" />
                                     }
                                     @if (Model.DataBaseInfo.DimensioningConsumption.HouseSize == null ||
                                         Model.DataBaseInfo.DimensioningConsumption.HouseSize <= 0)
                                     {
                                         <label>Størrelse hus i m2:</label>
-                                        <input asp-for="@Model.HouseSize " />
+                                        <input type="number" value="null" asp-for="@Model.HouseSize " />
                                     }
                                 </div>
                             }
-                            @if (Model.DataBaseInfo.DimensioningId == 3 && Model.DataBaseInfo.DimensioningkWp.KiloWattPeak == null || Model.DataBaseInfo.DimensioningkWp.KiloWattPeak <= 0)
+                            @if (Model.DataBaseInfo.DimensioningId == 3 && Model.DataBaseInfo.DimensioningkWp.KiloWattPeak == null)
                             {
                                 <div class="info-section">
                                     <label>
                                         Ønsket dimensionering i kWp:
                                     </label>
-                                    <input asp-for="@Model.KiloWattPeak" />
+                                    <input type="number" value="null" asp-for="@Model.KiloWattPeak" />
                                 </div>
                             }
 

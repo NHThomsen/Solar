@@ -35,10 +35,10 @@
                 if(project.BatteryRequest.Capacity <= 0 && project.Battery.BatteryPrepare == true)
                     missingInformationCounter++;
 
-                if(project.DimensioningId == null)
+                if (project.DimensioningId == null)
                     missingInformationCounter++;
 
-                if(project.DimensioningId == 1)
+                if (project.DimensioningId == 1)
                 {
                     if (project.DimensioningConsumption.CurrentConsumption == null)
                         missingInformationCounter++;
@@ -47,7 +47,7 @@
                     if (project.DimensioningConsumption.HouseSize == null)
                         missingInformationCounter++;
 
-                    if (project.DimensioningConsumption.EvKilometer == null)
+                    if (project.DimensioningConsumption.EvKilometer == null && project.DimensioningConsumption.ElectricVehicle == true)
                         missingInformationCounter++;
                 }
 
