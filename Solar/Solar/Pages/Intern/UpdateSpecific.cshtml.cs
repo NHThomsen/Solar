@@ -113,11 +113,6 @@ namespace Solar.Pages.Intern
                 DataBaseInfo.BatteryRequest.Capacity = BatteryCapacity;
             }
 
-            if(DataBaseInfo.DimensioningId == null)
-            {
-                DataBaseInfo.DimensioningId = DimensioningId;
-            }
-
             if(DataBaseInfo.DimensioningConsumption.CurrentConsumption == null)
             {
                 DataBaseInfo.DimensioningConsumption.CurrentConsumption = CurrentConsumption;
@@ -133,9 +128,15 @@ namespace Solar.Pages.Intern
                 DataBaseInfo.DimensioningkWp.KiloWattPeak = KiloWattPeak;
             }
 
-            if (DataBaseInfo.DimensioningConsumption.CategoryId == null && DataBaseInfo.Dimensioning.Id == 1)
+            if (DataBaseInfo.DimensioningId == null)
             {
-                DataBaseInfo.DimensioningConsumption.CategoryId = CategoryId;
+                DataBaseInfo.DimensioningId = DimensioningId;
+            }
+
+            if (DataBaseInfo.DimensioningConsumption.CategoryId == null )
+            {
+                DataBaseInfo.DimensioningConsumption.Category.Id = CategoryId;
+                
             }
 
 
