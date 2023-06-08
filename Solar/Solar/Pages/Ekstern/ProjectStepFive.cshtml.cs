@@ -85,7 +85,7 @@ namespace Solar.Pages.Ekstern
                 : InfoDump.DimensioningConsumption.CategoryId == 3 ? "Anlægskategori: Offentlig"
                 : "Anlægskategori: Ikke angivet")
                 : "")}" +
-                $"\n {(InfoDump.DimensioningId == 1 ? "Nuværende forbrug i kWh:" + InfoDump.DimensioningConsumption.CurrentConsumption
+                $"\n{(InfoDump.DimensioningId == 1 ? "Nuværende forbrug i kWh: " + InfoDump.DimensioningConsumption.CurrentConsumption
                 : "")}" +
                 $"\n{(InfoDump.DimensioningId == 1 ? (InfoDump.DimensioningConsumption.HeatPump == true ? "Er/kommer der varmepumpe: Ja"
                 : "Er/kommer der varmepumpe: Nej")
@@ -93,7 +93,7 @@ namespace Solar.Pages.Ekstern
                 $"\n{(InfoDump.DimensioningConsumption.HeatPump == true ? (InfoDump.DimensioningConsumption.HeatPumpIncluded == true ? "Er varmepumpe inkluderet i nuværende forbrug: Ja"
                 : "Er varmepumpe inkluderet i nuværende forbrug: Nej")
                 : "")}" +
-                $"\n {(InfoDump.DimensioningId == 1 ? "Størrelse hus i m2:" + InfoDump.DimensioningConsumption.HouseSize
+                $"\n{(InfoDump.DimensioningId == 1 ? "Størrelse hus i m2: " + InfoDump.DimensioningConsumption.HouseSize
                 : "")}" +
                 $"\n{(InfoDump.DimensioningId == 1 ? (InfoDump.DimensioningConsumption.ElectricVehicle == true ? "Er/kommer der elbil: Ja"
                 : "Er/kommer der elbil: Nej")
@@ -101,7 +101,7 @@ namespace Solar.Pages.Ekstern
                 $"\n{(InfoDump.DimensioningConsumption.ElectricVehicle == true ? (InfoDump.DimensioningConsumption.Evincluded == true ? "Er elbil inkluderet i nuværende forbrug: Ja"
                 : "Er elbil inkluderet i nuværende forbrug: Nej")
                 : "")}" +
-                $"\n {(InfoDump.DimensioningConsumption.ElectricVehicle == true ? "Hvor mange km køres pr. år:" + InfoDump.DimensioningConsumption.EvKilometer
+                $"\n{(InfoDump.DimensioningConsumption.ElectricVehicle == true ? "Hvor mange km køres pr. år: " + InfoDump.DimensioningConsumption.EvKilometer
                 : "")}"
                 );
 
