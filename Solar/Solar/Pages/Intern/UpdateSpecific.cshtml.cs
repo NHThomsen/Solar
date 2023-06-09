@@ -46,6 +46,8 @@ namespace Solar.Pages.Intern
         public int KiloWattPeak { get; set; }
         [BindProperty]
         public int CategoryId { get; set; }
+        [BindProperty]
+        public int EvKilometer { get; set; }
 
 
 
@@ -142,6 +144,11 @@ namespace Solar.Pages.Intern
             if( DataBaseInfo.DimensioningId == 1 && CategoryId != 0)
             {
                 DataBaseInfo.DimensioningConsumption.CategoryId = CategoryId;
+            }
+
+            if(DataBaseInfo.DimensioningConsumption.EvKilometer == null || DataBaseInfo.DimensioningConsumption.EvKilometer <=0)
+            {
+                DataBaseInfo.DimensioningConsumption.EvKilometer = EvKilometer;
             }
 
 

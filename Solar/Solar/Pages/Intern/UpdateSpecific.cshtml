@@ -141,9 +141,14 @@
                                         <label>Størrelse hus i m2:</label>
                                         <input type="number" value="null" asp-for="@Model.HouseSize " />
                                     }
+                                    @if ((Model.DataBaseInfo.DimensioningConsumption.EvKilometer == null || Model.DataBaseInfo.DimensioningConsumption.EvKilometer <= 0) && Model.DataBaseInfo.DimensioningConsumption.ElectricVehicle == true)
+                                    {
+                                        <label>Hvor mange km køres pr. år:</label>
+                                        <input type="number" value="null" asp-for="@Model.EvKilometer " />
+                                    }
                                 </div>
                             }
-                            @if (Model.DataBaseInfo.DimensioningId == 3 && Model.DataBaseInfo.DimensioningkWp.KiloWattPeak == null)
+                            @if (Model.DataBaseInfo.DimensioningId == 3 && (Model.DataBaseInfo.DimensioningkWp.KiloWattPeak == null || Model.DataBaseInfo.DimensioningkWp.KiloWattPeak <= 0))
                             {
                                 <div class="info-section">
                                     <label>
