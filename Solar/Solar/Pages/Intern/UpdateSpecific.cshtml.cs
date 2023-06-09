@@ -133,13 +133,20 @@ namespace Solar.Pages.Intern
                 DataBaseInfo.DimensioningId = DimensioningId;
             }
 
-            if (DataBaseInfo.DimensioningConsumption.CategoryId == null )
+            if (DataBaseInfo.DimensioningConsumption.CategoryId == null && DataBaseInfo.DimensioningId == 1)
             {
-                DataBaseInfo.DimensioningConsumption.CategoryId = CategoryId;
+                DataBaseInfo.DimensioningConsumption.CategoryId = null;
                 
             }
 
+            if( DataBaseInfo.DimensioningId == 1 && CategoryId != 0)
+            {
+                DataBaseInfo.DimensioningConsumption.CategoryId = CategoryId;
+            }
 
+
+
+            System.Diagnostics.Debug.WriteLine(DataBaseInfo.DimensioningConsumption.CategoryId);
             _projectDataService.Update(DataBaseInfo);
 
             return RedirectToPage("/Intern/Requests");
