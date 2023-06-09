@@ -43,17 +43,20 @@
                     if (project.DimensioningConsumption.CurrentConsumption == null)
                         missingInformationCounter++;
 
-
-                    if (project.DimensioningConsumption.HouseSize == null)
+                    if(project.DimensioningConsumption.CategoryId == null)
                         missingInformationCounter++;
 
-                    if (project.DimensioningConsumption.EvKilometer == null && project.DimensioningConsumption.ElectricVehicle == true)
+
+                    if (project.DimensioningConsumption.HouseSize == null || project.DimensioningConsumption.HouseSize <= 0)
+                        missingInformationCounter++;
+
+                    if ((project.DimensioningConsumption.EvKilometer == null || project.DimensioningConsumption.EvKilometer <= 0) && project.DimensioningConsumption.ElectricVehicle == true)
                         missingInformationCounter++;
                 }
 
-                if(project.DimensioningId == 3)
+                if(project.DimensioningId == 3 && project.DimensioningkWp.KiloWattPeak == 0)
                 {
-                    project.DimensioningkWp = null;
+                    
                     missingInformationCounter++;
                 }
             }
